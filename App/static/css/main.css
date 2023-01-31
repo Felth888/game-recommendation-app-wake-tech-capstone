@@ -4,9 +4,6 @@ body {
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
     color: #444;
   }
-  /*
-   * Formatting the header area
-   */
   header {
     background-color: #DFB887;
     height: 35px;
@@ -28,3 +25,16 @@ body {
     letter-spacing: -1px;
     color: #999;
   }
+input {
+  font-size: 1.7em;
+  font-weight: 100;
+  margin-top: 30px;
+  text-align: center;
+  letter-spacing: -1px;
+  color: #999;
+}
+.center {
+  float: center;
+  margin: auto;
+  padding: 10px;
+}
