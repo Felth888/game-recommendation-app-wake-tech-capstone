@@ -10,3 +10,17 @@
 #### pip install .
 ### to start the flask app:
 #### flask --app App run
+
+
+### adding your changes:
+#### git add .
+#### git status (running this lets you verify your changes are staged)
+#### git commit -m "put a useful message here"
+#### git push
+
+### since we will be making regular changes, commit small and often is better than less, larger commits
+
+### pulling updates:
+#### git pull
+
+### git pull before you git add, then resolve any merge conflicts.
