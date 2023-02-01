@@ -5,13 +5,15 @@ bp = Blueprint('searchPage', __name__)
 @bp.route('/', methods=['GET', 'POST'])
 def searchPage():
     if request.method == "POST":
-        name = request.form['name']
-        print(name)
-        return(redirect(url_for('searchResults')))
+        searchInput = request.form['searchInput']
+        return(redirect(url_for('searchPage.searchResults', searchInput=searchInput)))
         
     return render_template("search.html", title="Search")
 
 @bp.route('/results', methods=["GET", "POST"])
 def searchResults():
     # print the page with the query listed
-    return render_template("search-results.html")
+    if request.method == "GET":
+        searchInput = request.args.get('searchInput')
+        print(searchInput)
+    return render_template("search-results.html", searchInput=searchInput)
