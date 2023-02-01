@@ -16,4 +16,4 @@ def searchResults():
     if request.method == "GET":
         searchInput = request.args.get('searchInput')
         print(searchInput)
-    return render_template("search-results.html", searchInput=searchInput)
+    return render_template("search-results.html", searchInput=searchInput) 
