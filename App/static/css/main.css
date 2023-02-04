@@ -38,3 +38,20 @@ input {
   margin: auto;
   padding: 10px;
 }
+
+table, th, td {
+	border: 1px solid black;
+	border-collapse: collapse;
+	padding: 10px;
+}
+
+table {
+	margin: 10px;
+}
+
+input[type="text"] {
+	width: 100%;
+	box-sizing: border-box;
+	-webkit-box-sizing:border-box;
+    -moz-box-sizing: border-box;
+}

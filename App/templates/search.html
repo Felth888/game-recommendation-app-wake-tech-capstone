@@ -1,13 +1,257 @@
 {% extends 'base.html' %}
 
 {% block content %}
-
     <div>
-        <h2> Search page coming soon </h2>
-        <form method="POST">
-            <input type="text" placeholder="Search" name="searchInput" class="center">
-            <button type="submit">Search</button>
+        <h2> Search page is working! </h2>
+		
+        <form id='searchOptions'>
+			<table>
+				<!-- Text input for game title search -->
+				<tr><td colspan='2'><input type="text" id ='nameInput' placeholder="Game Title" name="nameInput" class="center"></td></tr>
+				
+				<tr>
+					<!-- Drop down input for genre search. Values = IGDB ID for genre-->
+					<td><select id="genreInput" name="genreInput">
+						<option value="any">Any Genre</option>
+						<option value="31">Adventure</option>
+						<option value="33">Arcade</option>
+						<option value="35">Card & Board Game</option>
+						<option value="4">Fighting</option>
+						<option value="25">Hack and Slash/Beat em' Up</option>
+						<option value="32">Indie</option>
+						<option value="36">MOBA</option>
+						<option value="7">Music</option>
+						<option value="30">Pinball</option>
+						<option value="8">Platform</option>
+						<option value="2">Point-and-Click</option>
+						<option value="9">Puzzle</option>
+						<option value="26">Quiz/Trivia</option>
+						<option value="10">Racing</option>
+						<option value="11">Real Time Strategy (RTS)</option>
+						<option value="12">Role-playing (RPG)</option>
+						<option value="5">Shooter</option>
+						<option value="13">Simulator</option>
+						<option value="14">Sport</option>
+						<option value="15">Strategy</option>
+						<option value="24">Tactical</option>
+						<option value="16">Turn-based strategy (TBS)</option>
+						<option value="34">Visual Novel</option>
+						<option value="audi">Audi</option>
+					</select></td>
+				  
+					<!-- Drop down for platform. VERY long. Options moved to platformOptions.html --> 
+					<td><select id="platformInput" name="platformInput">
+						{% include 'platformOptions.html' %}
+					</select></td>
+				</tr>
+			</table>
         </form>
+		
+		<br>
+		
+        <button onclick="postSearch()" style='margin-left: 10px;'>Search</button>
+		
+		<div>
+		
+			<!-- Processing div. Shown after submitting and hidden when fetch completes -->
+			<div id='resultsPending' style='display: none;'>
+				<h3>Processing...</h3>
+			</div>
+		
+			<!-- Results table - filled dynamically -->
+			<table>
+				<tr id='resultsHeader' style='display: none;'>
+					<th>Cover Art</th>
+					<th>Game Title</th>
+					<th>Genre</th>
+					<th>Release Platforms</th>
+				</tr>
+				<tbody id='results'>
+				</tbody>
+			</table>
+		
+		</div>
         
     </div>
+	
+	<script type="application/javascript">
+			
+		/**
+		* Function to short-hand the getElementById function
+		* @returns HTML element
+		*/
+		var ID = function(elementID) {
+			return document.getElementById(elementID);
+		}
+	
+		/**
+		* Checks to see if the given filter is being used and if so, return a string for
+		* appending to the filter instead of starting a new one
+		*
+		* @param {boolean} filter - The filter variable to check if being used
+		* @return {string} Returns the string to be added in response to checking the filter status
+		*/
+		function checkFilter(filter) {
+			if(filter) {
+				return [true, " & "];
+			} else {
+				return [true, "where "];
+			}
+		}
+	
+		/**
+		* Sends a query to IGDB then processes the JSON response into viewable content
+		*/
+		async function postSearch() {
+			
+			// Returns the fetch with response already formatted to JSON
+			fetchResponse = await sendQuery('games', buildQueryString())
+			
+			// Hide the pending div and show the table header since fetch is done
+			ID('resultsPending').style.display = 'none';
+			ID('resultsHeader').style.display = 'table-row';
+			
+			// Uncomment to console log the response
+			//console.log(fetchResponse);
+				
+			// x is the string used to create the table
+			var x = "";
+			// Pass through all results in the query
+			for (i = 0; i < fetchResponse.length; i++) {
+				// Every result needs its own row. Make sure using  'x +=' to not overwrite the string
+				x += "<tr>";
+				
+				// Cover art image
+				cover_url = "";
+				if(typeof fetchResponse[i].cover != "undefined") {
+					cover_url = "https://images.igdb.com/igdb/image/upload/t_cover_big/" + fetchResponse[i].cover.image_id + ".jpg";
+				} else {
+					// 'Missing Image' filler incase there is no cover art
+					cover_url = "https://t4.ftcdn.net/jpg/00/89/55/15/360_F_89551596_LdHAZRwz3i4EM4J0NHNHy2hEUYDfXc0j.jpg";
+				}
+				
+				// Create the URL for cover art. Width is being hardcoded for now
+				x += "<td><img style='width: 150px;' src='" + cover_url + "' alt ='Cover Art' </td>";
+				
+				x += "<td>" + fetchResponse[i].name + "</td>";
+				
+				// Sub tables in results table's cell
+				x += "<td>" + createTableFromVal(fetchResponse[i].genres, 'name') + "</td>";
+				x += "<td>" + createTableFromVal(fetchResponse[i].platforms, 'name') + "</td>";
+				
+				// Close the row
+				x += "</tr>";
+			}
+			
+			// 'results' is a tbody tag. Only rows are needed to be added to it
+			document.getElementById("results").innerHTML = x;
+			
+		}
+	
+		/**
+		* Creates a table of arr's data points, using valString to 
+		* specify an index for data to fill the cell with. Used to create
+		* a table from a JSON array containing objects with fields.
+		*
+		* @param {array} arr - The array to be passed in
+		* @param {string} valString - The index of the array item to pull data from
+		* @return {string} String containing an entire table with cells formed from 'arr' content's specified index 
+		*/
+		function createTableFromVal(arr, valString) {
+		
+			tableString = "<table>";
+			// Doesnt pull data from empty endpoints (such as no platform)
+			if(typeof arr != "undefined") {
+				// Loop through each value and add a table cell
+				counter = arr.length;
+				for (j = 0; j < counter; j++) {
+					tableString += "<tr>";
+					tableString += "<td>" + arr[j][valString] + "</td></tr>";
+				}
+				tableString += "</table>";
+			} else {
+				// Add a filler 'No value' so there is no empty cells
+				tableString += "<tr><td>No value</td></tr></table>";
+			}
+			
+			return tableString;
+		
+		}
+	
+		/**
+		* Sends a query to the IGDB database using AWS proxy. 
+		* Requires an end point and body header.
+		*
+		* IGDB endpoints: https://api-docs.igdb.com/#endpoints
+		* 
+		* @param {string} endpoint - End of URL to designate API endpoint
+		* @bodyInput {string} bodyInput - 'body' header for POST 
+		* @return {string} JSON formatted response from the fetch request
+		*/
+		function sendQuery(endpoint, bodyInput) {
+	
+			// IGDB fetch info via proxy through AWS
+			const options = {
+			  method: 'POST',
+			  headers: {'x-api-key': 'REPLACE-ME' },
+			  body: bodyInput
+			};
+
+			// Toggles the 'pending' space from showing
+			ID('resultsPending').style.display = 'block';
+
+			// Return fetch using provided body and endpoint then grab JSON data.
+			return fetch('https://5jmkis1ked.execute-api.us-west-2.amazonaws.com/production/v4/' + endpoint, options)
+				.then(response => response.json());
+		
+		}
+		
+		/**
+		* Creates a query string based on pulling the input boxes, determining if they have data,
+		* and applying them as filtering options for the search.
+		*
+		* @return {string} Query string for IGDB database POST request
+		*/
+		function buildQueryString() {
+		
+			// Start the construction of the string
+			query = "fields name,genres.name,platforms.name,cover.image_id;limit 50;";
+			// Tracks if the 'where' function is being used to know if '&' is needed
+			hasFilter = false;
+		
+			// Name input, uses the 'search' function
+			if(ID('nameInput').value != "" ) {
+				query += 'search "' + ID('nameInput').value + '";'
+			}
+			
+			// Genre input. Used as a template for other inputs
+			if(ID('genreInput').value != 'any') {
+				
+				// Checks and sets the filter then appends to query
+				[hasFilter, x] = checkFilter(hasFilter);
+				query += x;
+				
+				query += 'genres = ' + ID('genreInput').value;
+			}
+			
+			// Platform input
+			if(ID('platformInput').value != 'any') {
+				
+				[hasFilter, x] = checkFilter(hasFilter);
+				query += x;
+				
+				// Extra () designates all options with ID present + anything else
+				// Otherwise non-exclusives (ex: minecraft) wont show up
+				query += 'platforms = (' + ID('platformInput').value + ')';
+			}
+			
+			// Finish the filter 'where' statement
+			if(hasFilter) { query += ";"; }
+		
+			return query;
+		
+		}
+
+	</script>
+	
 {% endblock %} 
