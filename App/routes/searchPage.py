@@ -1,4 +1,5 @@
-from flask import Blueprint, render_template, request, redirect, url_for
+from flask import Blueprint, render_template, request, redirect, url_for, current_app
+# app = create_app()
 
 bp = Blueprint('searchPage', __name__)
 
@@ -9,7 +10,7 @@ def searchPage():
         genreInput = request.form['genreInput'] or ""
         return(redirect(url_for('/results', nameInput=nameInput, genreInput=genreInput)))
         
-    return render_template("search.html", title="Search")
+    return render_template("search.html", title="Search", api_key = current_app.config['IGDB_API_KEY'])
 
 @bp.route('/results', methods=["GET", "POST"])
 def searchResults():

@@ -3,7 +3,7 @@
 {% block content %}
     <div>
         <h2> Search page is working! </h2>
-		
+		<h3>igdb api key: {{ api_key }}</h3>
         <form id='searchOptions'>
 			<table>
 				<!-- Text input for game title search -->
@@ -83,6 +83,7 @@
 		var ID = function(elementID) {
 			return document.getElementById(elementID);
 		}
+		
 	
 		/**
 		* Checks to see if the given filter is being used and if so, return a string for
@@ -188,12 +189,14 @@
 		* @bodyInput {string} bodyInput - 'body' header for POST 
 		* @return {string} JSON formatted response from the fetch request
 		*/
+		var API_KEY = {{ api_key | string }};
 		function sendQuery(endpoint, bodyInput) {
 	
 			// IGDB fetch info via proxy through AWS
+			
 			const options = {
 			  method: 'POST',
-			  headers: {'x-api-key': 'REPLACE-ME' },
+			  headers: {'x-api-key': API_KEY },
 			  body: bodyInput
 			};
 
