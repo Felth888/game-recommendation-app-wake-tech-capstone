@@ -188,7 +188,7 @@
 		* @bodyInput {string} bodyInput - 'body' header for POST 
 		* @return {string} JSON formatted response from the fetch request
 		*/
-		var API_KEY = {{ api_key | string }};
+		var API_KEY = '{{ api_key | string }}';
 		function sendQuery(endpoint, bodyInput) {
 	
 			// IGDB fetch info via proxy through AWS
