@@ -1,4 +1,5 @@
 from flask.ext.sqlalchemy import SQLAlchemy
+from sqlalchemy_utils import PhoneNumber
 
 db = SQLAlchemy()
 
@@ -13,6 +14,17 @@ class User(db.Model):
     user_name = db.Column(db.String)
     first_name = db.Column(db.String)
     last_name = db.Column(db.String)
+    birthdate = db.Column(db.DateTime)
+    zipcode = db.Column(db.Integer)
+
+    phone_number = db.Column(db.Unicode(255))
+    phone_country_code = db.Column(db.Unicode(8))
+
+    phone_number = db.composite(
+        PhoneNumber,
+        phone_number,
+        phone_country_code
+    )
 
     def is_active(self):
         return True
