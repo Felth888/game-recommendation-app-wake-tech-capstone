@@ -10,5 +10,6 @@ setup(
         'flask',
         'flask-sqlalchemy',
         'Jinja2',
+        'sqlalchemy_utils',
     ],
 )
