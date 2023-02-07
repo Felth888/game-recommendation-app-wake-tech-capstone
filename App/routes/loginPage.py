@@ -1,6 +1,6 @@
-from flask import Blueprint
+from flask import Blueprint, render_template
 bp = Blueprint('loginPage', __name__)
 
 @bp.route('/login', methods=['GET', 'POST'])
 def loginPage():
-    pass
+    return render_template("login.html")

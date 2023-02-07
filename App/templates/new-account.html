@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    <div>
+        <h2>Create a new Account</h2>
+        <form id="newaccount">
+            <label for="user">Username:</label>
+            <input type="text" placeholder="Enter Username" id="user" required>
+            <label for="email">Email:</label>
+            <input type="text" placeholder="Enter Email" id="email" required>
+            <label for="pass">Password:</label>
+            <input type="text" placeholder="Enter Password" id="pass" required>
+            <label for="repeatpass">Confirm Password:</label>
+            <input type="text" placeholder="Enter Password Again" id="repeatpass" required>
+            <button type="submit" class="register">Register</button>
+        </form>
+    </div>
+
+
+
+{% endblock %}
