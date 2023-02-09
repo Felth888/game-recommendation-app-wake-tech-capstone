@@ -11,5 +11,6 @@ setup(
         'flask-sqlalchemy',
         'Jinja2',
         'sqlalchemy_utils',
+        'flask_login',
     ],
 )

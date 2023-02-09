@@ -7,6 +7,3 @@ bp = Blueprint('searchPage', __name__)
 def searchPage():
     return render_template("search.html", title="Search", api_key = current_app.config['IGDB_API_KEY'])
     
-@bp.route('/login', methods=['GET', 'POST'])
-def loginPage():
-    return render_template("login.html")
