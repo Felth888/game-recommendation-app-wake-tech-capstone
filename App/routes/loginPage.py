@@ -25,6 +25,6 @@ def loginPage():
                 db.session.add(user)
                 db.session.commit()
                 login_user(user, remember=True)
-                return redirect(url_for("bull.reports"))
+                return redirect(url_for("/"))
     return render_template("login.html", form=form)
     
