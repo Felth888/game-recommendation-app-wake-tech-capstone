@@ -12,5 +12,8 @@ setup(
         'Jinja2',
         'sqlalchemy_utils',
         'flask_login',
+        'flask-bcrypt',
+        'psycopg2-binary',
+        'Flask-WTF',
     ],
 )
