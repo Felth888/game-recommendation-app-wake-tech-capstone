@@ -1,6 +1,8 @@
 from flask import Blueprint, render_template
 bp = Blueprint('newAccount', __name__)
 from ..services.forms import NewAccountForm
+from flask_login import current_user
+
 
 @bp.route('/newaccount', methods=['GET', 'POST'])
 def newAccountPage():
@@ -12,6 +14,6 @@ def newAccountPage():
         user.set_password(form.password.data)
         db.session.add(user)
         db.session.commit()
-        flash('Congratulations, you are now a registered user!')
-        return redirect(url_for('login'))
-    return render_template("new-account.html", form=form)
+        flash('Congratulations, you have made an account!')
+        return redirect(url_for('loginPage.login'))
+    return render_template("new-account.html", form=form, title="New Account")
