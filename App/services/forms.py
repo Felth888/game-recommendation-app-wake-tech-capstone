@@ -12,7 +12,7 @@ class LoginForm(FlaskForm):
 class NewAccountForm(FlaskForm):
     user_name = StringField('Username', validators=[DataRequired()])
     email = StringField('Email', validators=[DataRequired(), Email()])
-    birthday  = DateTimeField('Your Birthday', format='%m/%d/%y', validators=[DataRequired()])
+    birthday  = DateTimeField('Your Birthday', format='%y/%m/%d')
     password = PasswordField('Password', validators=[DataRequired()])
     password2 = PasswordField(
         'Repeat Password', validators=[DataRequired(), EqualTo('password')])
