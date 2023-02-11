@@ -10,7 +10,7 @@ from ..models.userModels import User
 @bp.route('/newaccount', methods=['GET', 'POST'])
 def newAccountPage():
     if current_user.is_authenticated:
-        return redirect(url_for('index'))
+        return redirect(url_for('searchPage.searchPage'))
     form = NewAccountForm()
     if form.validate_on_submit():
         user = User(user_name=form.user_name.data, email=form.email.data, birthdate=form.birthday.data)
