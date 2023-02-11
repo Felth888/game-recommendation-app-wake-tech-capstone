@@ -5,12 +5,12 @@ from wtforms.validators import DataRequired, ValidationError, Email, EqualTo
 from ..models.userModels import User
 
 class LoginForm(FlaskForm):
-    username = StringField('Username', validators=[DataRequired()])
+    user_name = StringField('Username', validators=[DataRequired()])
     password = PasswordField('password', validators=[DataRequired()])
     submit = SubmitField('Sign In')
 
 class NewAccountForm(FlaskForm):
-    username = StringField('Username', validators=[DataRequired()])
+    user_name = StringField('Username', validators=[DataRequired()])
     email = StringField('Email', validators=[DataRequired(), Email()])
     birthday  = DateTimeField('Your Birthday', format='%m/%d/%y', validators=[DataRequired()])
     password = PasswordField('Password', validators=[DataRequired()])
