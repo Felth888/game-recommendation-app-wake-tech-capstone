@@ -336,7 +336,7 @@ CREATE TABLE public."USERS" (
     user_name character varying(32) NOT NULL,
     email character varying(64) NOT NULL,
     birthdate date NOT NULL,
-    password character varying(16) NOT NULL
+    password character varying(500) NOT NULL
 );
 
 
