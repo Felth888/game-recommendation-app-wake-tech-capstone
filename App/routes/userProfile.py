@@ -1,4 +1,5 @@
 from flask import Blueprint, render_template
+from flask_login import login_user, logout_user, current_user, login_required
 bp = Blueprint('profile', __name__)
 
 @bp.route('/profile/<user_name>', methods=['GET', 'POST'])
