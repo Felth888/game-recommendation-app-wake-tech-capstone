@@ -1,0 +1,19 @@
+button {
+  color: #080808;
+  font-size: 19px;
+  line-height: 19px;
+  padding: 10px;
+  border-radius: 9px;
+  background-image: linear-gradient(to right, #273E47 0%, #7cb9d1 37%, #8D909B 100%);
+  border: 2px solid #273E47;
+  display: inline-block;
+}
+
+button:hover {
+  background: #272727;
+  color: #8D909B;
+}
+
+button:active {
+  background: #7cb9d1;
+}/*# sourceMappingURL=all.css.map */

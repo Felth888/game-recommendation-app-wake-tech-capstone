@@ -1,0 +1,22 @@
+@import "../abstracts/variables";
+
+button 
+{
+    color: $color8; 
+    font-size: 19px; 
+    line-height: 19px; 
+    padding: 10px; 
+    border-radius: 9px; 
+    background-image: linear-gradient(to right, $color5 0%, $color6 37%,$color1 100%); 
+    border: 2px solid $color5; 
+    display: inline-block;
+}
+button:hover 
+{
+    background: $color2; 
+    color: $color1;
+}
+button:active 
+{
+    background: $color6; 
+}
