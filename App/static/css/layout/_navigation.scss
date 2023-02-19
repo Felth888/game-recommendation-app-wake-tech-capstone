@@ -1,0 +1,25 @@
+@import "../abstracts/variables";
+
+.navigation {
+    background-color: $color3;
+    overflow: hidden;
+}
+
+.navigation a {
+    float: right;
+    color: $color2;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 17px;
+}
+
+.navigation a:hover {
+    background-color: $color4;
+    color: $color1;
+}
+
+.navigation a:active {
+    background-color: $color5;
+    color: $color1;
+}

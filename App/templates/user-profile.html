@@ -3,7 +3,18 @@
 {% block content %}
 
     <div>
+        <!--flash message for successful login -->
         <h3>You Logged In</h3>
+    </div>
+
+    <div id="user info">
+        <h2>User Information</h2>
+        <ul>
+            <!--Can be styled without the bullets-->
+            <li><b>Username:</b> {{ user.user_name }}</li>
+            <li><b>Email:</b> {{ user.email }}</li>
+            <li><b>Birthday:</b> {{ user.birthdate }}</li>
+        </ul>
     </div>
 
 

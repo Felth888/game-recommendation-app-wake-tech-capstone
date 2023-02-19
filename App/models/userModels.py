@@ -32,6 +32,6 @@ class User(UserMixin, db.Model):
 
 
 
-@login.user_loader
+@login.user_loader 
 def load_user(id):
     return User.query.filter_by(email=id).first()

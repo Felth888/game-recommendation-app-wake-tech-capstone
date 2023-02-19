@@ -6,21 +6,25 @@
     </head>
 
     <body>
-        <div>
-            Play This:
+        <div class="navigation">
             <a href="{{ url_for('searchPage.searchPage') }}">Search</a>
             {% if current_user.is_anonymous %}
             <a href="{{ url_for('loginPage.login') }}">Login</a>
             {% else %}
+            <a href="{{ url_for('userProfile.profile', user_name=current_user.user_name) }}">{{current_user.user_name}}</a>
             <a href="{{ url_for('loginPage.logout') }}">Logout</a>
             {% endif %}
         </div>
-        <hr>
+        <div class="header">
+            <hr>
+            <h1 class="title">Play This</h1>
+            <hr>
+        </div>
         {% with messages = get_flashed_messages() %}
         {% if messages %}
         
             {% for message in messages %}
-            <h1>{{ message }}</h1>
+            <h1 id="alert">{{ message }}</h1>
             {% endfor %}
         
         {% endif %}

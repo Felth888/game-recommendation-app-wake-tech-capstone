@@ -1,0 +1,38 @@
+.navigation {
+  background-color: #D8973C;
+  overflow: hidden;
+}
+
+.navigation a {
+  float: right;
+  color: #272727;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+.navigation a:hover {
+  background-color: #BD632F;
+  color: #8D909B;
+}
+
+.navigation a:active {
+  background-color: #273E47;
+  color: #8D909B;
+}
+
+.header {
+  background-color: #273E47;
+  color: #D8973C;
+}
+
+.header h1 {
+  font-size: 80px;
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+.header hr {
+  background-color: #8D909B;
+}/*# sourceMappingURL=all.css.map */
