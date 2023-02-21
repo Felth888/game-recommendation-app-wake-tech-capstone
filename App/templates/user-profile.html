@@ -16,6 +16,9 @@
             <li><b>Birthday:</b> {{ user.birthdate }}</li>
         </ul>
     </div>
+    {% if user == current_user %}
+    <p><a href="{{ url_for('userProfile.update_profile') }}">Edit your profile</a></p>
+    {% endif %}
 
 
 
