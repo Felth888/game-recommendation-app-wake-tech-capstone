@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block content %}
+<!--this could be made into a tab in the user profile page in css-->
+    <div id="library">
+        <h3>Game Library</h3>
+        <!--{for game in user.library}-->
+        <div class="game">
+            <a href=#> <!--url for the game page-->
+                <img src="#"><!--img sorce from database-->
+            </a>
+            <div class="info">Game info here</div>
+            <button type="button">Remove from Library</button>
+        </div>
+        <!--endif-->
+    </div>
+
+
+
+{% endblock %}
