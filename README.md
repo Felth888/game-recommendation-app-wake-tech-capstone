@@ -24,3 +24,7 @@
 #### git pull
 
 ### git pull before you git add, then resolve any merge conflicts.
+
+
+## To run tests: 
+### python -m pytest
