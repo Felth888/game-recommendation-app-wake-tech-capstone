@@ -142,9 +142,11 @@
 				x += "<td>" + createTableFromVal(fetchResponse[i].platforms, 'name') + "</td>";
 				
 				// Adding the 'wishlist' and 'library' buttons
+				// Sets the ID's of the button to be lib_/wish_ + igdb-id to make each unique
+				// TO-DO: ADD CHECK TO SEE IF GAME IS IN LIBRARY/WISHLIST AND UPDATE BUTTON
 				x += "<td>" + 
-					"<button onclick='addToWishlist(" + fetchResponse[i].id + ")'>+ Wishlist</button><br>" + 
-					"<button onclick='addToLibrary(" + fetchResponse[i].id + ")'>+ Library</input>" + 
+					"<button id='wish_" + fetchResponse[i].id + "' onclick='addToWishlist(" + fetchResponse[i].id + ")'>Add to Wishlist</button><br>" + 
+					"<button id='lib_" + fetchResponse[i].id + "'onclick='addToLibrary(" + fetchResponse[i].id + ")'>Add to Library</input>" + 
 					"</td>";
 
 				// Close the row
@@ -267,6 +269,10 @@
 		 * @param {int} id - IGDB of the game wanting to be added
 		 */
 		async function addToWishlist(id) {
+
+			// If game doesnt exist in library, add it
+			sendAjaxQuery('/update_library', 'id=' + id);
+
 			var response = sendAjaxQuery('/add_to_wishlist', 'id=' + id);
 			console.log("WISHLISTED: " + response);
 		}
@@ -277,12 +283,26 @@
 		 */
 		async function addToLibrary(id) {
 			
-			// If game doesnt exist in library, it will be added.
-			var response = sendAjaxQuery('/update_library', 'id=' + id);
-			console.log("ADDED: " + response['id']);
+			// If game doesnt exist in library, add it
+			sendAjaxQuery('/update_library', 'id=' + id);
 
-			// Add to library
-			sendAjaxQuery('/add_to_library', 'id=' + id);
+			// Current check to see if the call is to add to library or remove
+			// THIS NEEDS TO BE CHANGED TO SOMETHING MORE RELIABLE THAN CHECKING THE BUTTON TXT
+			var adding = 'true';
+			if(ID('lib_' + id).innerHTML.includes('Remove')) { adding = 'false'; }
+			
+			// Build query string to send to ajax query
+			var queryString = 'id=' + id + '&adding=' + adding;
+			
+			// Send ajax and get the result
+			var response = sendAjaxQuery('/add_to_library', queryString);
+
+			// Modify the contents of the button to show add/remove based on response
+			if(response['added']) {
+				ID('lib_' + response['id']).innerHTML = "Remove from Library";
+			} else {
+				ID('lib_' + response['id']).innerHTML = "Add to Library";
+			}
 		}
 		
 		/**
@@ -297,11 +317,11 @@
 			// Uses AJAX to send a POST request to flask w/ the game ID selected
 			var r;
 			$.ajax({
-				url: urlIn,
-				data: dataIn,
-				dataType: 'json',
+				url: urlIn, // Param 1
+				data: dataIn, // Param 2
+				dataType: 'json', // Data is returned as a json array. Parse as needed
 				type: 'POST',
-				async: false,
+				async: false, // Forced async to be disabled to allow for returning the response
 				success: function(response){
 					r = response;
 				},

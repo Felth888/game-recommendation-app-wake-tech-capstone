@@ -10,7 +10,10 @@ def searchPage():
 def add_to_library():
     # A JSON array isnt really needed to return, a string could be used
     # But a JSON array gives better control for multiple pieces of data
-    returnArr = {'id':request.form['id']}
+    adding = False
+    if request.form['adding'] == "true":
+        adding = True
+    returnArr = {'id':request.form['id'], 'added':adding}
     return returnArr
 
 @bp.route('/add_to_wishlist', methods=['POST'])
