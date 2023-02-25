@@ -2,75 +2,74 @@
 
 {% block content %}
 
+	<link rel="stylesheet" href="{{ url_for('static', filename='css/pages/all.css') }}">
+
     <div>
         <h2> Search page is working! </h2>
-        <form id='searchOptions'>
-			<table>
-				<!-- Text input for game title search -->
-				<tr><td colspan='2'><input type="text" id ='nameInput' placeholder="Game Title" name="nameInput" class="center"></td></tr>
+		<table class="centered">
+			<!-- Text input for game title search -->
+			<tr><td colspan='2'><input type="text" id ='nameInput' placeholder="Game Title" name="nameInput" class="center"></td></tr>
+			
+			<tr>
+				<!-- Drop down input for genre search. Values = IGDB ID for genre-->
+				<td><select id="genreInput" name="genreInput">
+					<option value="any">Any Genre</option>
+					<option value="31">Adventure</option>
+					<option value="33">Arcade</option>
+					<option value="35">Card & Board Game</option>
+					<option value="4">Fighting</option>
+					<option value="25">Hack and Slash/Beat em' Up</option>
+					<option value="32">Indie</option>
+					<option value="36">MOBA</option>
+					<option value="7">Music</option>
+					<option value="30">Pinball</option>
+					<option value="8">Platform</option>
+					<option value="2">Point-and-Click</option>
+					<option value="9">Puzzle</option>
+					<option value="26">Quiz/Trivia</option>
+					<option value="10">Racing</option>
+					<option value="11">Real Time Strategy (RTS)</option>
+					<option value="12">Role-playing (RPG)</option>
+					<option value="5">Shooter</option>
+					<option value="13">Simulator</option>
+					<option value="14">Sport</option>
+					<option value="15">Strategy</option>
+					<option value="24">Tactical</option>
+					<option value="16">Turn-based strategy (TBS)</option>
+					<option value="34">Visual Novel</option>
+					<option value="audi">Audi</option>
+				</select></td>
 				
-				<tr>
-					<!-- Drop down input for genre search. Values = IGDB ID for genre-->
-					<td><select id="genreInput" name="genreInput">
-						<option value="any">Any Genre</option>
-						<option value="31">Adventure</option>
-						<option value="33">Arcade</option>
-						<option value="35">Card & Board Game</option>
-						<option value="4">Fighting</option>
-						<option value="25">Hack and Slash/Beat em' Up</option>
-						<option value="32">Indie</option>
-						<option value="36">MOBA</option>
-						<option value="7">Music</option>
-						<option value="30">Pinball</option>
-						<option value="8">Platform</option>
-						<option value="2">Point-and-Click</option>
-						<option value="9">Puzzle</option>
-						<option value="26">Quiz/Trivia</option>
-						<option value="10">Racing</option>
-						<option value="11">Real Time Strategy (RTS)</option>
-						<option value="12">Role-playing (RPG)</option>
-						<option value="5">Shooter</option>
-						<option value="13">Simulator</option>
-						<option value="14">Sport</option>
-						<option value="15">Strategy</option>
-						<option value="24">Tactical</option>
-						<option value="16">Turn-based strategy (TBS)</option>
-						<option value="34">Visual Novel</option>
-						<option value="audi">Audi</option>
-					</select></td>
-				  
-					<!-- Drop down for platform. VERY long. Options moved to platformOptions.html --> 
-					<td><select id="platformInput" name="platformInput">
-						{% include 'platformOptions.html' %}
-					</select></td>
-				</tr>
-			</table>
-        </form>
+				<!-- Drop down for platform. VERY long. Options moved to platformOptions.html --> 
+				<td><select id="platformInput" name="platformInput">
+					{% include 'platformOptions.html' %}
+				</select></td>
+			</tr>
+			<tr>
+				<td colspan="2"><button onclick="postSearch()" id="searchButton">Search</button></td>
+			</tr>
+		</table>
 		
 		<br>
 		
-        <button onclick="postSearch()" style='margin-left: 10px;'>Search</button>
 		
-		<div>
-		
-			<!-- Processing div. Shown after submitting and hidden when fetch completes -->
-			<div id='resultsPending' style='display: none;'>
-				<h3>Processing...</h3>
-			</div>
-		
-			<!-- Results table - filled dynamically -->
-			<table>
-				<tr id='resultsHeader' style='display: none;'>
-					<th>Cover Art</th>
-					<th>Game Title</th>
-					<th>Genre</th>
-					<th>Release Platforms</th>
-				</tr>
-				<tbody id='results'>
-				</tbody>
-			</table>
-		
+		<!-- Processing div. Shown after submitting and hidden when fetch completes -->
+		<div id='resultsPending' style='display: none;'>
+			<h2>Processing...</h2>
 		</div>
+	
+		<!-- Results table - filled dynamically -->
+		<table class="searchResults centered">
+			<tr id='resultsHeader' style='display: none;'>
+				<th>Cover Art</th>
+				<th>Game Title</th>
+				<th>Genre</th>
+				<th>Release Platforms</th>
+				<th>User Action</th>
+			</tr>
+			<tbody id='results'>
+			</tbody>
+		</table>
         
     </div>
 	
@@ -132,7 +131,7 @@
 				}
 				
 				// Create the URL for cover art. Width is being hardcoded for now
-				x += "<td><img style='width: 150px;' src='" + cover_url + "' alt ='Cover Art' </td>";
+				x += "<td><img src='" + cover_url + "' alt ='Cover Art' </td>";
 				
 				x += "<td>" + fetchResponse[i].name + "</td>";
 				
@@ -140,6 +139,12 @@
 				x += "<td>" + createTableFromVal(fetchResponse[i].genres, 'name') + "</td>";
 				x += "<td>" + createTableFromVal(fetchResponse[i].platforms, 'name') + "</td>";
 				
+				// Adding the 'wishlist' and 'library' buttons
+				x += "<td>" + 
+					"<button onclick='addToWishlist(" + fetchResponse[i].id + ")'>+ Wishlist</button><br>" + 
+					"<button onclick='addToLibrary(" + fetchResponse[i].id + ")'>+ Library</button>" + 
+					"</td>";
+
 				// Close the row
 				x += "</tr>";
 			}
@@ -254,6 +259,45 @@
 			return query;
 		
 		}
+
+		/**
+		 * Adds the specific game to the user's wishlist. 
+		 * @param {int} id - IGDB of the game wanting to be added
+		 */
+		async function addToWishlist(id) {
+
+			/**
+			 * To-Do for both wishlist and library:
+			 * Check if game exists in the database already, if not, call addGameToDatabase() 
+			 * and have it add it. Using async functionality to await for that to finish before continuing
+			 * Once the game is added, add it to the user_games table. Do the same process for the wishlist just
+			 * adding it to the wishlist table instead.
+			*/
+			console.log("Game " + id + " was selected to be added to the wishlist.");
+		}
+
+		/**
+		 * Adds the specific game to the user's wishlist. 
+		 * @param {int} id - IGDB of the game wanting to be added
+		 */
+		async function addToLibrary(id) {
+			console.log("Game " + id + " was selected to be added to the library.");
+		}
+
+		/**
+		 * Used to add a game to the PlayThis database in order to store its data locally
+		 * @param {int} id - IGDB of the game wanting to be added
+		 */
+		function addGameToDatabase(id) {
+			console.log("Game " + id + " was attempting to be added to the database.")
+		}
+		
+		// Adds the 'press enter to search' functionality to the name input
+		ID('nameInput').addEventListener("keydown", function(e) {
+			if (e.code == "Enter") {
+				postSearch();
+			}
+		})
 
 	</script>
 	
