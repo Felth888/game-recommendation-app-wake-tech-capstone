@@ -2,6 +2,8 @@
 
 {% block content %}
 
+	<!-- Bringing in jQuery for better AJAX functionality -->
+	<script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
 	<link rel="stylesheet" href="{{ url_for('static', filename='css/pages/all.css') }}">
 
     <div>
@@ -142,7 +144,7 @@
 				// Adding the 'wishlist' and 'library' buttons
 				x += "<td>" + 
 					"<button onclick='addToWishlist(" + fetchResponse[i].id + ")'>+ Wishlist</button><br>" + 
-					"<button onclick='addToLibrary(" + fetchResponse[i].id + ")'>+ Library</button>" + 
+					"<button onclick='addToLibrary(" + fetchResponse[i].id + ")'>+ Library</input>" + 
 					"</td>";
 
 				// Close the row
@@ -265,15 +267,8 @@
 		 * @param {int} id - IGDB of the game wanting to be added
 		 */
 		async function addToWishlist(id) {
-
-			/**
-			 * To-Do for both wishlist and library:
-			 * Check if game exists in the database already, if not, call addGameToDatabase() 
-			 * and have it add it. Using async functionality to await for that to finish before continuing
-			 * Once the game is added, add it to the user_games table. Do the same process for the wishlist just
-			 * adding it to the wishlist table instead.
-			*/
-			console.log("Game " + id + " was selected to be added to the wishlist.");
+			var response = sendAjaxQuery('/add_to_wishlist', 'id=' + id);
+			console.log("WISHLISTED: " + response);
 		}
 
 		/**
@@ -281,17 +276,42 @@
 		 * @param {int} id - IGDB of the game wanting to be added
 		 */
 		async function addToLibrary(id) {
-			console.log("Game " + id + " was selected to be added to the library.");
-		}
+			
+			// If game doesnt exist in library, it will be added.
+			var response = sendAjaxQuery('/update_library', 'id=' + id);
+			console.log("ADDED: " + response['id']);
 
-		/**
-		 * Used to add a game to the PlayThis database in order to store its data locally
-		 * @param {int} id - IGDB of the game wanting to be added
-		 */
-		function addGameToDatabase(id) {
-			console.log("Game " + id + " was attempting to be added to the database.")
+			// Add to library
+			sendAjaxQuery('/add_to_library', 'id=' + id);
 		}
 		
+		/**
+		 * Uses AJAX to send a POST request to the flask backend at a specific URL with a given data.
+		 * Allows for a POST request without refreshing the page.
+		 * @param {string} urlIn - The URL to send the POST request to
+		 * @param {string} dataIn - The data string in to be sent in the post request. Formatted in standard URL-encoded notation
+		 * @param {bool} debug - Boolean to display success/error outputs.
+		 * @return {string} Returns the response, allowing it to be checked or compared
+		 */
+		function sendAjaxQuery(urlIn, dataIn) {
+			// Uses AJAX to send a POST request to flask w/ the game ID selected
+			var r;
+			$.ajax({
+				url: urlIn,
+				data: dataIn,
+				dataType: 'json',
+				type: 'POST',
+				async: false,
+				success: function(response){
+					r = response;
+				},
+				error: function(error){
+					r = response;
+				}
+			});
+			return r;
+		}
+
 		// Adds the 'press enter to search' functionality to the name input
 		ID('nameInput').addEventListener("keydown", function(e) {
 			if (e.code == "Enter") {
