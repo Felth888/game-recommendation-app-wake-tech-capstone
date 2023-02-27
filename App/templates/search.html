@@ -77,6 +77,22 @@
 	
 	<script type="application/javascript">
 			
+		// Create logged in user's game library from the string passed to the page
+		// Occurs on window load 
+		var LIBRARY_IDS_ARR = [];
+		window.onload = function() {
+			var game_ids_string = '{{ library_id_list }}' || "";
+			// Split the user's game library ID's string into an array
+			if(game_ids_string && game_ids_string !== "") {
+				LIBRARY_IDS_ARR = game_ids_string.split("|")
+			}
+			// Convert all the string ID's to int's if there is games in the user's library
+			for(i = 0; i < LIBRARY_IDS_ARR.length; i++) {
+				LIBRARY_IDS_ARR[i] = parseInt(LIBRARY_IDS_ARR[i]);
+			}
+		}
+
+
 		/**
 		* Function to short-hand the getElementById function
 		* @returns HTML element
@@ -104,8 +120,9 @@
 		/**
 		* Sends a query to IGDB then processes the JSON response into viewable content
 		*/
+		
 		async function postSearch() {
-			
+
 			// Returns the fetch with response already formatted to JSON
 			fetchResponse = await sendQuery('games', buildQueryString())
 			
@@ -141,13 +158,25 @@
 				x += "<td>" + createTableFromVal(fetchResponse[i].genres, 'name') + "</td>";
 				x += "<td>" + createTableFromVal(fetchResponse[i].platforms, 'name') + "</td>";
 				
-				// Adding the 'wishlist' and 'library' buttons
+				// Starts the buttons column
+				x += "<td>";
+
+				// Library Button
 				// Sets the ID's of the button to be lib_/wish_ + igdb-id to make each unique
-				// TO-DO: ADD CHECK TO SEE IF GAME IS IN LIBRARY/WISHLIST AND UPDATE BUTTON
-				x += "<td>" + 
-					"<button id='wish_" + fetchResponse[i].id + "' onclick='addToWishlist(" + fetchResponse[i].id + ")'>Add to Wishlist</button><br>" + 
-					"<button id='lib_" + fetchResponse[i].id + "'onclick='addToLibrary(" + fetchResponse[i].id + ")'>Add to Library</input>" + 
-					"</td>";
+				// Starts the button
+				x += "<button id='lib_" + fetchResponse[i].id + "' onclick='addToLibrary(" + fetchResponse[i].id + ",\"" + fetchResponse[i].name + "\")'>";
+				// Check if the user has a library and if the game is in it, if so, put respective text
+				if (LIBRARY_IDS_ARR.includes(fetchResponse[i].id)) {
+					x += "Remove from Library";
+				} else {
+					x += "Add to Library";
+				}
+				// Close the button
+				x += "</button><br>";
+				
+				// Wishhlist button
+				x += "<button id='wish_" + fetchResponse[i].id + "'onclick='addToWishlist(" + fetchResponse[i].id + ")'>Add to Wishlist</input>";
+				x += "</td>";
 
 				// Close the row
 				x += "</tr>";
@@ -281,16 +310,15 @@
 		 * Adds the specific game to the user's wishlist. 
 		 * @param {int} id - IGDB of the game wanting to be added
 		 */
-		async function addToLibrary(id) {
+		async function addToLibrary(id, name) {
 			
 			// If game doesnt exist in library, add it
-			sendAjaxQuery('/update_library', 'id=' + id);
+			sendAjaxQuery('/update_library', 'id=' + id + "&title=" + name);
 
 			// Current check to see if the call is to add to library or remove
-			// THIS NEEDS TO BE CHANGED TO SOMETHING MORE RELIABLE THAN CHECKING THE BUTTON TXT
 			var adding = 'true';
-			if(ID('lib_' + id).innerHTML.includes('Remove')) { adding = 'false'; }
-			
+			if(LIBRARY_IDS_ARR.includes(id)) { adding = 'false'; }
+
 			// Build query string to send to ajax query
 			var queryString = 'id=' + id + '&adding=' + adding;
 			
@@ -298,10 +326,15 @@
 			var response = sendAjaxQuery('/add_to_library', queryString);
 
 			// Modify the contents of the button to show add/remove based on response
+			// Also add/remove the ID to the Library list. This prevents a need for a page refresh
 			if(response['added']) {
 				ID('lib_' + response['id']).innerHTML = "Remove from Library";
+				// Add the ID from the list of session list of ID's
+				LIBRARY_IDS_ARR.push(id);
 			} else {
 				ID('lib_' + response['id']).innerHTML = "Add to Library";
+				// Remove the ID from the list of session list of ID's
+				LIBRARY_IDS_ARR.splice(LIBRARY_IDS_ARR.indexOf(id), 1);
 			}
 		}
 		
@@ -337,7 +370,7 @@
 			if (e.code == "Enter") {
 				postSearch();
 			}
-		})
+		});
 
 	</script>
 	
