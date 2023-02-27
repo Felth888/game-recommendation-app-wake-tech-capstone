@@ -158,26 +158,28 @@
 				x += "<td>" + createTableFromVal(fetchResponse[i].genres, 'name') + "</td>";
 				x += "<td>" + createTableFromVal(fetchResponse[i].platforms, 'name') + "</td>";
 				
-				{% if current_user.is_authenticated  %}
-				// Starts the buttons column
-				x += "<td>";
+				// If the user is logged in, then run the code for the user actions column
+				{% if current_user.is_authenticated %}
 
-				// Library Button
-				// Sets the ID's of the button to be lib_/wish_ + igdb-id to make each unique
-				// Starts the button
-				x += "<button id='lib_" + fetchResponse[i].id + "' onclick='addToLibrary(" + fetchResponse[i].id + ",\"" + fetchResponse[i].name + "\")'>";
-				// Check if the user has a library and if the game is in it, if so, put respective text
-				if (LIBRARY_IDS_ARR.includes(fetchResponse[i].id)) {
-					x += "Remove from Library";
-				} else {
-					x += "Add to Library";
-				}
-				// Close the button
-				x += "</button><br>";
-				
-				// Wishhlist button
-				x += "<button id='wish_" + fetchResponse[i].id + "'onclick='addToWishlist(" + fetchResponse[i].id + ")'>Add to Wishlist</input>";
-				x += "</td>";
+					// Starts the buttons column
+					x += "<td>";
+
+					// Library Button
+					// Sets the ID's of the button to be lib_/wish_ + igdb-id to make each unique
+					// Starts the button
+					x += "<button id='lib_" + fetchResponse[i].id + "' onclick='addToLibrary(" + fetchResponse[i].id + ",\"" + fetchResponse[i].name + "\")'>";
+					// Check if the user has a library and if the game is in it, if so, put respective text
+					if (LIBRARY_IDS_ARR.includes(fetchResponse[i].id)) {
+						x += "Remove from Library";
+					} else {
+						x += "Add to Library";
+					}
+					// Close the button
+					x += "</button><br>";
+					
+					// Wishhlist button
+					x += "<button id='wish_" + fetchResponse[i].id + "'onclick='addToWishlist(" + fetchResponse[i].id + ")'>Add to Wishlist</input>";
+					x += "</td>";
 
 				{% endif %}
 					
