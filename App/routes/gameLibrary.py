@@ -10,4 +10,13 @@ bp = Blueprint('gameLibrary', __name__)
 @login_required
 def game_library(user_id):
     library = UserGame.query.filter_by(user_id=user_id).first()
+    """
+    1. list of dictionary objects
+        each dictionary is an individual game
+    pass that data to template
+    within template, have a for each jinja loop:
+    for each game in game_list:
+        {{ game.title }}
+        {{ game.cover }}
+    """
     render_template("game-library.html", library=library)
