@@ -67,7 +67,7 @@
 				<th>Game Title</th>
 				<th>Genre</th>
 				<th>Release Platforms</th>
-				<th>User Action</th>
+				{% if current_user.is_authenticated  %}<th>User Action</th>{% endif %}
 			</tr>
 			<tbody id='results'>
 			</tbody>
@@ -158,6 +158,7 @@
 				x += "<td>" + createTableFromVal(fetchResponse[i].genres, 'name') + "</td>";
 				x += "<td>" + createTableFromVal(fetchResponse[i].platforms, 'name') + "</td>";
 				
+				{% if current_user.is_authenticated  %}
 				// Starts the buttons column
 				x += "<td>";
 
@@ -178,6 +179,8 @@
 				x += "<button id='wish_" + fetchResponse[i].id + "'onclick='addToWishlist(" + fetchResponse[i].id + ")'>Add to Wishlist</input>";
 				x += "</td>";
 
+				{% endif %}
+					
 				// Close the row
 				x += "</tr>";
 			}
