@@ -35,4 +35,10 @@ class NewAccountForm(FlaskForm):
 class UpdateProfileForm(FlaskForm):
     user_name = StringField('Username', validators=[DataRequired()])
     birthday  = DateField('Your Birthday', format='%Y-%m-%d')
+    email = StringField('Email', validators=[Email()])
     submit = SubmitField('Update')
+
+    def validate_email(self, email):
+        user = User.query.filter_by(email=email.data).first()
+        if user is not None:
+            raise ValidationError('Please use a different email address.')
