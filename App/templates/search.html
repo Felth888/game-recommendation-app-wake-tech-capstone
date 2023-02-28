@@ -2,9 +2,11 @@
 
 {% block content %}
 
-	<!-- Bringing in jQuery for better AJAX functionality -->
-	<script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
 	<link rel="stylesheet" href="{{ url_for('static', filename='css/pages/all.css') }}">
+	<!-- General use utils -->
+	<script type="application/javascript" src="{{ url_for('static', filename='js/utils.js') }}"></script>
+	<!-- Game library utils -->
+	<script type="application/javascript" src="{{ url_for('static', filename='js/libraryUtils.js') }}"></script>
 
     <div>
         <h2> Search page is working! </h2>
@@ -76,31 +78,6 @@
     </div>
 	
 	<script type="application/javascript">
-			
-		// Create logged in user's game library from the string passed to the page
-		// Occurs on window load 
-		var LIBRARY_IDS_ARR = [];
-		window.onload = function() {
-			var game_ids_string = '{{ library_id_list }}' || "";
-			// Split the user's game library ID's string into an array
-			if(game_ids_string && game_ids_string !== "") {
-				LIBRARY_IDS_ARR = game_ids_string.split("|")
-			}
-			// Convert all the string ID's to int's if there is games in the user's library
-			for(i = 0; i < LIBRARY_IDS_ARR.length; i++) {
-				LIBRARY_IDS_ARR[i] = parseInt(LIBRARY_IDS_ARR[i]);
-			}
-		}
-
-
-		/**
-		* Function to short-hand the getElementById function
-		* @returns HTML element
-		*/
-		var ID = function(elementID) {
-			return document.getElementById(elementID);
-		}
-		
 	
 		/**
 		* Checks to see if the given filter is being used and if so, return a string for
@@ -120,7 +97,6 @@
 		/**
 		* Sends a query to IGDB then processes the JSON response into viewable content
 		*/
-		
 		async function postSearch() {
 
 			// Returns the fetch with response already formatted to JSON
@@ -193,36 +169,6 @@
 		}
 	
 		/**
-		* Creates a table of arr's data points, using valString to 
-		* specify an index for data to fill the cell with. Used to create
-		* a table from a JSON array containing objects with fields.
-		*
-		* @param {array} arr - The array to be passed in
-		* @param {string} valString - The index of the array item to pull data from
-		* @return {string} String containing an entire table with cells formed from 'arr' content's specified index 
-		*/
-		function createTableFromVal(arr, valString) {
-		
-			tableString = "<table>";
-			// Doesnt pull data from empty endpoints (such as no platform)
-			if(typeof arr != "undefined") {
-				// Loop through each value and add a table cell
-				counter = arr.length;
-				for (j = 0; j < counter; j++) {
-					tableString += "<tr>";
-					tableString += "<td>" + arr[j][valString] + "</td></tr>";
-				}
-				tableString += "</table>";
-			} else {
-				// Add a filler 'No value' so there is no empty cells
-				tableString += "<tr><td>No value</td></tr></table>";
-			}
-			
-			return tableString;
-		
-		}
-	
-		/**
 		* Sends a query to the IGDB database using AWS proxy. 
 		* Requires an end point and body header.
 		*
@@ -254,7 +200,8 @@
 		
 		/**
 		* Creates a query string based on pulling the input boxes, determining if they have data,
-		* and applying them as filtering options for the search.
+		* and applying them as filtering options for the search. Functionality uses data from this page,
+		* do NOT re-use blindly without checking the various inputs.
 		*
 		* @return {string} Query string for IGDB database POST request
 		*/
@@ -296,78 +243,6 @@
 		
 			return query;
 		
-		}
-
-		/**
-		 * Adds the specific game to the user's wishlist. 
-		 * @param {int} id - IGDB of the game wanting to be added
-		 */
-		async function addToWishlist(id) {
-
-			// If game doesnt exist in library, add it
-			sendAjaxQuery('/update_library', 'id=' + id);
-
-			var response = sendAjaxQuery('/add_to_wishlist', 'id=' + id);
-			console.log("WISHLISTED: " + response);
-		}
-
-		/**
-		 * Adds the specific game to the user's wishlist. 
-		 * @param {int} id - IGDB of the game wanting to be added
-		 */
-		async function addToLibrary(id, name) {
-			
-			// If game doesnt exist in library, add it
-			sendAjaxQuery('/update_library', 'id=' + id + "&title=" + name);
-
-			// Current check to see if the call is to add to library or remove
-			var adding = 'true';
-			if(LIBRARY_IDS_ARR.includes(id)) { adding = 'false'; }
-
-			// Build query string to send to ajax query
-			var queryString = 'id=' + id + '&adding=' + adding;
-			
-			// Send ajax and get the result
-			var response = sendAjaxQuery('/add_to_library', queryString);
-
-			// Modify the contents of the button to show add/remove based on response
-			// Also add/remove the ID to the Library list. This prevents a need for a page refresh
-			if(response['added']) {
-				ID('lib_' + response['id']).innerHTML = "Remove from Library";
-				// Add the ID from the list of session list of ID's
-				LIBRARY_IDS_ARR.push(id);
-			} else {
-				ID('lib_' + response['id']).innerHTML = "Add to Library";
-				// Remove the ID from the list of session list of ID's
-				LIBRARY_IDS_ARR.splice(LIBRARY_IDS_ARR.indexOf(id), 1);
-			}
-		}
-		
-		/**
-		 * Uses AJAX to send a POST request to the flask backend at a specific URL with a given data.
-		 * Allows for a POST request without refreshing the page.
-		 * @param {string} urlIn - The URL to send the POST request to
-		 * @param {string} dataIn - The data string in to be sent in the post request. Formatted in standard URL-encoded notation
-		 * @param {bool} debug - Boolean to display success/error outputs.
-		 * @return {string} Returns the response, allowing it to be checked or compared
-		 */
-		function sendAjaxQuery(urlIn, dataIn) {
-			// Uses AJAX to send a POST request to flask w/ the game ID selected
-			var r;
-			$.ajax({
-				url: urlIn, // Param 1
-				data: dataIn, // Param 2
-				dataType: 'json', // Data is returned as a json array. Parse as needed
-				type: 'POST',
-				async: false, // Forced async to be disabled to allow for returning the response
-				success: function(response){
-					r = response;
-				},
-				error: function(error){
-					r = response;
-				}
-			});
-			return r;
 		}
 
 		// Adds the 'press enter to search' functionality to the name input

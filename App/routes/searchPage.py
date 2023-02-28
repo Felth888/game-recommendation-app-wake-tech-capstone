@@ -25,7 +25,7 @@ def searchPage():
             lib_id_string = ""
             for game in lib_games:
                 lib_id_string += str(game.game_id) + "|"
-                print("User " + str(current_user.user_name) + " has " + str(game.game_id) + " in their library.")
+                #print("User " + str(current_user.user_name) + " has " + str(game.game_id) + " in their library.") #Uncomment for debug output
             # Removes the last not needed | from the string
             lib_id_string = lib_id_string[:-1]
 
