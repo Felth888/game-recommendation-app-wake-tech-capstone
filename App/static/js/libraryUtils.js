@@ -1,12 +1,10 @@
 /**
- * 
  * Library Utils
  * 
  * Contains functions and the public var "LIBRARY_IDS_ARR" for use in generating and editing a user's library.
  * LIBRARY_IDS_ARR is populated on page load if supplied with a "library_id_list" to its template.
  * 
  * REQUIRES UTILS.JS TO FUNCTION.
- * 
  */
 
 

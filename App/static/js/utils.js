@@ -1,4 +1,12 @@
 /**
+ * Utils
+ * 
+ * Contains functions for general use such as a shorthand AJAX call via JQuery.
+ * 
+ * REQUIRES JQUERY 3.6.3 TO FUNCTION.
+ */
+
+/**
  * Uses AJAX to send a POST request to the flask backend at a specific URL with a given data.
  * Allows for a POST request without refreshing the page.
  * @param {string} urlIn - The URL to send the POST request to
@@ -7,7 +15,6 @@
  * @return {string} Returns the response, allowing it to be checked or compared
  */
 function sendAjaxQuery(urlIn, dataIn, conOut) {
-    // Uses AJAX to send a POST request to flask w/ the game ID selected
     var r;
     $.ajax({
         url: urlIn, // Param 1
