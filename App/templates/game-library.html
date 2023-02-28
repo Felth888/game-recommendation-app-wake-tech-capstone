@@ -5,15 +5,14 @@
 
     <div id="library">
         <h3>Game Library</h3>
-        <!--{for game in user.library}-->
+       {% for game in game_list %}
         <div class="game">
-            <a href=#> <!--url for the game page-->
-                <img src="#"><!--img sorce from database-->
-            </a>
-            <div class="info"></div>
-            <button type="button">Remove from Library</button>
+            {{ game.cover }}<br>
+            {{ game.title }}<br>
+            <p>Hours Played: </p><br>
+            <p>Rating: </p><br>
         </div>
-        <!--endif-->
+        {% endif %}
     </div>
 
 

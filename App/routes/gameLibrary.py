@@ -1,7 +1,7 @@
 from flask import Blueprint, render_template
 from flask_login import login_required
 from ..models.uGameModels import UserGame
-from ..models.userModels import User
+from ..models.gameModels import Game
 
 
 bp = Blueprint('gameLibrary', __name__)
@@ -10,13 +10,10 @@ bp = Blueprint('gameLibrary', __name__)
 @login_required
 def game_library(user_id):
     library = UserGame.query.filter_by(user_id=user_id).first()
-    """
-    1. list of dictionary objects
-        each dictionary is an individual game
-    pass that data to template
-    within template, have a for each jinja loop:
-    for each game in game_list:
-        {{ game.title }}
-        {{ game.cover }}
-    """
-    render_template("game-library.html", library=library)
+    game_id = Game.query.filter_by(id=UserGame.game_id)
+    game_list = []
+
+    for game in game_id:
+        game_list.append(game)
+        
+    render_template("game-library.html", library=library, game_list=game_list)
