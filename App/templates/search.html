@@ -159,7 +159,7 @@
 					x += "</button><br>";
 					
 					// Wishhlist button
-					x += "<button id='wish_" + fetchResponse[i].id + "'onclick='addToWishlist(" + fetchResponse[i].id + ",\"" + fetchResponse[i].name + "\")'>Add to Wishlist</input>";
+					x += "<button id='wish_" + fetchResponse[i].id + "'onclick='wishButtonPress(" + fetchResponse[i].id + ",\"" + fetchResponse[i].name + "\")'>Add to Wishlist</input>";
 					x += "</td>";
 
 				{% endif %}
