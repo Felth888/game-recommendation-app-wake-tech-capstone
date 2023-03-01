@@ -34,7 +34,7 @@ function setLibraryIDArray(game_ids_string) {
  * @param {int} id - IGDB of the game wanting to be added
  * @param {string} name - IGDB name of the game wanting to be added
  */
-async function addToWishlist(id, name) {
+function addToWishlist(id, name) {
     // If game doesnt exist in library, add it
     sendAjaxQuery('/update_library', 'id=' + id, false);
 
@@ -47,8 +47,9 @@ async function addToWishlist(id, name) {
  * Adds the specific game to the user's library. 
  * @param {int} id - IGDB of the game wanting to be added
  * @param {string} name - IGDB name of the game wanting to be added
+ * @return {bool} Returns whether something was added or not. True for added, false for removed. 
  */
-async function addToLibrary(id, name) {
+function addToLibrary(id, name) {
     
     // If game doesnt exist in library, add it
     sendAjaxQuery('/update_library', 'id=' + id + "&title=" + name, false);
@@ -66,12 +67,12 @@ async function addToLibrary(id, name) {
     // Modify the contents of the button to show add/remove based on response
     // Also add/remove the ID to the Library list. This prevents a need for a page refresh
     if(response['added']) {
-        ID('lib_' + response['id']).innerHTML = "Remove from Library";
         // Add the ID from the list of session list of ID's
         LIBRARY_IDS_ARR.push(id);
     } else {
-        ID('lib_' + response['id']).innerHTML = "Add to Library";
         // Remove the ID from the list of session list of ID's
         LIBRARY_IDS_ARR.splice(LIBRARY_IDS_ARR.indexOf(id), 1);
     }
+
+    return response['added'];
 }

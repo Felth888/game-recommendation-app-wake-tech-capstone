@@ -85,7 +85,7 @@
             // Library Button
             // Sets the ID's of the button to be lib_/wish_ + igdb-id to make each unique
             // Starts the button
-            x += "<button id='lib_" + response['id'] + "' onclick='addToLibrary(" + response['id'] + ",\"" + response['title'] + "\")'>";
+            x += "<button id='lib_" + response['id'] + "' onclick='libButtonPress(" + response['id'] + ",\"" + response['title'] + "\")'>";
             // Check if the user has a library and if the game is in it, if so, put respective text
             if (LIBRARY_IDS_ARR.includes(response['id'])) {
                 x += "Remove from Library";
@@ -102,6 +102,19 @@
 			document.getElementById("results").innerHTML = x;
 
         }
+
+        	
+		/**
+	  	 * Called when a "Add to Library" button is pressed. Calls addToLibrary then updates the buttons
+		 */
+		function libButtonPress(id, name) {
+			response = addToLibrary(id, name);
+			if(response == true) {
+				ID('lib_' + id).innerHTML = "Remove from Library";
+			} else {
+				ID('lib_' + id).innerHTML = "Add to Library";
+			}
+		}
 
     </script>
 {% endblock %}
