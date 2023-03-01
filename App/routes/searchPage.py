@@ -6,31 +6,16 @@ from ..models.uGameModels import UserGame
 from ..models.gameModels import Game
 from ..models import db
 
+from ..services.libraryUtils import getLibraryString
+
 @bp.route('/', methods=['GET', 'POST'])
 def searchPage():
 
     # If the user is logged in, 
     if current_user.is_authenticated:
         # Load all the user's library games
-        lib_games = []
-        try:
-            lib_games = UserGame.query.filter_by(user_id=current_user.id).all()
-        except Exception as e:
-            print(str(e))
-
-        # Only run the games list code if the user actually has games in their library.
-        if len(lib_games) > 0:
-
-            # Creates a string to pass to the search page formatted as id|id|id...
-            lib_id_string = ""
-            for game in lib_games:
-                lib_id_string += str(game.game_id) + "|"
-                #print("User " + str(current_user.user_name) + " has " + str(game.game_id) + " in their library.") #Uncomment for debug output
-            # Removes the last not needed | from the string
-            lib_id_string = lib_id_string[:-1]
-
-            # Logged in users get their ID list passed through to load the search results w/ their library games read
-            return render_template("search.html", title="Search", api_key = current_app.config['IGDB_API_KEY'], library_id_list = lib_id_string)
+        lib_id_string = getLibraryString(current_user.id)
+        return render_template("search.html", title="Search", api_key = current_app.config['IGDB_API_KEY'], library_id_list = lib_id_string)
         
     # Non-logged in user gets the regular tempate
     return render_template("search.html", title="Search", api_key = current_app.config['IGDB_API_KEY'])

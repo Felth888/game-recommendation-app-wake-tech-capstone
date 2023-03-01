@@ -79,6 +79,11 @@
 	
 	<script type="application/javascript">
 	
+		// Populates the user's ID list of games.
+		window.onload = function() {
+            setLibraryIDArray('{{ library_id_list }}');
+        }
+
 		/**
 		* Checks to see if the given filter is being used and if so, return a string for
 		* appending to the filter instead of starting a new one
@@ -100,7 +105,7 @@
 		async function postSearch() {
 
 			// Returns the fetch with response already formatted to JSON
-			fetchResponse = await sendQuery('games', buildQueryString())
+			var fetchResponse = await sendQuery('games', buildQueryString())
 			
 			// Hide the pending div and show the table header since fetch is done
 			ID('resultsPending').style.display = 'none';

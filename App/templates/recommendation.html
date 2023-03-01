@@ -1,5 +1,107 @@
 {% extends "base.html" %}
 
 {% block content %}
-    <h1>Recommendation Page</h1>>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/pages/all.css') }}">
+	<!-- General use utils -->
+	<script type="application/javascript" src="{{ url_for('static', filename='js/utils.js') }}"></script>
+	<!-- Game library utils -->
+	<script type="application/javascript" src="{{ url_for('static', filename='js/libraryUtils.js') }}"></script>
+
+    <div>
+		<table class="centered">
+            <tr>
+                <th><h1>Recommendation Page!</h1></th>
+            </tr>
+			<tr>
+				<td colspan="2"><button onclick="postRecommendations()" id="submitButton">See What We Think You Would Like</button></td>
+			</tr>
+		</table>
+		
+		<br>
+		
+		
+		<!-- Processing div. Shown after submitting and hidden when fetch completes -->
+		<div id='resultsPending' style='display: none;'>
+			<h2>Processing...</h2>
+		</div>
+	
+		<!-- Results table - filled dynamically -->
+		<table class="searchResults centered">
+			<tr id='resultsHeader' style='display: none;'>
+				<th>Cover Art</th>
+				<th>Game Title</th>
+				<th>User Action</th>
+			</tr>
+			<tbody id='results'>
+			</tbody>
+		</table>
+        
+    </div>
+
+    <script type="application/javascript">
+    
+        // Populate the user's game library var
+        window.onload = function() {
+            setLibraryIDArray('{{ library_id_list }}');
+        }
+
+        /**
+         * Post the recommendations for the user to get their content.
+         */
+        async function postRecommendations() {
+
+            // Show the processing text
+            ID('resultsPending').style.display = 'block';
+
+            // Returns a JSON response from the AJAX query
+            // For right now its going to always return Skyrim. ID 472
+			var response = sendAjaxQuery('/recommendCall', 'id=472', false);
+
+			// Hide the pending div and show the table header since fetch is done
+			ID('resultsPending').style.display = 'none';
+			ID('resultsHeader').style.display = 'table-row';
+				
+			// x is the string used to create the table
+			var x = "<tr>";
+            
+            // Cover art image
+            cover_url = "";
+            if(typeof response['cover'] != "undefined" && response['cover'] != null) {
+                cover_url = response['cover'];
+            } else {
+                // 'Missing Image' filler incase there is no cover art
+                cover_url = "https://t4.ftcdn.net/jpg/00/89/55/15/360_F_89551596_LdHAZRwz3i4EM4J0NHNHy2hEUYDfXc0j.jpg";
+            }
+            
+            // Create the URL for cover art. Width is being hardcoded for now
+            x += "<td><img src='" + cover_url + "' alt ='Cover Art' </td>";
+            
+            x += "<td>" + response['title'] + "</td>";
+
+            // Starts the buttons column
+            x += "<td>";
+
+            // Library Button
+            // Sets the ID's of the button to be lib_/wish_ + igdb-id to make each unique
+            // Starts the button
+            x += "<button id='lib_" + response['id'] + "' onclick='addToLibrary(" + response['id'] + ",\"" + response['title'] + "\")'>";
+            // Check if the user has a library and if the game is in it, if so, put respective text
+            if (LIBRARY_IDS_ARR.includes(response['id'])) {
+                x += "Remove from Library";
+            } else {
+                x += "Add to Library";
+            }
+            // Close the button
+            x += "</button><br>";
+                
+            // Close the row
+            x += "</tr>";
+			
+			// 'results' is a tbody tag. Only rows are needed to be added to it
+			document.getElementById("results").innerHTML = x;
+
+        }
+
+    </script>
 {% endblock %}

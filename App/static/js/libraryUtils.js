@@ -7,14 +7,17 @@
  * REQUIRES UTILS.JS TO FUNCTION.
  */
 
+// ID's variable, defaults as empty
+var LIBRARY_IDS_ARR = [];
 
 /**
  * Create logged in user's game library from the string passed to the page
- * Occurs on window load. Requires passed in string from route.
+ * LIBRARY_IDS_ARR is always available to be called, but will remain empty until 
+ * this function is utilized with a string. Due to a Flask limitation, this must be called 
+ * with the parameter present if in an external file.
+ * @param {string} game_ids_string String of game ID's. Formatted <id>|<id>|<id>...
  */
-var LIBRARY_IDS_ARR = [];
-window.onload = function() {
-    var game_ids_string = '{{ library_id_list }}' || ""; // String will remain empty if nothing passed in
+function setLibraryIDArray(game_ids_string) {
     // Split the user's game library ID's string into an array
     if(game_ids_string && game_ids_string !== "") {
         LIBRARY_IDS_ARR = game_ids_string.split("|")
