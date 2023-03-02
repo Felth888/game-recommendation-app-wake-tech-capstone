@@ -13,6 +13,7 @@
             <a href="{{ url_for('loginPage.login') }}">Login</a>
             {% else %}
             <a href="{{ url_for('recommendationPage.recommendationPage') }}">Recommendations</a>
+            <a href="{{ url_for('gameLibrary.game_library') }}">Game Library</a>
             <a href="{{ url_for('userProfile.profile', user_name=current_user.user_name) }}">{{current_user.user_name}}</a>
             <a href="{{ url_for('loginPage.logout') }}">Logout</a>
             {% endif %}
