@@ -110,4 +110,73 @@ button:active {
 
 .header hr {
   background-color: #8D909B;
+}
+
+.centered {
+  margin: auto;
+}
+
+.searchResults tbody td, .searchResults tbody th {
+  text-align: center;
+  vertical-align: middle;
+}
+.searchResults tbody td img, .searchResults tbody th img {
+  width: 150px;
+}
+.searchResults tbody th {
+  margin: 10px;
+}
+.searchResults tbody td table {
+  margin: auto;
+}
+.searchResults tbody td table td {
+  padding: 5px;
+}
+.searchResults tbody td button {
+  width: 100%;
+  font-size: 15px;
+}
+
+input, select {
+  padding: 8px;
+  font-size: 16px;
+  border-width: 1px;
+  border-color: #CCCCCC;
+  background-color: #FFFFFF;
+  color: #000000;
+  border-style: solid;
+  border-radius: 6px;
+  box-shadow: 0px 0px 3px rgba(66, 66, 66, 0.7490196078);
+  text-shadow: 0px 0px 0px rgba(66, 66, 66, 0.7490196078);
+  margin-bottom: 5px;
+}
+
+#nameInput {
+  width: 100%;
+  padding: 10px 5px;
+  float: left;
+  color: #CCCCCC;
+  border: 0;
+  border-radius: 3px 0 0 3px;
+}
+#nameInput:focus {
+  outline: 0;
+}
+
+#genreInput {
+  margin-right: 5px;
+}
+
+#resultsPending {
+  margin: auto;
+  padding: 20px;
+  text-align: center;
+  font-size: 30px;
+}
+
+#searchButton {
+  margin: auto;
+  width: 75%;
+  display: block;
+  padding: 2px;
 }/*# sourceMappingURL=main.css.map */

@@ -41,18 +41,26 @@ input, select {
     padding: 8px;
     font-size: 16px;
     border-width: 1px;
-    border-color: #CCCCCC;
-    background-color: #FFFFFF;
-    color: #000000;
+    border-color: $color9;
+    background-color: $color10;
+    color: $color11;
     border-style: solid;
     border-radius: 6px;
-    box-shadow: 0px 0px 3px rgba(66,66,66,.75);
-    text-shadow: 0px 0px 0px rgba(66,66,66,.75);
+    box-shadow: 0px 0px 3px $color12;
+    text-shadow: 0px 0px 0px $color12;
     margin-bottom: 5px;
 }
 
 #nameInput {
     width: 100%;
+    padding: 10px 5px;
+    float: left;
+    color: $color9;
+    border: 0;
+    border-radius: 3px 0 0 3px;
+    &:focus {
+      outline: 0;
+    }
 }
 
 #genreInput {
