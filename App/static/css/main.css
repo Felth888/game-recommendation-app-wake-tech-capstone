@@ -199,4 +199,16 @@ input, select {
   width: 75%;
   display: block;
   padding: 2px;
+}
+
+.searchResults {
+  color: #7cb9d1;
+  font-weight: 800%;
+  font-size: 19px;
+  letter-spacing: 2px;
+  line-height: 24px;
+}
+
+.searchResults tr {
+  background-image: url("./../assets/background.jpg");
 }/*# sourceMappingURL=main.css.map */

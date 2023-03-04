@@ -81,3 +81,16 @@ input, select {
     display: block;
     padding: 2px;
 }
+
+.searchResults
+{
+    color: $color6;
+    font-weight: 800%; 
+    font-size: 19px; 
+    letter-spacing: 2.0px;
+    line-height: 24px; 
+}
+.searchResults tr
+{
+    background-image: url($backgroundImage);
+}
