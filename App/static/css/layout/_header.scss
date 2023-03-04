@@ -1,12 +1,16 @@
 .header {
-    background-color: $color5;
-    color: $color3;
+    background-image: url($backgroundImage);
+    color: $color6;
 }
 .header h1 {
     font-size: 80px;
+    font-weight: 900;
+    letter-spacing: 3.2px;
+    word-spacing: 2.4px;
 	margin-bottom: 30px;
     text-align: center;
+    font-variant: small-caps;
 }
 .header hr {
-    background-color: $color1;
+    background-color: $color8;
 }

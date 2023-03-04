@@ -46,9 +46,9 @@ input {
 }
 
 html {
-  font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+  font-family: "Courier New", Courier, monospace;
 }
 
 body {
-  background: #8D909B;
+  background-image: url("./../assets/background.jpg");
 }/*# sourceMappingURL=all.css.map */

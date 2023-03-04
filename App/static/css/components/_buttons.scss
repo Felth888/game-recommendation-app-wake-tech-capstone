@@ -1,20 +1,23 @@
 @import "../abstracts/variables";
 
-button 
+.searchButton
 {
-    color: $color8; 
-    font-size: 19px; 
-    line-height: 19px; 
-    padding: 10px; 
-    border-radius: 9px; 
-    background-image: linear-gradient(to right, $color5 0%, $color6 37%,$color1 100%); 
-    border: 2px solid $color5; 
     display: inline-block;
+    color: $color6;
+    font-weight: 800%; 
+    font-size: 19px; 
+    letter-spacing: 2.0px;
+    line-height: 24px; 
+    padding: 1px 2px; 
+    border-radius: 9px; 
+    background: $color14; 
+    width: 10% !important;
+    height: 10% !important;
 }
 button:hover 
 {
-    background: $color2; 
-    color: $color1;
+    background: $color13; 
+    color: $color6;
 }
 button:active 
 {
