@@ -23,3 +23,13 @@ button:active
 {
     background: $color6; 
 }
+
+select
+{
+    -webkit-appearance: none;
+   -moz-appearance: none;
+   appearance: none;
+    background: $color13 !important;
+    color: $color7 !important;
+    width: 75% !important;
+}

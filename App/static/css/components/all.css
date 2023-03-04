@@ -19,4 +19,13 @@ button:hover {
 
 button:active {
   background: #7cb9d1;
+}
+
+select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background: rgba(76, 0, 255, 0.1) !important;
+  color: #1C6EA4 !important;
+  width: 75% !important;
 }/*# sourceMappingURL=all.css.map */
