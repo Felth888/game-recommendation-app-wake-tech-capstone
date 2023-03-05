@@ -14,3 +14,5 @@ def test_new_user():
     assert user.email == 'bob@gmail.com'
     assert user.password != 'password_to_hash'
     assert user.birthdate == '2000-12-22'
+
+    

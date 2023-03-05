@@ -1,19 +1,31 @@
-button {
-  color: #080808;
-  font-size: 19px;
-  line-height: 19px;
-  padding: 10px;
-  border-radius: 9px;
-  background-image: linear-gradient(to right, #273E47 0%, #7cb9d1 37%, #8D909B 100%);
-  border: 2px solid #273E47;
+.searchButton {
   display: inline-block;
+  color: #7cb9d1;
+  font-weight: 800%;
+  font-size: 19px;
+  letter-spacing: 2px;
+  line-height: 24px;
+  padding: 1px 2px;
+  border-radius: 9px;
+  background: rgba(76, 0, 255, 0.5);
+  width: 10% !important;
+  height: 10% !important;
 }
 
 button:hover {
-  background: #272727;
-  color: #8D909B;
+  background: rgba(76, 0, 255, 0.1);
+  color: #7cb9d1;
 }
 
 button:active {
   background: #7cb9d1;
+}
+
+select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background: rgba(76, 0, 255, 0.1) !important;
+  color: #1C6EA4 !important;
+  width: 75% !important;
 }/*# sourceMappingURL=all.css.map */

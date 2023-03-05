@@ -1,25 +1,28 @@
 @import "../abstracts/variables";
 
 .navigation {
-    background-color: $color3;
+    background-image: url($backgroundImage);
     overflow: hidden;
 }
 
 .navigation a {
     float: right;
-    color: $color2;
+    color: $color6;
     text-align: center;
     padding: 14px 16px;
     text-decoration: none;
-    font-size: 17px;
+    font-size: 18px;
+    font-weight: 550;
+    letter-spacing: 2.0px;
+    word-spacing: 2.4px;
 }
 
 .navigation a:hover {
-    background-color: $color4;
-    color: $color1;
+    background-color: $color7;
+    color: $color9;
 }
 
 .navigation a:active {
-    background-color: $color5;
+    background-color: $color6;
     color: $color1;
 }

@@ -1,38 +1,45 @@
 .navigation {
-  background-color: #D8973C;
+  background-image: url("./../assets/background.jpg");
   overflow: hidden;
 }
 
 .navigation a {
   float: right;
-  color: #272727;
+  color: #7cb9d1;
   text-align: center;
   padding: 14px 16px;
   text-decoration: none;
-  font-size: 17px;
+  font-size: 18px;
+  font-weight: 550;
+  letter-spacing: 2px;
+  word-spacing: 2.4px;
 }
 
 .navigation a:hover {
-  background-color: #BD632F;
-  color: #8D909B;
+  background-color: #1C6EA4;
+  color: #CCCCCC;
 }
 
 .navigation a:active {
-  background-color: #273E47;
+  background-color: #7cb9d1;
   color: #8D909B;
 }
 
 .header {
-  background-color: #273E47;
-  color: #D8973C;
+  background-image: url("./../assets/background.jpg");
+  color: #7cb9d1;
 }
 
 .header h1 {
   font-size: 80px;
+  font-weight: 900;
+  letter-spacing: 3.2px;
+  word-spacing: 2.4px;
   margin-bottom: 30px;
   text-align: center;
+  font-variant: small-caps;
 }
 
 .header hr {
-  background-color: #8D909B;
+  background-color: #080808;
 }/*# sourceMappingURL=all.css.map */
