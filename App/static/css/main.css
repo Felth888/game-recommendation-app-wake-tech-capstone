@@ -8,7 +8,6 @@ html, body, div, span, object, iframe, figure, h1, h2, h3, h4, h5, h6, p, blockq
   border: 0;
   font-size: 100%;
   font: inherit;
-  color: green;
   vertical-align: baseline;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
@@ -48,6 +47,7 @@ input {
 
 html {
   font-family: "Courier New", Courier, monospace;
+  color: #75d83c;
 }
 
 body {
