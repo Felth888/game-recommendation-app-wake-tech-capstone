@@ -202,7 +202,7 @@ input, select {
 }
 
 .searchResults {
-  color: #7cb9d1;
+  color: #FFFFFF;
   font-weight: 800%;
   font-size: 19px;
   letter-spacing: 2px;
@@ -210,5 +210,5 @@ input, select {
 }
 
 .searchResults tr {
-  background-image: url("./../assets/background.jpg");
+  background: rgba(0, 0, 0, 0.7);
 }/*# sourceMappingURL=main.css.map */
