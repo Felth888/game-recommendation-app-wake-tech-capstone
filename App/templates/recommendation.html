@@ -137,7 +137,7 @@
 			if(response == true) {
 				ID('wish_' + id).innerHTML = "Remove from Wishlist";
 			} else if (response == null) {
-				alert(name + " is already in your library!");
+				alertUser(name + " is already in your library!");
 			} else {
 				ID('wish_' + id).innerHTML = "Add to Wishlist";
 			}

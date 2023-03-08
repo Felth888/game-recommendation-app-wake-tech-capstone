@@ -72,3 +72,11 @@ function createTableFromVal(arr, valString) {
     return tableString;
 
 }
+
+/**
+ * Custom handling for UI output
+ * @param {string} input The message to convey to the user
+ */
+function alertUser(input) {
+    alert(input);
+}
