@@ -1,4 +1,6 @@
 from flask import Blueprint, render_template, request, redirect, url_for, current_app, json
+import requests
+from datetime import datetime
 from flask_login import current_user
 bp = Blueprint('searchPage', __name__)
 from ..models.userModels import User
@@ -89,7 +91,103 @@ def update_catalog():
     foundGame = Game.query.filter_by(id=request.form['id']).first()
     # If nothing is found, create an entry for the game and send it into the DB
     if not foundGame:
-        newGame = Game(id=request.form['id'],title=request.form['title'])
+
+        # Get the information from the existing form that was submitted
+        id = request.form['id']
+        title = request.form['title']
+
+        # Make a POST request to get the data for the new title from IGDB
+        url = "https://5jmkis1ked.execute-api.us-west-2.amazonaws.com/production/v4/games"
+
+        payload = "fields cover.image_id, category, release_dates.date, genres.name, themes.name, game_modes.name, involved_companies.company.name, involved_companies.developer;"
+        payload += "where id=" + str(id) + "; limit 1;"
+        headers = {"x-api-key": current_app.config['IGDB_API_KEY'], 'Content-Type': 'application/json'}
+
+        post_response = requests.request("POST", url, data=payload, headers=headers)
+
+        print(post_response.text)
+        # Convert the response from JSON to Python
+        jsonResponse = json.loads(post_response.text)
+        jr = jsonResponse[0] # Short hand jsonResponse[0] since it will be used a lot
+
+        # Get all the meta-data for the game
+        # All of these are wrapped in a try loop as many
+        # items do not have meta-data such as developer or release date.
+        # Frequently this occurrs on non-base game items like a DLC
+
+        # Cover
+        try:
+            cover = jr["cover"]["image_id"]
+        except Exception as e:
+            cover = None
+
+        # Base_Game
+        base_game = False
+        if jr["category"] in [0, 3, 8, 9, 10]: #IDS TO DETERMINE IF A GAME IS A BASE GAME OR NOT
+            base_game = True
+
+        # Release_Date
+        try:
+            mS = int(jr["release_dates"][0]["date"])
+            release_date = datetime.utcfromtimestamp(mS).strftime('%Y-%m-%d')
+        except Exception as e:
+            release_date = None
+
+        # Genres
+        try:
+            genres = ""
+            for genre in jr["genres"]:
+                genres += genre["name"] + "|"
+            genres = genres[:-1]
+        except Exception as e:
+            genres = None
+
+        # Themes
+        try:
+            themes = ""
+            for theme in jr["themes"]:
+                name = theme["name"]
+                # Trim IGDB's 4X theme name
+                if "4X" in name:
+                    name = "4X"
+                themes += name + "|"
+            themes = themes[:-1]
+        except Exception as e:
+            themes = None
+
+        # Game Modes
+        try: 
+            game_modes = ""
+            for mode in jr["game_modes"]:
+                game_modes += mode["name"] + "|"
+            game_modes = game_modes[:-1]
+        except Exception as e:
+            game_modes = None
+
+        # Developer
+        try:
+            developers = ""
+            for company in jr["involved_companies"]:
+                if company["developer"] == True:
+                    devName = company["company"]["name"]
+                    devName = devName.replace(",", "")
+                    developers += devName + "|"
+            developers = developers[:-1]
+        except Exception as e:
+            developers = None
+
+        # Add the new game
+        newGame = Game(
+            id=id,
+            title=title,
+            cover=cover,
+            base_game=base_game,
+            release_date=release_date,
+            genre=genres,
+            theme=themes,
+            play_mode=game_modes,
+            developer=developers
+        )
         db.session.add(newGame)
         db.session.commit()
         print(str(newGame.title) + " IS BEING ADDED")
