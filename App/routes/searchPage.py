@@ -36,6 +36,7 @@ def add_to_library():
         foundGame = UserGame.query.filter_by(user_id=current_user.id, game_id=request.form['id']).first()
         if foundGame:
             foundGame.archived = False
+            foundGame.wishlist = None # Games added to library are removed from the wishlist
         # If the game doesnt exist in the user's library, add it
         else:
             newGame = UserGame(user_id=current_user.id, game_id=request.form['id'])
@@ -61,9 +62,9 @@ def add_to_wishlist():
     # A JSON array isnt really needed to return, a string could be used
     # But a JSON array gives better control for multiple pieces of data
     adding = False
+    foundGame = UserGame.query.filter_by(user_id=current_user.id, game_id=request.form['id']).first()
     if request.form['adding'] == "true":
         # Since a game is being added, first check to see if the record exists and is archived
-        foundGame = UserGame.query.filter_by(user_id=current_user.id, game_id=request.form['id']).first()
         if foundGame:
             foundGame.wishlist = True
         # If the game doesnt exist in the user's library, add it
@@ -73,7 +74,6 @@ def add_to_wishlist():
         adding = True
     else:
         # If we're not adding a game, its being archived. Query to get the entry then archive it
-        foundGame = UserGame.query.filter_by(user_id=current_user.id, game_id=request.form['id']).first()
         foundGame.wishlist = False
 
     # Adding or removing, commit the changes

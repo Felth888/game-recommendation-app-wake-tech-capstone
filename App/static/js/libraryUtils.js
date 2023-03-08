@@ -50,6 +50,11 @@ function setIDArrays(library_id_string, wishlist_id_string) {
  */
 function addToWishlist(id, name) {
     
+    // If the game is in the user's library, it cannot be added to their wishlist
+    if(LIBRARY_IDS_ARR.includes(id)) {
+        return null;
+    }
+
     // If game doesnt exist in the database, add it
     sendAjaxQuery('/update_catalog', 'id=' + id + "&title=" + name, false);
 
@@ -102,6 +107,10 @@ function addToLibrary(id, name) {
     if(response['added']) {
         // Add the ID from the list of session list of ID's
         LIBRARY_IDS_ARR.push(id);
+        // Remove the ID from the user's wishlist list if present
+        if(WISHLIST_IDS_ARR.includes(id)) {
+            WISHLIST_IDS_ARR.splice(WISHLIST_IDS_ARR.indexOf(id), 1);
+        }
     } else {
         // Remove the ID from the list of session list of ID's
         LIBRARY_IDS_ARR.splice(LIBRARY_IDS_ARR.indexOf(id), 1);
