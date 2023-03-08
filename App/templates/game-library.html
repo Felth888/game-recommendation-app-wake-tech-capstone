@@ -7,7 +7,12 @@
         <h3>Game Library</h3>
        {% for game in game_list %}
         <div class="game" style="color:white;">
-            {{ game.cover }}<br>
+            {% if game.cover %}
+                <!-- Cover art for the game -->
+                <img src="{{ "https://images.igdb.com/igdb/image/upload/t_cover_small/" ~ game.cover ~ ".jpg" }}">
+            {% else %}
+                None
+            {% endif %}<br>
             {{ game.title }}<br>
             <p>Hours Played: </p><br>
             <p>Rating: </p><br>
