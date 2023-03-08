@@ -7,7 +7,7 @@ from App import login
 
 
 class User(UserMixin, db.Model):
-    __tablename__ = 'USERS'
+    __tablename__ = 'users'
 
     id = db.Column(db.Integer, primary_key=True)
     user_name = db.Column(db.String(32), unique=True)

@@ -41,9 +41,9 @@
 
     <script type="application/javascript">
     
-        // Populate the user's game library var
-        window.onload = function() {
-            setLibraryIDArray('{{ library_id_list }}');
+        // Populates the user's ID list of games.
+		window.onload = function() {
+            setIDArrays('{{ library_id_list }}', '{{ wishlist_id_list }}');
         }
 
         /**
@@ -68,7 +68,7 @@
             // Cover art image
             cover_url = "";
             if(typeof response['cover'] != "undefined" && response['cover'] != null) {
-                cover_url = response['cover'];
+                cover_url = "https://images.igdb.com/igdb/image/upload/t_cover_big/" + response['cover'] + ".jpg";
             } else {
                 // 'Missing Image' filler incase there is no cover art
                 cover_url = "https://t4.ftcdn.net/jpg/00/89/55/15/360_F_89551596_LdHAZRwz3i4EM4J0NHNHy2hEUYDfXc0j.jpg";
@@ -95,6 +95,18 @@
             // Close the button
             x += "</button><br>";
                 
+            // Wishhlist button
+            x += "<button id='wish_" + response['id'] + "'onclick='wishButtonPress(" + response['id'] + ",\"" + response['title'] + "\")'>";
+            // Check if the user has this game in their wishlist and put in the respective text
+            if (WISHLIST_IDS_ARR.includes(response['id'])) {
+                x += "Remove from Wishlist";
+            } else {
+                x += "Add to Wishlist";
+            }
+            // Close the button
+            x += "</button><br>";
+            x += "</td>";
+
             // Close the row
             x += "</tr>";
 			
@@ -115,6 +127,18 @@
 				ID('lib_' + id).innerHTML = "Add to Library";
 			}
 		}
+
+        /**
+         * Called when a "Add to Wishlist" button is pressed. Calls addToWishlist then updates the buttons
+         */
+        function wishButtonPress(id, name) {
+            response = addToWishlist(id, name);
+            if(response == true) {
+                ID('wish_' + id).innerHTML = "Remove from Wishlist";
+            } else {
+                ID('wish_' + id).innerHTML = "Add to Wishlist";
+            }
+        }
 
     </script>
 {% endblock %}

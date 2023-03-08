@@ -3,7 +3,7 @@ from . import db
 class UserGame(db.Model):
     #accessing the user_games table
     #in game_database.sql
-    __tablename__ = 'USER_GAMES'
+    __tablename__ = 'user_games'
 
     id = db.Column(db.Integer, primary_key=True)
     user_id = db.Column(db.Integer, unique=True)

@@ -23,7 +23,7 @@ def update_profile():
         current_user.email = form.email.data
         db.session.commit()
         flash('Your changes have been saved.')
-        return redirect(url_for('userProfile.profile', user_name=current_user.user_name))
+        return redirect(url_for('loginPage.login'))
     elif request.method == 'GET':
         form.user_name.data = current_user.user_name
         form.birthday.data = current_user.birthdate
