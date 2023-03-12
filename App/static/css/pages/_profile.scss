@@ -11,6 +11,22 @@
     color: $color6;
 }
 
+.updateProfile h3
+{
+    
+    font-size: 22px;
+    font-weight: 700;
+    color: $color6;
+}
+
+
+.updateProfile h4
+{
+    
+    font-size: 20px;
+    font-weight: 700;
+    color: $color6;
+}
 
 
 .updateProfile p,li
@@ -27,6 +43,26 @@
     color: $color16;
 }
 
+.updateProfile input
+{
+    padding: 8px;
+    font-size: 16px;
+
+    background-color: $color14;
+    color: $color6;
+
+    border-radius: 6px;
+    box-shadow: 0px 0px 3px $color12;
+    text-shadow: 0px 0px 0px $color12;
+    margin-bottom: 5px;
+    width: 200px;
+}
+
+.updateProfile input:hover
+{
+    background: $color13; 
+    color: $color6;
+}
 
 
 .userName

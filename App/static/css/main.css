@@ -197,6 +197,18 @@ select {
   color: #7cb9d1;
 }
 
+.updateProfile h3 {
+  font-size: 22px;
+  font-weight: 700;
+  color: #7cb9d1;
+}
+
+.updateProfile h4 {
+  font-size: 20px;
+  font-weight: 700;
+  color: #7cb9d1;
+}
+
 .updateProfile p, li {
   font-size: 18px;
   font-weight: 500;
@@ -207,6 +219,23 @@ select {
   font-size: 18px;
   font-weight: 500;
   color: rgb(224, 54, 97);
+}
+
+.updateProfile input {
+  padding: 8px;
+  font-size: 16px;
+  background-color: rgba(76, 0, 255, 0.5);
+  color: #7cb9d1;
+  border-radius: 6px;
+  box-shadow: 0px 0px 3px rgba(66, 66, 66, 0.7490196078);
+  text-shadow: 0px 0px 0px rgba(66, 66, 66, 0.7490196078);
+  margin-bottom: 5px;
+  width: 200px;
+}
+
+.updateProfile input:hover {
+  background: rgba(76, 0, 255, 0.1);
+  color: #7cb9d1;
 }
 
 .userName {

@@ -9,23 +9,25 @@
         }
     </style>
 
-    <div id="library">
+    <div class="updateProfile" id="library">
         <h3>Game Library</h3>
        {% for game in game_list %}
-        <div class="game" style="color:white;">
+        <div class="game" >
             {% if game.cover %}
                 <!-- Cover art for the game -->
                 <img class="box_art" src="{{ "https://images.igdb.com/igdb/image/upload/t_cover_small/" ~ game.cover ~ ".jpg" }}">
             {% else %}
                 <img class="box_art" src="https://t4.ftcdn.net/jpg/00/89/55/15/360_F_89551596_LdHAZRwz3i4EM4J0NHNHy2hEUYDfXc0j.jpg">
             {% endif %}<br>
-            {{ game.title }}<br>
+            <h4>{{ game.title }}</h4>
+            <br>
             <p>Hours Played: </p><br>
             <p>Rating: </p><br>
         </div>
         <form action="#" method="POST">
         <input class="addRemoveButton" type="submit" name={{ game.id }} value="Remove from Library">
         </form>
+        <br><br>
         {% endfor %}
     </div>
 
