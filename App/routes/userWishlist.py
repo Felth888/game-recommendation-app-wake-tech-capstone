@@ -19,14 +19,14 @@ def wishlist():
         wish_id = game_list[0]
         request_type = output[str(wish_id)]
         if request_type == "Move to Library":
-            movedGame = UserGame.query.filter_by(game_id=wish_id).first()
+            movedGame = UserGame.query.filter_by(user_id=current_user.id, game_id=wish_id).first()
             if movedGame:
                 movedGame.wishlist = None
                 #have to clear archived status to fix a minor potential bug
                 movedGame.archived = None
                 db.session.commit()
         elif request_type == "Remove from Wishlist":
-            removedGame = UserGame.query.filter_by(game_id=wish_id).first()
+            removedGame = UserGame.query.filter_by(user_id=current_user.id, game_id=wish_id).first()
             if removedGame:
                 removedGame.wishlist = None
                 removedGame.archived = True
