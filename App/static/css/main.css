@@ -68,6 +68,11 @@ body {
   height: 40px !important;
 }
 
+button {
+  background: rgba(76, 0, 255, 0.5);
+  color: #7cb9d1;
+}
+
 button:hover {
   background: rgba(76, 0, 255, 0.1);
   color: #7cb9d1;
@@ -87,11 +92,34 @@ select {
 }
 
 .addRemoveButton {
-  color: #FFFFFF;
+  width: 100px !important;
+  height: 40px !important;
+  font-weight: 800%;
+  font-size: 19px;
+  letter-spacing: 2px;
+  line-height: 24px;
+  padding: 1px 2px;
+  border-radius: 9px;
 }
 
 .recommendationButton {
-  color: #000000;
+  float: center !important;
+  width: 150px !important;
+  height: 40px !important;
+  font-weight: 800%;
+  font-size: 19px;
+  letter-spacing: 2px;
+  line-height: 24px;
+  padding: 1px 2px;
+  border-radius: 9px;
+}
+
+.recTable {
+  text-align: center;
+}
+
+.centered {
+  margin: auto;
 }
 
 .navigation {
