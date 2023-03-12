@@ -61,7 +61,7 @@
 			// Hide the pending div and show the table header since fetch is done
 			ID('resultsPending').style.display = 'none';
 			ID('resultsHeader').style.display = 'table-row';
-				
+
 			// x is the string used to create the table
 			var x = "<tr>";
             
@@ -85,8 +85,10 @@
             // Library Button
             // Sets the ID's of the button to be lib_/wish_ + igdb-id to make each unique
             // Starts the button
-            x += "<button id='lib_" + response['id'] + "' onclick='libButtonPress(" + response['id'] + ",\"" + response['title'] + "\")'>";
-            // Check if the user has a library and if the game is in it, if so, put respective text
+            var name = response['title'].replace(/'/g, "\\'");
+            x += "<button id=\"lib_" + response['id'] + "\" onclick=\"libButtonPress(" + response['id'] + ",'" + name + "')\">";
+            
+                // Check if the user has a library and if the game is in it, if so, put respective text
             if (LIBRARY_IDS_ARR.includes(response['id'])) {
                 x += "Remove from Library";
             } else {
@@ -96,7 +98,7 @@
             x += "</button><br>";
                 
             // Wishhlist button
-            x += "<button id='wish_" + response['id'] + "'onclick='wishButtonPress(" + response['id'] + ",\"" + response['title'] + "\")'>";
+            x += "<button id=\"wish_" + response['id'] + "\" onclick=\"wishButtonPress(" + response['id'] + ",'" + name + "')\">";
             // Check if the user has this game in their wishlist and put in the respective text
             if (WISHLIST_IDS_ARR.includes(response['id'])) {
                 x += "Remove from Wishlist";
