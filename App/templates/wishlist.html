@@ -9,7 +9,7 @@
         }
     </style>
 
-    <div id="library">
+    <div class="updateProfile" id="library">
         <h3>Wishlist</h3>
        {% for wish in w_list %}
         <div class="game" style="color:white;">
@@ -28,6 +28,7 @@
             <input class= "addRemoveButton" type="submit" name={{ wish.id }} value="Remove from Wishlist">
             </form>
         </div>
+        <br><br>
         {% endfor %}
     </div>
 
