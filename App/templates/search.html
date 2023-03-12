@@ -9,7 +9,6 @@
 	<script type="application/javascript" src="{{ url_for('static', filename='js/libraryUtils.js') }}"></script>
 
     <div>
-        <!-- <h2> Search page is working! </h2> -->
 		<table class="centered">
 			<!-- Text input for game title search -->
 			<tr><td colspan='2'><input type="text" id ='nameInput' placeholder="Game Title" name="nameInput" class="center"></td></tr>
@@ -81,7 +80,7 @@
 	
 		// Populates the user's ID list of games.
 		window.onload = function() {
-            setLibraryIDArray('{{ library_id_list }}');
+            setIDArrays('{{ library_id_list }}', '{{ wishlist_id_list }}');
         }
 
 		/**
@@ -147,8 +146,9 @@
 
 					// Library Button
 					// Sets the ID's of the button to be lib_/wish_ + igdb-id to make each unique
-					// Starts the button
-					x += "<button id='lib_" + fetchResponse[i].id + "' onclick='libButtonPress(" + fetchResponse[i].id + ",\"" + fetchResponse[i].name + "\")'>";
+					// Starts the buttons
+					var name = fetchResponse[i].name.replace(/'/g, "\\'");
+					x += "<button class= \"addRemoveButton\" id=\"lib_" + fetchResponse[i].id + "\" onclick=\"libButtonPress(" + fetchResponse[i].id + ",'" + name + "')\">";
 					// Check if the user has a library and if the game is in it, if so, put respective text
 					if (LIBRARY_IDS_ARR.includes(fetchResponse[i].id)) {
 						x += "Remove from Library";
@@ -158,8 +158,16 @@
 					// Close the button
 					x += "</button><br>";
 					
-					// Wishhlist button
-					x += "<button id='wish_" + fetchResponse[i].id + "'onclick='wishButtonPress(" + fetchResponse[i].id + ",\"" + fetchResponse[i].name + "\")'>Add to Wishlist</input>";
+					// Wishlist button
+					x += "<button class= \"addRemoveButton\" id=\"wish_" + fetchResponse[i].id + "\" onclick=\"wishButtonPress(" + fetchResponse[i].id + ",'" + name + "')\">";
+					// Check if the user has this game in their wishlist and put in the respective text
+					if (WISHLIST_IDS_ARR.includes(fetchResponse[i].id)) {
+						x += "Remove from Wishlist";
+					} else {
+						x += "Add to Wishlist";
+					}
+					// Close the button
+					x += "</button><br>";
 					x += "</td>";
 
 				{% endif %}
@@ -180,6 +188,7 @@
 			response = addToLibrary(id, name);
 			if(response == true) {
 				ID('lib_' + id).innerHTML = "Remove from Library";
+				ID('wish_' + id).innerHTML = "Add to Wishlist"; // Games added to library are removed from wishlist
 			} else {
 				ID('lib_' + id).innerHTML = "Add to Library";
 			}
@@ -190,6 +199,13 @@
 		 */
 		function wishButtonPress(id, name) {
 			response = addToWishlist(id, name);
+			if(response == true) {
+				ID('wish_' + id).innerHTML = "Remove from Wishlist";
+			} else if (response == null) {
+				alertUser(name + " is already in your library!");
+			} else {
+				ID('wish_' + id).innerHTML = "Add to Wishlist";
+			}
 		}
 
 		/**

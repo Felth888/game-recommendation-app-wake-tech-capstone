@@ -11,3 +11,5 @@ class UserGame(db.Model):
     play_status = db.Column(db.String(10))
     hours_played = db.Column(db.Float)
     rating = db.Column(db.Integer)
+    wishlist = db.Column(db.Boolean)
+    archived = db.Column(db.Boolean)

@@ -2,24 +2,27 @@
 
 {% block content %}
 
-    <div>
-        <!--flash message for successful login -->
+    <!-- <div>
+        flash message for successful login 
         <h3>You Logged In</h3>
-    </div>
+    </div> -->
 
-    <div id="user info">
+    <div class="updateProfile" id="user info">
         <h2>User Information</h2>
+        <br><br>
         <ul>
             <!--Can be styled without the bullets-->
-            <li><b>Username:</b> {{ user.user_name }}</li>
-            <li><b>Email:</b> {{ user.email }}</li>
-            <li><b>Birthday:</b> {{ user.birthdate }}</li>
+            <li>Username: {{ user.user_name }}</li>
+            <br>
+            <li>Email: {{ user.email }}</li>
+            <br>
+            <li>Birthday: {{ user.birthdate.strftime('%m-%d-%Y') }}</li>
         </ul>
-    </div>
+        <br>
     {% if user == current_user %}
     <p><a href="{{ url_for('userProfile.update_profile') }}">Edit your profile</a></p>
     {% endif %}
-
+    </div>
 
 
 {% endblock %}

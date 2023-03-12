@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+{% block content %}
+<!--this could be made into a tab in the user profile page in css-->
+
+    <style>
+        .box_art {
+            width: 100px;
+        }
+    </style>
+
+    <div class="updateProfile" id="library">
+        <h3>Wishlist</h3>
+       {% for wish in w_list %}
+        <div class="game" style="color:white;">
+            {% if wish.cover %}
+                <!-- Cover art for the game -->
+                <img class="box_art" src="{{ "https://images.igdb.com/igdb/image/upload/t_cover_small/" ~ wish.cover ~ ".jpg" }}">
+            {% else %}
+                <img class="box_art" src="https://t4.ftcdn.net/jpg/00/89/55/15/360_F_89551596_LdHAZRwz3i4EM4J0NHNHy2hEUYDfXc0j.jpg">
+            {% endif %}<br>
+            {{ wish.title }}<br>
+             <!-- userWishlist.py is dependant on this code, do not alter -->
+            <form action="#" method="POST">
+            <input class= "addRemoveButton" type="submit" name={{ wish.id }} value="Move to Library">
+            </form>
+            <form action="#" method="POST">
+            <input class= "addRemoveButton" type="submit" name={{ wish.id }} value="Remove from Wishlist">
+            </form>
+        </div>
+        <br><br>
+        {% endfor %}
+    </div>
+
+
+
+{% endblock %}

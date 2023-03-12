@@ -1,0 +1,113 @@
+.updateProfile
+{
+    text-align: center;
+    background-color: $color15;
+}
+
+.updateProfile h1,h2
+{
+    font-size: 24px;
+    font-weight: 700;
+    color: $color6;
+}
+
+.updateProfile h3
+{
+    
+    font-size: 22px;
+    font-weight: 700;
+    color: $color6;
+}
+
+
+.updateProfile h4
+{
+    
+    font-size: 20px;
+    font-weight: 700;
+    color: $color6;
+}
+
+
+.updateProfile p,li
+{
+    font-size: 18px;
+    font-weight: 500;
+    color: $color6;
+}
+
+.updateProfile a
+{
+    font-size: 18px;
+    font-weight: 500;
+    color: $color16;
+}
+
+.updateProfile input
+{
+    padding: 8px;
+    font-size: 16px;
+
+    background-color: $color14;
+    color: $color6;
+
+    border-radius: 6px;
+    box-shadow: 0px 0px 3px $color12;
+    text-shadow: 0px 0px 0px $color12;
+    margin-bottom: 5px;
+    width: 200px;
+}
+
+.updateProfile input:hover
+{
+    background: $color13; 
+    color: $color6;
+}
+
+
+.userName
+{
+    padding: 8px;
+    font-size: 16px;
+    border-width: 1px;
+    border-color: $color9;
+    background-color: $color10;
+    color: $color11;
+    border-style: solid;
+    border-radius: 6px;
+    box-shadow: 0px 0px 3px $color12;
+    text-shadow: 0px 0px 0px $color12;
+    margin-bottom: 5px;
+    width: 200px;
+}
+
+.birthday
+{
+    padding: 8px;
+    font-size: 16px;
+    border-width: 1px;
+    border-color: $color9;
+    background-color: $color10;
+    color: $color11;
+    border-style: solid;
+    border-radius: 6px;
+    box-shadow: 0px 0px 3px $color12;
+    text-shadow: 0px 0px 0px $color12;
+    margin-bottom: 5px;
+}
+
+.email
+{
+    padding: 8px;
+    font-size: 16px;
+    border-width: 1px;
+    border-color: $color9;
+    background-color: $color10;
+    color: $color11;
+    border-style: solid;
+    border-radius: 6px;
+    box-shadow: 0px 0px 3px $color12;
+    text-shadow: 0px 0px 0px $color12;
+    margin-bottom: 5px;
+    width: 300px;
+}

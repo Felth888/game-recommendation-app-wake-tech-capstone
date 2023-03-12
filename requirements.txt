@@ -9,3 +9,4 @@ Flask-WTF
 email_validator
 pytest
 pytest-flask
+requests
