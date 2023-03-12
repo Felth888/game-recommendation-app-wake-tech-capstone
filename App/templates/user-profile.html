@@ -16,7 +16,7 @@
             <br>
             <li>Email: {{ user.email }}</li>
             <br>
-            <li>Birthday: {{ user.birthdate }}</li>
+            <li>Birthday: {{ user.birthdate.strftime('%m-%d-%Y') }}</li>
         </ul>
         <br>
     {% if user == current_user %}
