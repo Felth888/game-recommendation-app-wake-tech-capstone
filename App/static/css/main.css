@@ -136,6 +136,12 @@ select {
   text-align: center;
 }
 
+.recTable h1 {
+  font-size: 24px;
+  font-weight: 700;
+  color: #7cb9d1;
+}
+
 .centered {
   margin: auto;
 }
