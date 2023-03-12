@@ -90,6 +90,10 @@ select {
   color: #FFFFFF;
 }
 
+.recommendationButton {
+  color: #000000;
+}
+
 .navigation {
   background-image: url("./../assets/background.jpg");
   overflow: hidden;

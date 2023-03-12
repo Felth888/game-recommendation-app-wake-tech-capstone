@@ -14,7 +14,7 @@
                 <th><h1>Recommendation Page!</h1></th>
             </tr>
 			<tr>
-				<td colspan="2"><button onclick="postRecommendations()" id="submitButton">See What We Think You Would Like</button></td>
+				<td colspan="2"><button class="recommendationButton" onclick="postRecommendations()" id="submitButton">See What We Think You Would Like</button></td>
 			</tr>
 		</table>
 		
@@ -86,7 +86,7 @@
             // Sets the ID's of the button to be lib_/wish_ + igdb-id to make each unique
             // Starts the button
             var name = response['title'].replace(/'/g, "\\'");
-            x += "<button id=\"lib_" + response['id'] + "\" onclick=\"libButtonPress(" + response['id'] + ",'" + name + "')\">";
+            x += "<button class=\"addRemoveButton\" id=\"lib_" + response['id'] + "\" onclick=\"libButtonPress(" + response['id'] + ",'" + name + "')\">";
             
                 // Check if the user has a library and if the game is in it, if so, put respective text
             if (LIBRARY_IDS_ARR.includes(response['id'])) {
@@ -98,7 +98,7 @@
             x += "</button><br>";
                 
             // Wishhlist button
-            x += "<button id=\"wish_" + response['id'] + "\" onclick=\"wishButtonPress(" + response['id'] + ",'" + name + "')\">";
+            x += "<button class=\"addRemoveButton\" id=\"wish_" + response['id'] + "\" onclick=\"wishButtonPress(" + response['id'] + ",'" + name + "')\">";
             // Check if the user has this game in their wishlist and put in the respective text
             if (WISHLIST_IDS_ARR.includes(response['id'])) {
                 x += "Remove from Wishlist";
