@@ -92,7 +92,7 @@ select {
 }
 
 .addRemoveButton {
-  width: 100px !important;
+  width: 200px !important;
   height: 40px !important;
   font-weight: 800%;
   font-size: 19px;
@@ -112,6 +112,24 @@ select {
   line-height: 24px;
   padding: 1px 2px;
   border-radius: 9px;
+}
+
+.updateButton {
+  background: rgba(76, 0, 255, 0.5);
+  color: #7cb9d1;
+  width: 100px !important;
+  height: 30px !important;
+  font-weight: 800%;
+  font-size: 19px;
+  letter-spacing: 2px;
+  line-height: 24px;
+  padding: 1px 2px;
+  border-radius: 9px;
+}
+
+.updateButton:hover {
+  background: rgba(76, 0, 255, 0.1);
+  color: #7cb9d1;
 }
 
 .recTable {
@@ -168,6 +186,67 @@ select {
   background-color: #080808;
 }
 
+.updateProfile {
+  text-align: center;
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
+.updateProfile h1 {
+  font-size: 24px;
+  font-weight: 700;
+  color: #7cb9d1;
+}
+
+.updateProfile p {
+  font-size: 18px;
+  font-weight: 500;
+  color: #7cb9d1;
+}
+
+.userName {
+  padding: 8px;
+  font-size: 16px;
+  border-width: 1px;
+  border-color: #CCCCCC;
+  background-color: rgba(255, 255, 255, 0.8980392157);
+  color: #000000;
+  border-style: solid;
+  border-radius: 6px;
+  box-shadow: 0px 0px 3px rgba(66, 66, 66, 0.7490196078);
+  text-shadow: 0px 0px 0px rgba(66, 66, 66, 0.7490196078);
+  margin-bottom: 5px;
+  width: 200px;
+}
+
+.birthday {
+  padding: 8px;
+  font-size: 16px;
+  border-width: 1px;
+  border-color: #CCCCCC;
+  background-color: rgba(255, 255, 255, 0.8980392157);
+  color: #000000;
+  border-style: solid;
+  border-radius: 6px;
+  box-shadow: 0px 0px 3px rgba(66, 66, 66, 0.7490196078);
+  text-shadow: 0px 0px 0px rgba(66, 66, 66, 0.7490196078);
+  margin-bottom: 5px;
+}
+
+.email {
+  padding: 8px;
+  font-size: 16px;
+  border-width: 1px;
+  border-color: #CCCCCC;
+  background-color: rgba(255, 255, 255, 0.8980392157);
+  color: #000000;
+  border-style: solid;
+  border-radius: 6px;
+  box-shadow: 0px 0px 3px rgba(66, 66, 66, 0.7490196078);
+  text-shadow: 0px 0px 0px rgba(66, 66, 66, 0.7490196078);
+  margin-bottom: 5px;
+  width: 300px;
+}
+
 .centered {
   margin: auto;
 }
@@ -198,7 +277,7 @@ input, select {
   font-size: 16px;
   border-width: 1px;
   border-color: #CCCCCC;
-  background-color: #FFFFFF;
+  background-color: rgba(255, 255, 255, 0.8980392157);
   color: #000000;
   border-style: solid;
   border-radius: 6px;
@@ -239,7 +318,7 @@ input, select {
 }
 
 .searchResults {
-  color: #FFFFFF;
+  color: rgba(255, 255, 255, 0.8980392157);
   font-weight: 800%;
   font-size: 19px;
   letter-spacing: 2px;

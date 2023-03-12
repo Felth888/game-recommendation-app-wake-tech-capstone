@@ -1,30 +1,36 @@
 {% extends "base.html" %}
 
 {% block content %}
+<div class="updateProfile">
     <h1>Update Profile</h1>
+    <br>
     <form action="" method="post">
         {{ form.hidden_tag() }}
         <p>
             {{ form.user_name.label }}<br>
-            {{ form.user_name(size=32) }}<br>
+            {{ form.user_name(size=32,class="userName") }}<br>
             {% for error in form.user_name.errors %}
             <span style="color: red;">[{{ error }}]</span>
             {% endfor %}
         </p>
+        <br>
         <p>
             {{ form.birthday.label }}<br>
-            {{ form.birthday(size=10) }}<br>
+            {{ form.birthday(size=10,class="birthday") }}<br>
             {% for error in form.birthday.errors %}
             <span style="color: red;">[{{ error }}]</span>
             {% endfor %}
         </p>
+        <br>
         <p>
             {{ form.email.label }}<br>
-            {{ form.email(size=64) }}<br>
+            {{ form.email(size=64, class="email") }}<br>
             {% for error in form.email.errors %}
             <span style="color: red;">[{{ error }}]</span>
             {% endfor %}
         </p>
-        <p>{{ form.submit() }}</p>
+        <br>
+        <p>{{ form.submit(class="updateButton") }}</p>
     </form>
+</div>
 {% endblock %}
