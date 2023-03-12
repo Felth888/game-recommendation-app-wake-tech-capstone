@@ -15,7 +15,7 @@ def game_library():
         output = request.form.to_dict()
         game_list = list(output)
         lib_id = game_list[0]
-        removedGame = UserGame.query.filter_by(game_id=lib_id).first()
+        removedGame = UserGame.query.filter_by(user_id=current_user.id, game_id=lib_id).first()
         if removedGame:
             removedGame.archived = True
             db.session.commit()
