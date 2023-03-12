@@ -11,8 +11,8 @@
     padding: 1px 2px; 
     border-radius: 9px; 
     background: $color14; 
-    width: 10% !important;
-    height: 10% !important;
+    width: 100px !important;
+    height: 40px !important;
 }
 button:hover 
 {
@@ -32,4 +32,9 @@ select
     background: $color13 !important;
     color: $color7 !important;
     width: 75% !important;
+}
+
+.addRemoveButton
+{
+    color: $color10;
 }

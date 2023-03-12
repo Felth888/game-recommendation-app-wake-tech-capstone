@@ -22,10 +22,10 @@
             {{ wish.title }}<br>
              <!-- userWishlist.py is dependant on this code, do not alter -->
             <form action="#" method="POST">
-            <input type="submit" name={{ wish.id }} value="Move to Library">
+            <input class= "addRemoveButton" type="submit" name={{ wish.id }} value="Move to Library">
             </form>
             <form action="#" method="POST">
-            <input type="submit" name={{ wish.id }} value="Remove from Wishlist">
+            <input class= "addRemoveButton" type="submit" name={{ wish.id }} value="Remove from Wishlist">
             </form>
         </div>
         {% endfor %}

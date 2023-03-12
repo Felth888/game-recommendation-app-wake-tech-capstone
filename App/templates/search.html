@@ -148,7 +148,7 @@
 					// Sets the ID's of the button to be lib_/wish_ + igdb-id to make each unique
 					// Starts the buttons
 					var name = fetchResponse[i].name.replace(/'/g, "\\'");
-					x += "<button id=\"lib_" + fetchResponse[i].id + "\" onclick=\"libButtonPress(" + fetchResponse[i].id + ",'" + name + "')\">";
+					x += "<button class= \"addRemoveButton\" id=\"lib_" + fetchResponse[i].id + "\" onclick=\"libButtonPress(" + fetchResponse[i].id + ",'" + name + "')\">";
 					// Check if the user has a library and if the game is in it, if so, put respective text
 					if (LIBRARY_IDS_ARR.includes(fetchResponse[i].id)) {
 						x += "Remove from Library";
@@ -159,7 +159,7 @@
 					x += "</button><br>";
 					
 					// Wishlist button
-					x += "<button id=\"wish_" + fetchResponse[i].id + "\" onclick=\"wishButtonPress(" + fetchResponse[i].id + ",'" + name + "')\">";
+					x += "<button class= \"addRemoveButton\" id=\"wish_" + fetchResponse[i].id + "\" onclick=\"wishButtonPress(" + fetchResponse[i].id + ",'" + name + "')\">";
 					// Check if the user has this game in their wishlist and put in the respective text
 					if (WISHLIST_IDS_ARR.includes(fetchResponse[i].id)) {
 						x += "Remove from Wishlist";

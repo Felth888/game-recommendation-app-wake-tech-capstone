@@ -8,8 +8,8 @@
   padding: 1px 2px;
   border-radius: 9px;
   background: rgba(76, 0, 255, 0.5);
-  width: 10% !important;
-  height: 10% !important;
+  width: 100px !important;
+  height: 40px !important;
 }
 
 button:hover {
@@ -28,4 +28,8 @@ select {
   background: rgba(76, 0, 255, 0.1) !important;
   color: #1C6EA4 !important;
   width: 75% !important;
+}
+
+.addRemoveButton {
+  color: #FFFFFF;
 }/*# sourceMappingURL=all.css.map */
