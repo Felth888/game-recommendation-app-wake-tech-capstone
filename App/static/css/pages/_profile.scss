@@ -4,18 +4,27 @@
     background-color: $color15;
 }
 
-.updateProfile h1
+.updateProfile h1,h2
 {
     font-size: 24px;
     font-weight: 700;
     color: $color6;
 }
 
-.updateProfile p
+
+
+.updateProfile p,li
 {
     font-size: 18px;
     font-weight: 500;
     color: $color6;
+}
+
+.updateProfile a
+{
+    font-size: 18px;
+    font-weight: 500;
+    color: $color16;
 }
 
 

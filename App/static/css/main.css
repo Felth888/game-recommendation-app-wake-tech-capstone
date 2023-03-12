@@ -191,16 +191,22 @@ select {
   background-color: rgba(0, 0, 0, 0.7);
 }
 
-.updateProfile h1 {
+.updateProfile h1, h2 {
   font-size: 24px;
   font-weight: 700;
   color: #7cb9d1;
 }
 
-.updateProfile p {
+.updateProfile p, li {
   font-size: 18px;
   font-weight: 500;
   color: #7cb9d1;
+}
+
+.updateProfile a {
+  font-size: 18px;
+  font-weight: 500;
+  color: rgb(224, 54, 97);
 }
 
 .userName {
