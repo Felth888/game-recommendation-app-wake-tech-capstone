@@ -8,6 +8,7 @@ from App.models import db
 # Fixtures
 # -----------
 
+
 @pytest.fixture(scope='module')
 def new_user():
     user = User(user_name='bob', email='bob@gmail.com', birthdate='2000-12-22')
