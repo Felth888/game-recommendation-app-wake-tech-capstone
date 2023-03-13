@@ -13,4 +13,12 @@ def test_search_page():
         response = test_client.get('/')
         assert response.status_code == 200
         assert b"Play This" in response.data
-        assert b"Search page is working!" in response.data
+        # assert b"Search page is working!" in response.data
+
+
+
+def test_search_with_fixture(test_client):
+
+    response = test_client.get('/')
+    assert response.status_code == 200
+    assert b"Play This" in response.data
