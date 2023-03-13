@@ -17,8 +17,12 @@ def test_search_page():
 
 
 
-def test_search_with_fixture(test_client):
 
+# blueprint for tests
+def test_search_with_fixture(test_client):
+# test_client.get to grab route
     response = test_client.get('/')
+    # status code for success is 200
     assert response.status_code == 200
+    # just a simple search for text in the response, we can get more in depth however
     assert b"Play This" in response.data
