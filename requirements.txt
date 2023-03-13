@@ -10,3 +10,4 @@ email_validator
 pytest
 pytest-flask
 requests
+pandas

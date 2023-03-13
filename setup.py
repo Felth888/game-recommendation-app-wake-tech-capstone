@@ -15,5 +15,7 @@ setup(
         'flask-bcrypt',
         'psycopg2-binary',
         'Flask-WTF',
+        'pandas',
+        'requests'
     ],
 )
