@@ -56,16 +56,19 @@ body {
 
 .searchButton {
   display: inline-block;
+  background: rgba(76, 0, 255, 0.5);
   color: #7cb9d1;
-  font-weight: 800%;
+  width: 120px !important;
+  height: 40px !important;
+  font-weight: 800;
   font-size: 19px;
   letter-spacing: 2px;
   line-height: 24px;
   padding: 1px 2px;
   border-radius: 9px;
-  background: rgba(76, 0, 255, 0.5);
-  width: 100px !important;
-  height: 40px !important;
+}
+.searchButton:hover {
+  background: rgba(76, 0, 255, 0.1);
 }
 
 button {
@@ -75,11 +78,6 @@ button {
 
 button:hover {
   background: rgba(76, 0, 255, 0.1);
-  color: #7cb9d1;
-}
-
-button:active {
-  background: #7cb9d1;
 }
 
 select {
@@ -92,26 +90,36 @@ select {
 }
 
 .addRemoveButton {
+  background: rgba(76, 0, 255, 0.5);
+  color: #7cb9d1;
   width: 200px !important;
   height: 40px !important;
-  font-weight: 800%;
+  font-weight: 800;
   font-size: 19px;
   letter-spacing: 2px;
   line-height: 24px;
   padding: 1px 2px;
   border-radius: 9px;
 }
+.addRemoveButton:hover {
+  background: rgba(76, 0, 255, 0.1);
+}
 
 .recommendationButton {
   float: center !important;
+  background: rgba(76, 0, 255, 0.5);
+  color: #7cb9d1;
   width: 150px !important;
   height: 40px !important;
-  font-weight: 800%;
+  font-weight: 800;
   font-size: 19px;
   letter-spacing: 2px;
   line-height: 24px;
   padding: 1px 2px;
   border-radius: 9px;
+}
+.recommendationButton:hover {
+  background: rgba(76, 0, 255, 0.1);
 }
 
 .updateButton {
@@ -119,17 +127,15 @@ select {
   color: #7cb9d1;
   width: 100px !important;
   height: 30px !important;
-  font-weight: 800%;
+  font-weight: 800;
   font-size: 19px;
   letter-spacing: 2px;
   line-height: 24px;
   padding: 1px 2px;
   border-radius: 9px;
 }
-
 .updateButton:hover {
   background: rgba(76, 0, 255, 0.1);
-  color: #7cb9d1;
 }
 
 .recTable {

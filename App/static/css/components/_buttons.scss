@@ -3,16 +3,11 @@
 .searchButton
 {
     display: inline-block;
-    color: $color6;
-    font-weight: 800%; 
-    font-size: 19px; 
-    letter-spacing: 2.0px;
-    line-height: 24px; 
-    padding: 1px 2px; 
-    border-radius: 9px; 
-    background: $color14; 
-    width: 100px !important;
-    height: 40px !important;
+    @include button($width: 120px,
+                    $height: 40px,
+                    $font_weight: 800,
+                    $font_size: 19px,
+                    $letter_space: 2.0px);
 }
 button
 {
@@ -22,12 +17,8 @@ button
 button:hover 
 {
     background: $color13; 
-    color: $color6;
 }
-button:active 
-{
-    background: $color6; 
-}
+
 
 select
 {
@@ -41,45 +32,28 @@ select
 
 .addRemoveButton
 {
-    width: 200px !important;
-    height: 40px !important;
-    font-weight: 800%; 
-    font-size: 19px; 
-    letter-spacing: 2.0px;
-    line-height: 24px; 
-    padding: 1px 2px; 
-    border-radius: 9px; 
+    @include button($width: 200px,
+                    $height: 40px,
+                    $font_weight: 800,
+                    $font_size: 19px,
+                    $letter_space: 2.0px);
 }
 
 .recommendationButton
 {   
     float: center !important;
-    width: 150px !important;
-    height: 40px !important;
-    font-weight: 800%; 
-    font-size: 19px; 
-    letter-spacing: 2.0px;
-    line-height: 24px; 
-    padding: 1px 2px; 
-    border-radius: 9px; 
+    @include button($width: 150px,
+                    $height: 40px,
+                    $font_weight: 800,
+                    $font_size: 19px,
+                    $letter_space: 2.0px);
 }
 
 .updateButton
 {
-    background: $color14; 
-    color: $color6;  
-    width: 100px !important;
-    height: 30px !important;
-    font-weight: 800%; 
-    font-size: 19px; 
-    letter-spacing: 2.0px;
-    line-height: 24px; 
-    padding: 1px 2px; 
-    border-radius: 9px; 
-}
-
-.updateButton:hover
-{
-    background: $color13; 
-    color: $color6;
+    @include button($width: 100px,
+                    $height: 30px,
+                    $font_weight: 800,
+                    $font_size: 19px,
+                    $letter_space: 2.0px);
 }

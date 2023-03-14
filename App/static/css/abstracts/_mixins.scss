@@ -1,0 +1,25 @@
+@mixin button($width, 
+            $height, 
+            $font_weight, 
+            $font_size,
+            $letter_space)
+{
+    background: $color14; 
+    color: $color6;
+    
+    width: $width !important;
+    height: $height !important;
+
+    font-weight: $font_weight;
+    font-size: $font_size;
+    letter-spacing: $letter_space;
+
+    line-height: 24px; 
+    padding: 1px 2px; 
+    border-radius: 9px; 
+
+    &:hover
+    {
+        background: $color13; 
+    }
+}
