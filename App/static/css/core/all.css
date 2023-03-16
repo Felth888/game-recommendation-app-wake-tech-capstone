@@ -48,8 +48,10 @@ input {
 html {
   font-family: "Courier New", Courier, monospace;
   color: #003066;
+  font-size: 1.1rem;
+  font-weight: 600;
 }
 
 body {
-  background: #00ffa2;
+  background: #00ffcd;
 }/*# sourceMappingURL=all.css.map */

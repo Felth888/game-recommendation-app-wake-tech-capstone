@@ -9,6 +9,7 @@
 	<script type="application/javascript" src="{{ url_for('static', filename='js/libraryUtils.js') }}"></script>
 
     <div>
+		<div class="col__item">
 		<table class="centered">
 			<!-- Text input for game title search -->
 			<tr><td colspan='2'><input type="text" id ='nameInput' placeholder="Game Title" name="nameInput" class="center"></td></tr>
@@ -52,6 +53,7 @@
 				<td colspan="2"></td>
 			</tr>
 		</table>
+	</div>
 		<button onclick="postSearch()" id="searchButton" class="searchButton">Search</button>
 		<br>
 		
@@ -62,7 +64,7 @@
 		</div>
 	<div class="col__items">
 		<!-- Results table - filled dynamically -->
-		<table class="searchResults centered">
+		<table class="searchResults centered center_me">
 			<tr id='resultsHeader' style='display: none;'>
 				<th>Cover Art</th>
 				<th>Game Title</th>

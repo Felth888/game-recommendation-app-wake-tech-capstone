@@ -48,88 +48,90 @@ input {
 html {
   font-family: "Courier New", Courier, monospace;
   color: #003066;
+  font-size: 1.1rem;
+  font-weight: 600;
 }
 
 body {
-  background: #00ffa2;
+  background: #00ffcd;
 }
 
 button {
-  background: rgba(76, 0, 255, 0.5);
+  background: #75d83c;
   color: #003066;
 }
 
 button:hover {
-  background: #00ffa2;
+  background: #00ffcd;
 }
 
 select {
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
-  background: #00ffa2 !important;
-  color: rgb(28, 110, 164) !important;
+  background: rgba(241, 209, 159, 0.8078431373) !important;
+  color: #003066 !important;
   width: 75% !important;
 }
 
 .searchButton {
   display: inline-block;
-  background: rgba(76, 0, 255, 0.5);
+  background: #75d83c;
   color: #003066;
-  width: 120px !important;
-  height: 40px !important;
+  width: 7.5rem !important;
+  height: 2.5rem !important;
   font-weight: 600;
-  font-size: 19px;
-  letter-spacing: 2px;
+  font-size: 1.1875rem;
+  letter-spacing: 0.125rem;
   line-height: 24px;
   padding: 1px 2px;
   border-radius: 9px;
 }
 .searchButton:hover {
-  background: #00ffa2;
+  background: #00ffcd;
 }
 
 .addRemoveButton {
-  background: rgba(76, 0, 255, 0.5);
+  background: #75d83c;
   color: #003066;
-  width: 250px !important;
-  height: 40px !important;
+  width: 15rem !important;
+  height: 2.5rem !important;
   font-weight: 800;
-  font-size: 19px;
-  letter-spacing: 2px;
+  font-size: 1.1875rem;
+  letter-spacing: 0.125rem;
   line-height: 24px;
   padding: 1px 2px;
   border-radius: 9px;
 }
 .addRemoveButton:hover {
-  background: #00ffa2;
+  background: #00ffcd;
 }
 
 .recommendationButton {
-  background: rgba(76, 0, 255, 0.5);
+  background: #75d83c;
   color: #003066;
-  width: 150px !important;
-  height: 40px !important;
+  width: 9.375rem !important;
+  height: 2.5rem !important;
   font-weight: 800;
-  font-size: 19px;
-  letter-spacing: 2px;
+  font-size: 1.1875rem;
+  letter-spacing: 0.125rem;
   line-height: 24px;
   padding: 1px 2px;
   border-radius: 9px;
   float: center !important;
 }
 .recommendationButton:hover {
-  background: #00ffa2;
+  background: #00ffcd;
 }
 
 .updateButton {
-  background: rgba(76, 0, 255, 0.5);
+  background: #75d83c;
   color: #003066;
-  width: 100px !important;
-  height: 30px !important;
+  width: 6.25rem !important;
+  height: 1.875rem !important;
   font-weight: 800;
-  font-size: 19px;
-  letter-spacing: 2px;
+  font-size: 1.1875rem;
+  letter-spacing: 0.125rem;
   line-height: 24px;
   padding: 1px 2px;
   border-radius: 9px;
@@ -138,7 +140,7 @@ select {
   vertical-align: middle !important;
 }
 .updateButton:hover {
-  background: #00ffa2;
+  background: #00ffcd;
 }
 
 .recTable {
@@ -155,8 +157,31 @@ select {
   margin: auto;
 }
 
+@media only screen and (max-width: 40rem), (min-device-width: 28rem) and (max-device-width: 60rem) {
+  /* Force table to not be like tables anymore */
+  .center_me table, .center_me tbody, .center_me td {
+    display: block;
+  }
+  .center_me th {
+    display: none;
+  }
+  .center_me td {
+    /* Behave  like a "row" */
+    position: relative;
+  }
+  .center_me td:before {
+    /* Now like a table header */
+    position: absolute;
+    /* Top/left values mimic padding */
+    top: 6px;
+    left: 6px;
+    width: 45%;
+    padding-right: 10px;
+    white-space: nowrap;
+  }
+}
 .navigation {
-  background-image: #00ffa2;
+  background-image: #00ffcd;
   overflow: hidden;
 }
 
@@ -164,17 +189,17 @@ select {
   float: right;
   color: #003066;
   text-align: center;
-  padding: 14px 16px;
+  padding: 0.8rem 1rem;
   text-decoration: none;
-  font-size: 18px;
+  font-size: 1.125rem;
   font-weight: 550;
-  letter-spacing: 2px;
-  word-spacing: 2.4px;
+  letter-spacing: 0.125rem;
+  word-spacing: 0.15rem;
 }
 
 .navigation a:hover {
-  background-color: rgb(28, 110, 164);
-  color: #CCCCCC;
+  background-color: rgb(224, 54, 97);
+  color: #003066;
 }
 
 .navigation a:active {
@@ -183,7 +208,7 @@ select {
 }
 
 .header {
-  background: #00ffa2;
+  background: #00ffcd;
   color: #003066;
 }
 
@@ -204,23 +229,23 @@ select {
 .col { /* Chrome, Safari, Opera */
   -moz-column-count: 1; /* Firefox */
   column-count: 1; /* Chrome, Safari, Opera */
-  -moz-column-width: 14em; /* Firefox */
-  column-width: 14em;
+  -moz-column-width: 14rem; /* Firefox */
+  column-width: 14rem;
 }
-@media (min-width: 40em) {
+@media (min-width: 40rem) {
   .col { /* Chrome, Safari, Opera */
     -moz-column-count: 2; /* Firefox */
     column-count: 2; /* Chrome, Safari, Opera */
-    -moz-column-width: 14em; /* Firefox */
-    column-width: 14em;
+    -moz-column-width: 14rem; /* Firefox */
+    column-width: 14rem;
   }
 }
-@media (min-width: 60em) {
+@media (min-width: 60rem) {
   .col { /* Chrome, Safari, Opera */
-    -moz-column-count: 3; /* Firefox */
-    column-count: 3; /* Chrome, Safari, Opera */
-    -moz-column-width: 20em; /* Firefox */
-    column-width: 20em;
+    -moz-column-count: 5; /* Firefox */
+    column-count: 5; /* Chrome, Safari, Opera */
+    -moz-column-width: 13.3333333333rem; /* Firefox */
+    column-width: 13.3333333333rem;
   }
 }
 .col__item {
@@ -229,15 +254,92 @@ select {
   -moz-column-break-inside: avoid;
        break-inside: avoid; /* IE 10+ */
 }
-@media (min-width: 40em) {
+@media (min-width: 40rem) {
   .col__item {
+    display: inline-block;
+  }
+}
+@media (min-width: 60rem) {
+  .col__item {
+    display: inline-block;
+  }
+}
+
+.rslt { /* Chrome, Safari, Opera */
+  -moz-column-count: 1; /* Firefox */
+  column-count: 1; /* Chrome, Safari, Opera */
+  -moz-column-width: 14rem; /* Firefox */
+  column-width: 14rem;
+}
+@media (min-width: 40rem) {
+  .rslt { /* Chrome, Safari, Opera */
+    -moz-column-count: 1; /* Firefox */
+    column-count: 1; /* Chrome, Safari, Opera */
+    -moz-column-width: 14rem; /* Firefox */
+    column-width: 14rem;
+  }
+}
+@media (min-width: 60rem) {
+  .rslt { /* Chrome, Safari, Opera */
+    -moz-column-count: 1; /* Firefox */
+    column-count: 1; /* Chrome, Safari, Opera */
+    -moz-column-width: 20rem; /* Firefox */
+    column-width: 20rem;
+  }
+}
+.rslt__item {
+  display: block; /* Chrome, Safari, Opera */
+  page-break-inside: avoid; /* Firefox */
+  -moz-column-break-inside: avoid;
+       break-inside: avoid; /* IE 10+ */
+  padding-bottom: 2%;
+}
+@media (min-width: 40rem) {
+  .rslt__item {
+    display: inline-block;
+  }
+}
+
+.srch {
+  position: relative; /* Chrome, Safari, Opera */
+  -moz-column-count: 1; /* Firefox */
+  column-count: 1; /* Chrome, Safari, Opera */
+  -moz-column-width: 14rem; /* Firefox */
+  column-width: 14rem;
+}
+@media (min-width: 40rem) {
+  .srch { /* Chrome, Safari, Opera */
+    -moz-column-count: 2; /* Firefox */
+    column-count: 2; /* Chrome, Safari, Opera */
+    -moz-column-width: 14rem; /* Firefox */
+    column-width: 14rem;
+  }
+}
+@media (min-width: 60rem) {
+  .srch { /* Chrome, Safari, Opera */
+    -moz-column-count: 5; /* Firefox */
+    column-count: 5; /* Chrome, Safari, Opera */
+    -moz-column-width: 60rem; /* Firefox */
+    column-width: 60rem;
+  }
+}
+.srch__item {
+  display: block; /* Chrome, Safari, Opera */
+  page-break-inside: avoid; /* Firefox */
+  -moz-column-break-inside: avoid;
+       break-inside: avoid; /* IE 10+ */
+  float: left;
+  padding-left: 1rem;
+}
+@media (min-width: 40rem) {
+  .srch__item {
     display: inline-block;
   }
 }
 
 .updateProfile {
   text-align: center;
-  background-color: #00ffa2;
+  background-color: #00ffcd;
 }
 
 .updateProfile h1, h2 {
@@ -271,7 +373,7 @@ select {
 }
 
 .updateProfile input {
-  background: rgba(76, 0, 255, 0.5);
+  background: #75d83c;
   color: #003066;
   width: 200px !important;
   height: 30px !important;
@@ -288,14 +390,14 @@ select {
   margin-bottom: 5px;
 }
 .updateProfile input:hover {
-  background: #00ffa2;
+  background: #00ffcd;
 }
 
 .userName {
   padding: 8px;
   font-size: 16px;
   border-width: 1px;
-  border-color: #CCCCCC;
+  border-color: #003066;
   background-color: rgba(255, 255, 255, 0.8980392157);
   color: #000000;
   border-style: solid;
@@ -310,7 +412,7 @@ select {
   padding: 8px;
   font-size: 16px;
   border-width: 1px;
-  border-color: #CCCCCC;
+  border-color: #003066;
   background-color: rgba(255, 255, 255, 0.8980392157);
   color: #000000;
   border-style: solid;
@@ -324,7 +426,7 @@ select {
   padding: 8px;
   font-size: 16px;
   border-width: 1px;
-  border-color: #CCCCCC;
+  border-color: #003066;
   background-color: rgba(255, 255, 255, 0.8980392157);
   color: #000000;
   border-style: solid;
@@ -344,7 +446,7 @@ select {
   vertical-align: middle;
 }
 .searchResults tbody td img, .searchResults tbody th img {
-  width: 150px;
+  width: 9.375rem;
 }
 .searchResults tbody th {
   margin: 10px;
@@ -357,29 +459,27 @@ select {
 }
 .searchResults tbody td button {
   width: 100%;
-  font-size: 15px;
 }
 
 input, select {
-  padding: 8px;
-  font-size: 16px;
-  border-width: 1px;
-  border-color: #CCCCCC;
-  background-color: rgba(255, 255, 255, 0.8980392157);
+  padding: 0.5rem;
+  border-width: 0.1rem;
+  border-color: #003066;
+  background-color: rgba(241, 209, 159, 0.8078431373);
   color: #000000;
   border-style: solid;
-  border-radius: 6px;
-  box-shadow: 0px 0px 3px rgba(66, 66, 66, 0.7490196078);
-  text-shadow: 0px 0px 0px rgba(66, 66, 66, 0.7490196078);
-  margin-bottom: 5px;
+  border-radius: 0.5rem;
+  box-shadow: 0rem 0rem 0.3rem rgba(66, 66, 66, 0.7490196078);
+  text-shadow: 0rem 0rem 0rem rgba(66, 66, 66, 0.7490196078);
+  margin-bottom: 0.2rem;
 }
 
 #nameInput {
-  background-color: #00ffa2;
+  background-color: rgba(241, 209, 159, 0.8078431373);
   width: 100%;
-  padding: 10px 5px;
+  padding: 0.7rem 0.2rem;
   float: left;
-  color: #CCCCCC;
+  color: #003066;
   border: 0;
   border-radius: 3px 0 0 3px;
 }
@@ -393,9 +493,9 @@ input, select {
 
 #resultsPending {
   margin: auto;
-  padding: 20px;
+  padding: 1.5rem;
   text-align: center;
-  font-size: 30px;
+  font-size: 2rem;
 }
 
 #searchButton {
@@ -408,11 +508,16 @@ input, select {
 .searchResults {
   color: #003066;
   font-weight: 800%;
-  font-size: 19px;
-  letter-spacing: 2px;
-  line-height: 24px;
+  font-size: 1.4rem;
+  letter-spacing: 0.1rem;
+  line-height: 1.7rem;
+  width: 98%;
 }
 
 .searchResults tr {
-  background: #00ffa2;
+  background: #00ffcd;
+}
+
+.title {
+  font-size: 2rem;
 }/*# sourceMappingURL=main.css.map */

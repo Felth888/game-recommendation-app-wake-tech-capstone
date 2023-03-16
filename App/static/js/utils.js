@@ -54,7 +54,7 @@ var ID = function(elementID) {
  */
 function createTableFromVal(arr, valString) {
 
-    var tableString = "<table>";
+    var tableString = "<table class=\"center_me\">";
     // Doesnt pull data from empty endpoints (such as no platform)
     if(typeof arr != "undefined") {
         // Loop through each value and add a table cell

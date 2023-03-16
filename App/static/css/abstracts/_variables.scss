@@ -10,11 +10,11 @@ $color5: #273E47;
 
 $main: #003066;
 
-$field: rgb(28, 110, 164, 1);
+$field: #f1d19fce;
 
 $color8: #080808;
 
-$color9: #CCCCCC;
+$color9: #f1d19fce;
 
 $color10: #ffffffe5;
 
@@ -22,9 +22,9 @@ $color11: #000000;
 
 $color12: #424242bf;
 
-$back: #00ffa2;
+$back: #00ffcd;
 
-$button: rgba(76, 0, 255, 0.5);
+$button: #75d83c;
 
 $color15: rgba(0, 0, 0, 0.7);
 
@@ -34,8 +34,8 @@ $image: './../assets/background.jpg';
 
 
 
-$xl: 87.5em; // 4k and hi-res desktop
-$lg: 60em; // 1080 and hi-res laptops
-$med: 40em; // hi-res tablets and low-res laptops
-$sm: 28em; // mobile and low-res tablets
-$xs: 20em; // mobile only
+$xl: 87.5rem; // 4k and hi-res desktop
+$lg: 60rem; // 1080 and hi-res laptops
+$med: 40rem; // hi-res tablets and low-res laptops
+$sm: 28rem; // mobile and low-res tablets
+$xs: 20rem; // mobile only

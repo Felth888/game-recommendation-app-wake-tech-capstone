@@ -1,6 +1,6 @@
 .updateProfile {
   text-align: center;
-  background-color: #00ffa2;
+  background-color: #00ffcd;
 }
 
 .updateProfile h1, h2 {
@@ -34,7 +34,7 @@
 }
 
 .updateProfile input {
-  background: rgba(76, 0, 255, 0.5);
+  background: #75d83c;
   color: #003066;
   width: 200px !important;
   height: 30px !important;
@@ -51,14 +51,14 @@
   margin-bottom: 5px;
 }
 .updateProfile input:hover {
-  background: #00ffa2;
+  background: #00ffcd;
 }
 
 .userName {
   padding: 8px;
   font-size: 16px;
   border-width: 1px;
-  border-color: #CCCCCC;
+  border-color: #003066;
   background-color: rgba(255, 255, 255, 0.8980392157);
   color: #000000;
   border-style: solid;
@@ -73,7 +73,7 @@
   padding: 8px;
   font-size: 16px;
   border-width: 1px;
-  border-color: #CCCCCC;
+  border-color: #003066;
   background-color: rgba(255, 255, 255, 0.8980392157);
   color: #000000;
   border-style: solid;
@@ -87,7 +87,7 @@
   padding: 8px;
   font-size: 16px;
   border-width: 1px;
-  border-color: #CCCCCC;
+  border-color: #003066;
   background-color: rgba(255, 255, 255, 0.8980392157);
   color: #000000;
   border-style: solid;
@@ -107,7 +107,7 @@
   vertical-align: middle;
 }
 .searchResults tbody td img, .searchResults tbody th img {
-  width: 150px;
+  width: 9.375rem;
 }
 .searchResults tbody th {
   margin: 10px;
@@ -120,29 +120,27 @@
 }
 .searchResults tbody td button {
   width: 100%;
-  font-size: 15px;
 }
 
 input, select {
-  padding: 8px;
-  font-size: 16px;
-  border-width: 1px;
-  border-color: #CCCCCC;
-  background-color: rgba(255, 255, 255, 0.8980392157);
+  padding: 0.5rem;
+  border-width: 0.1rem;
+  border-color: #003066;
+  background-color: rgba(241, 209, 159, 0.8078431373);
   color: #000000;
   border-style: solid;
-  border-radius: 6px;
-  box-shadow: 0px 0px 3px rgba(66, 66, 66, 0.7490196078);
-  text-shadow: 0px 0px 0px rgba(66, 66, 66, 0.7490196078);
-  margin-bottom: 5px;
+  border-radius: 0.5rem;
+  box-shadow: 0rem 0rem 0.3rem rgba(66, 66, 66, 0.7490196078);
+  text-shadow: 0rem 0rem 0rem rgba(66, 66, 66, 0.7490196078);
+  margin-bottom: 0.2rem;
 }
 
 #nameInput {
-  background-color: #00ffa2;
+  background-color: rgba(241, 209, 159, 0.8078431373);
   width: 100%;
-  padding: 10px 5px;
+  padding: 0.7rem 0.2rem;
   float: left;
-  color: #CCCCCC;
+  color: #003066;
   border: 0;
   border-radius: 3px 0 0 3px;
 }
@@ -156,9 +154,9 @@ input, select {
 
 #resultsPending {
   margin: auto;
-  padding: 20px;
+  padding: 1.5rem;
   text-align: center;
-  font-size: 30px;
+  font-size: 2rem;
 }
 
 #searchButton {
@@ -171,11 +169,16 @@ input, select {
 .searchResults {
   color: #003066;
   font-weight: 800%;
-  font-size: 19px;
-  letter-spacing: 2px;
-  line-height: 24px;
+  font-size: 1.4rem;
+  letter-spacing: 0.1rem;
+  line-height: 1.7rem;
+  width: 98%;
 }
 
 .searchResults tr {
-  background: #00ffa2;
+  background: #00ffcd;
+}
+
+.title {
+  font-size: 2rem;
 }/*# sourceMappingURL=all.css.map */

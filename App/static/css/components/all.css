@@ -1,79 +1,79 @@
 button {
-  background: rgba(76, 0, 255, 0.5);
+  background: #75d83c;
   color: #003066;
 }
 
 button:hover {
-  background: #00ffa2;
+  background: #00ffcd;
 }
 
 select {
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
-  background: #00ffa2 !important;
-  color: rgb(28, 110, 164) !important;
+  background: rgba(241, 209, 159, 0.8078431373) !important;
+  color: #003066 !important;
   width: 75% !important;
 }
 
 .searchButton {
   display: inline-block;
-  background: rgba(76, 0, 255, 0.5);
+  background: #75d83c;
   color: #003066;
-  width: 120px !important;
-  height: 40px !important;
+  width: 7.5rem !important;
+  height: 2.5rem !important;
   font-weight: 600;
-  font-size: 19px;
-  letter-spacing: 2px;
+  font-size: 1.1875rem;
+  letter-spacing: 0.125rem;
   line-height: 24px;
   padding: 1px 2px;
   border-radius: 9px;
 }
 .searchButton:hover {
-  background: #00ffa2;
+  background: #00ffcd;
 }
 
 .addRemoveButton {
-  background: rgba(76, 0, 255, 0.5);
+  background: #75d83c;
   color: #003066;
-  width: 250px !important;
-  height: 40px !important;
+  width: 15rem !important;
+  height: 2.5rem !important;
   font-weight: 800;
-  font-size: 19px;
-  letter-spacing: 2px;
+  font-size: 1.1875rem;
+  letter-spacing: 0.125rem;
   line-height: 24px;
   padding: 1px 2px;
   border-radius: 9px;
 }
 .addRemoveButton:hover {
-  background: #00ffa2;
+  background: #00ffcd;
 }
 
 .recommendationButton {
-  background: rgba(76, 0, 255, 0.5);
+  background: #75d83c;
   color: #003066;
-  width: 150px !important;
-  height: 40px !important;
+  width: 9.375rem !important;
+  height: 2.5rem !important;
   font-weight: 800;
-  font-size: 19px;
-  letter-spacing: 2px;
+  font-size: 1.1875rem;
+  letter-spacing: 0.125rem;
   line-height: 24px;
   padding: 1px 2px;
   border-radius: 9px;
   float: center !important;
 }
 .recommendationButton:hover {
-  background: #00ffa2;
+  background: #00ffcd;
 }
 
 .updateButton {
-  background: rgba(76, 0, 255, 0.5);
+  background: #75d83c;
   color: #003066;
-  width: 100px !important;
-  height: 30px !important;
+  width: 6.25rem !important;
+  height: 1.875rem !important;
   font-weight: 800;
-  font-size: 19px;
-  letter-spacing: 2px;
+  font-size: 1.1875rem;
+  letter-spacing: 0.125rem;
   line-height: 24px;
   padding: 1px 2px;
   border-radius: 9px;
@@ -82,7 +82,7 @@ select {
   vertical-align: middle !important;
 }
 .updateButton:hover {
-  background: #00ffa2;
+  background: #00ffcd;
 }
 
 .recTable {
@@ -97,4 +97,28 @@ select {
 
 .centered {
   margin: auto;
+}
+
+@media only screen and (max-width: 40rem), (min-device-width: 28rem) and (max-device-width: 60rem) {
+  /* Force table to not be like tables anymore */
+  .center_me table, .center_me tbody, .center_me td {
+    display: block;
+  }
+  .center_me th {
+    display: none;
+  }
+  .center_me td {
+    /* Behave  like a "row" */
+    position: relative;
+  }
+  .center_me td:before {
+    /* Now like a table header */
+    position: absolute;
+    /* Top/left values mimic padding */
+    top: 6px;
+    left: 6px;
+    width: 45%;
+    padding-right: 10px;
+    white-space: nowrap;
+  }
 }/*# sourceMappingURL=all.css.map */

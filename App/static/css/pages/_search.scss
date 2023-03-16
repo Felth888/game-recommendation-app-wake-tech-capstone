@@ -10,7 +10,7 @@
             vertical-align: middle;
 
             img {
-                width: 150px;
+                width: 9.375rem;
             }
         }
 
@@ -30,7 +30,7 @@
 
             button {
                 width: 100%;
-                font-size: 15px;
+                
             }
         }
 
@@ -38,25 +38,25 @@
 }
 
 input, select {
-    padding: 8px;
-    font-size: 16px;
-    border-width: 1px;
-    border-color: $color9;
-    background-color: $color10;
+    padding: 0.5rem;
+    
+    border-width: 0.1rem;
+    border-color: $main;
+    background-color: $field;
     color: $color11;
     border-style: solid;
-    border-radius: 6px;
-    box-shadow: 0px 0px 3px $color12;
-    text-shadow: 0px 0px 0px $color12;
-    margin-bottom: 5px;
+    border-radius: 0.5rem;
+    box-shadow: 0rem 0rem 0.3rem $color12;
+    text-shadow: 0rem 0rem 0rem $color12;
+    margin-bottom: 0.2rem;
 }
 
 #nameInput {
-    background-color: $back;
+    background-color: $field;
     width: 100%;
-    padding: 10px 5px;
+    padding: 0.7rem 0.2rem;
     float: left;
-    color: $color9;
+    color: $main;
     border: 0;
     border-radius: 3px 0 0 3px;
     &:focus {
@@ -70,9 +70,9 @@ input, select {
 
 #resultsPending {
     margin: auto;
-    padding: 20px;
+    padding: 1.5rem;
     text-align: center;
-    font-size: 30px;
+    font-size: 2rem;
 }
 
 #searchButton {
@@ -86,11 +86,16 @@ input, select {
 {
     color: $main;
     font-weight: 800%; 
-    font-size: 19px; 
-    letter-spacing: 2.0px;
-    line-height: 24px; 
+    font-size: 1.4rem; 
+    letter-spacing: 0.1rem;
+    line-height: 1.7rem; 
+    width: 98%;
 }
 .searchResults tr
 {
     background: $back;
+}
+
+.title {
+    font-size: 2rem;
 }

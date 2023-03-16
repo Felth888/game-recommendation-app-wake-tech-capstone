@@ -23,11 +23,12 @@
             <br>
             <p>Hours Played: </p><br>
             <p>Rating: </p><br>
+            <form action="#" method="POST">
+                <input class="addRemoveButton" type="submit" name={{ game.id }} value="Remove from Library">
+                </form>
+                <br><br>
         </div>
-        <form action="#" method="POST">
-        <input class="addRemoveButton" type="submit" name={{ game.id }} value="Remove from Library">
-        </form>
-        <br><br>
+
         {% endfor %}
     </div>
 

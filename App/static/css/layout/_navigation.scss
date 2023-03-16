@@ -9,17 +9,17 @@
     float: right;
     color: $main;
     text-align: center;
-    padding: 14px 16px;
+    padding: 0.8rem 1rem;
     text-decoration: none;
-    font-size: 18px;
+    font-size: 1.125rem;
     font-weight: 550;
-    letter-spacing: 2.0px;
-    word-spacing: 2.4px;
+    letter-spacing: 0.125rem;
+    word-spacing: 0.15rem;
 }
 
 .navigation a:hover {
-    background-color: $field;
-    color: $color9;
+    background-color: $notice;
+    color: $main;
 }
 
 .navigation a:active {

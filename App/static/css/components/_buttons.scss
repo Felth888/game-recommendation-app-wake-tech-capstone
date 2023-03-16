@@ -16,47 +16,47 @@ select
     -webkit-appearance: none;
    -moz-appearance: none;
    appearance: none;
-    background: $back !important;
-    color: $field !important;
+    background: $field !important;
+    color: $main !important;
     width: 75% !important;
 }
 
 .searchButton
 {
     display: inline-block;
-    @include button($width: 120px,
-                    $height: 40px,
+    @include button($width: 7.5rem,
+                    $height: 2.5rem,
                     $font_weight: 600,
-                    $font_size: 19px,
-                    $letter_space: 2.0px);
+                    $font_size: 1.1875rem,
+                    $letter_space: 0.125rem);
 }
 
 .addRemoveButton
 {
-    @include button($width: 250px,
-                    $height: 40px,
+    @include button($width: 15rem,
+                    $height: 2.5rem,
                     $font_weight: 800,
-                    $font_size: 19px,
-                    $letter_space: 2.0px);
+                    $font_size: 1.1875rem,
+                    $letter_space: 0.125rem);
 }
 
 .recommendationButton
 {   
-    @include button($width: 150px,
-                    $height: 40px,
+    @include button($width: 9.375rem,
+                    $height: 2.5rem,
                     $font_weight: 800,
-                    $font_size: 19px,
-                    $letter_space: 2.0px);
+                    $font_size: 1.1875rem,
+                    $letter_space: 0.125rem);
     float: center !important;
 }
 
 .updateButton
 {
-    @include button($width: 100px,
-                    $height: 30px,
+    @include button($width: 6.25rem,
+                    $height: 1.875rem,
                     $font_weight: 800,
-                    $font_size: 19px,
-                    $letter_space: 2.0px);
+                    $font_size: 1.1875rem,
+                    $letter_space: 0.125rem);
 
     float: center !important;
     text-align: center !important;
