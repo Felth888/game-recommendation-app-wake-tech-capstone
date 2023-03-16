@@ -1,38 +1,39 @@
 @import "../abstracts/variables";
+@import "../abstracts/mixins";
 
-.searchButton
-{
-    display: inline-block;
-    @include button($width: 120px,
-                    $height: 40px,
-                    $font_weight: 800,
-                    $font_size: 19px,
-                    $letter_space: 2.0px);
-}
 button
 {
-    background: $color14; 
-    color: $color6;    
+    background: $button; 
+    color: $main;    
 }
 button:hover 
 {
-    background: $color13; 
+    background: $back; 
 }
-
 
 select
 {
     -webkit-appearance: none;
    -moz-appearance: none;
    appearance: none;
-    background: $color13 !important;
-    color: $color7 !important;
+    background: $back !important;
+    color: $field !important;
     width: 75% !important;
+}
+
+.searchButton
+{
+    display: inline-block;
+    @include button($width: 120px,
+                    $height: 40px,
+                    $font_weight: 600,
+                    $font_size: 19px,
+                    $letter_space: 2.0px);
 }
 
 .addRemoveButton
 {
-    @include button($width: 200px,
+    @include button($width: 250px,
                     $height: 40px,
                     $font_weight: 800,
                     $font_size: 19px,
@@ -41,12 +42,12 @@ select
 
 .recommendationButton
 {   
-    float: center !important;
     @include button($width: 150px,
                     $height: 40px,
                     $font_weight: 800,
                     $font_size: 19px,
                     $letter_space: 2.0px);
+    float: center !important;
 }
 
 .updateButton
@@ -56,4 +57,8 @@ select
                     $font_weight: 800,
                     $font_size: 19px,
                     $letter_space: 2.0px);
+
+    float: center !important;
+    text-align: center !important;
+    vertical-align: middle !important;
 }

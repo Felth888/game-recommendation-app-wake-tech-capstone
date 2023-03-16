@@ -1,3 +1,103 @@
+.updateProfile {
+  text-align: center;
+  background-color: #00ffa2;
+}
+
+.updateProfile h1, h2 {
+  font-size: 24px;
+  font-weight: 700;
+  color: #003066;
+}
+
+.updateProfile h3 {
+  font-size: 22px;
+  font-weight: 700;
+  color: #003066;
+}
+
+.updateProfile h4 {
+  font-size: 20px;
+  font-weight: 700;
+  color: #003066;
+}
+
+.updateProfile p, li {
+  font-size: 18px;
+  font-weight: 500;
+  color: #003066;
+}
+
+.updateProfile a {
+  font-size: 18px;
+  font-weight: 500;
+  color: rgb(224, 54, 97);
+}
+
+.updateProfile input {
+  background: rgba(76, 0, 255, 0.5);
+  color: #003066;
+  width: 200px !important;
+  height: 30px !important;
+  font-weight: 600;
+  font-size: 16px;
+  letter-spacing: 2px;
+  line-height: 24px;
+  padding: 1px 2px;
+  border-radius: 9px;
+  padding: 8px;
+  border-radius: 6px;
+  box-shadow: 0px 0px 3px rgba(66, 66, 66, 0.7490196078);
+  text-shadow: 0px 0px 0px rgba(66, 66, 66, 0.7490196078);
+  margin-bottom: 5px;
+}
+.updateProfile input:hover {
+  background: #00ffa2;
+}
+
+.userName {
+  padding: 8px;
+  font-size: 16px;
+  border-width: 1px;
+  border-color: #CCCCCC;
+  background-color: rgba(255, 255, 255, 0.8980392157);
+  color: #000000;
+  border-style: solid;
+  border-radius: 6px;
+  box-shadow: 0px 0px 3px rgba(66, 66, 66, 0.7490196078);
+  text-shadow: 0px 0px 0px rgba(66, 66, 66, 0.7490196078);
+  margin-bottom: 5px;
+  width: 200px;
+}
+
+.birthday {
+  padding: 8px;
+  font-size: 16px;
+  border-width: 1px;
+  border-color: #CCCCCC;
+  background-color: rgba(255, 255, 255, 0.8980392157);
+  color: #000000;
+  border-style: solid;
+  border-radius: 6px;
+  box-shadow: 0px 0px 3px rgba(66, 66, 66, 0.7490196078);
+  text-shadow: 0px 0px 0px rgba(66, 66, 66, 0.7490196078);
+  margin-bottom: 5px;
+}
+
+.email {
+  padding: 8px;
+  font-size: 16px;
+  border-width: 1px;
+  border-color: #CCCCCC;
+  background-color: rgba(255, 255, 255, 0.8980392157);
+  color: #000000;
+  border-style: solid;
+  border-radius: 6px;
+  box-shadow: 0px 0px 3px rgba(66, 66, 66, 0.7490196078);
+  text-shadow: 0px 0px 0px rgba(66, 66, 66, 0.7490196078);
+  margin-bottom: 5px;
+  width: 300px;
+}
+
 .centered {
   margin: auto;
 }
@@ -28,17 +128,26 @@ input, select {
   font-size: 16px;
   border-width: 1px;
   border-color: #CCCCCC;
-  background-color: #FFFFFF;
+  background-color: rgba(255, 255, 255, 0.8980392157);
   color: #000000;
   border-style: solid;
   border-radius: 6px;
-  box-shadow: 0px 0px 3px rgba(66, 66, 66, 0.75);
-  text-shadow: 0px 0px 0px rgba(66, 66, 66, 0.75);
+  box-shadow: 0px 0px 3px rgba(66, 66, 66, 0.7490196078);
+  text-shadow: 0px 0px 0px rgba(66, 66, 66, 0.7490196078);
   margin-bottom: 5px;
 }
 
 #nameInput {
+  background-color: #00ffa2;
   width: 100%;
+  padding: 10px 5px;
+  float: left;
+  color: #CCCCCC;
+  border: 0;
+  border-radius: 3px 0 0 3px;
+}
+#nameInput:focus {
+  outline: 0;
 }
 
 #genreInput {
@@ -57,4 +166,16 @@ input, select {
   width: 75%;
   display: block;
   padding: 2px;
+}
+
+.searchResults {
+  color: #003066;
+  font-weight: 800%;
+  font-size: 19px;
+  letter-spacing: 2px;
+  line-height: 24px;
+}
+
+.searchResults tr {
+  background: #00ffa2;
 }/*# sourceMappingURL=all.css.map */

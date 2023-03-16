@@ -1,13 +1,13 @@
 @import "../abstracts/variables";
 
 .navigation {
-    background-image: url($backgroundImage);
+    background-image: $back;
     overflow: hidden;
 }
 
 .navigation a {
     float: right;
-    color: $color6;
+    color: $main;
     text-align: center;
     padding: 14px 16px;
     text-decoration: none;
@@ -18,11 +18,11 @@
 }
 
 .navigation a:hover {
-    background-color: $color7;
+    background-color: $field;
     color: $color9;
 }
 
 .navigation a:active {
-    background-color: $color6;
+    background-color: $main;
     color: $color1;
 }

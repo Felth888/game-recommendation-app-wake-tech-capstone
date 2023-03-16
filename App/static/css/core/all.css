@@ -47,9 +47,9 @@ input {
 
 html {
   font-family: "Courier New", Courier, monospace;
-  color: color3;
+  color: #003066;
 }
 
 body {
-  background-image: url("./../assets/background.jpg");
+  background: #00ffa2;
 }/*# sourceMappingURL=all.css.map */

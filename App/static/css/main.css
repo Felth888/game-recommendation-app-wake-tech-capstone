@@ -47,20 +47,38 @@ input {
 
 html {
   font-family: "Courier New", Courier, monospace;
-  color: #75d83c;
+  color: #003066;
 }
 
 body {
-  background-image: url("./../assets/background.jpg");
+  background: #00ffa2;
+}
+
+button {
+  background: rgba(76, 0, 255, 0.5);
+  color: #003066;
+}
+
+button:hover {
+  background: #00ffa2;
+}
+
+select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background: #00ffa2 !important;
+  color: rgb(28, 110, 164) !important;
+  width: 75% !important;
 }
 
 .searchButton {
   display: inline-block;
   background: rgba(76, 0, 255, 0.5);
-  color: #7cb9d1;
+  color: #003066;
   width: 120px !important;
   height: 40px !important;
-  font-weight: 800;
+  font-weight: 600;
   font-size: 19px;
   letter-spacing: 2px;
   line-height: 24px;
@@ -68,31 +86,13 @@ body {
   border-radius: 9px;
 }
 .searchButton:hover {
-  background: rgba(76, 0, 255, 0.1);
-}
-
-button {
-  background: rgba(76, 0, 255, 0.5);
-  color: #7cb9d1;
-}
-
-button:hover {
-  background: rgba(76, 0, 255, 0.1);
-}
-
-select {
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-  background: rgba(76, 0, 255, 0.1) !important;
-  color: #1C6EA4 !important;
-  width: 75% !important;
+  background: #00ffa2;
 }
 
 .addRemoveButton {
   background: rgba(76, 0, 255, 0.5);
-  color: #7cb9d1;
-  width: 200px !important;
+  color: #003066;
+  width: 250px !important;
   height: 40px !important;
   font-weight: 800;
   font-size: 19px;
@@ -102,13 +102,12 @@ select {
   border-radius: 9px;
 }
 .addRemoveButton:hover {
-  background: rgba(76, 0, 255, 0.1);
+  background: #00ffa2;
 }
 
 .recommendationButton {
-  float: center !important;
   background: rgba(76, 0, 255, 0.5);
-  color: #7cb9d1;
+  color: #003066;
   width: 150px !important;
   height: 40px !important;
   font-weight: 800;
@@ -117,14 +116,15 @@ select {
   line-height: 24px;
   padding: 1px 2px;
   border-radius: 9px;
+  float: center !important;
 }
 .recommendationButton:hover {
-  background: rgba(76, 0, 255, 0.1);
+  background: #00ffa2;
 }
 
 .updateButton {
   background: rgba(76, 0, 255, 0.5);
-  color: #7cb9d1;
+  color: #003066;
   width: 100px !important;
   height: 30px !important;
   font-weight: 800;
@@ -133,9 +133,12 @@ select {
   line-height: 24px;
   padding: 1px 2px;
   border-radius: 9px;
+  float: center !important;
+  text-align: center !important;
+  vertical-align: middle !important;
 }
 .updateButton:hover {
-  background: rgba(76, 0, 255, 0.1);
+  background: #00ffa2;
 }
 
 .recTable {
@@ -145,7 +148,7 @@ select {
 .recTable h1 {
   font-size: 24px;
   font-weight: 700;
-  color: #7cb9d1;
+  color: #003066;
 }
 
 .centered {
@@ -153,13 +156,13 @@ select {
 }
 
 .navigation {
-  background-image: url("./../assets/background.jpg");
+  background-image: #00ffa2;
   overflow: hidden;
 }
 
 .navigation a {
   float: right;
-  color: #7cb9d1;
+  color: #003066;
   text-align: center;
   padding: 14px 16px;
   text-decoration: none;
@@ -170,18 +173,18 @@ select {
 }
 
 .navigation a:hover {
-  background-color: #1C6EA4;
+  background-color: rgb(28, 110, 164);
   color: #CCCCCC;
 }
 
 .navigation a:active {
-  background-color: #7cb9d1;
+  background-color: #003066;
   color: #8D909B;
 }
 
 .header {
-  background-image: url("./../assets/background.jpg");
-  color: #7cb9d1;
+  background: #00ffa2;
+  color: #003066;
 }
 
 .header h1 {
@@ -198,33 +201,67 @@ select {
   background-color: #080808;
 }
 
+.col { /* Chrome, Safari, Opera */
+  -moz-column-count: 1; /* Firefox */
+  column-count: 1; /* Chrome, Safari, Opera */
+  -moz-column-width: 14em; /* Firefox */
+  column-width: 14em;
+}
+@media (min-width: 40em) {
+  .col { /* Chrome, Safari, Opera */
+    -moz-column-count: 2; /* Firefox */
+    column-count: 2; /* Chrome, Safari, Opera */
+    -moz-column-width: 14em; /* Firefox */
+    column-width: 14em;
+  }
+}
+@media (min-width: 60em) {
+  .col { /* Chrome, Safari, Opera */
+    -moz-column-count: 3; /* Firefox */
+    column-count: 3; /* Chrome, Safari, Opera */
+    -moz-column-width: 20em; /* Firefox */
+    column-width: 20em;
+  }
+}
+.col__item {
+  display: block; /* Chrome, Safari, Opera */
+  page-break-inside: avoid; /* Firefox */
+  -moz-column-break-inside: avoid;
+       break-inside: avoid; /* IE 10+ */
+}
+@media (min-width: 40em) {
+  .col__item {
+    display: inline-block;
+  }
+}
+
 .updateProfile {
   text-align: center;
-  background-color: rgba(0, 0, 0, 0.7);
+  background-color: #00ffa2;
 }
 
 .updateProfile h1, h2 {
   font-size: 24px;
   font-weight: 700;
-  color: #7cb9d1;
+  color: #003066;
 }
 
 .updateProfile h3 {
   font-size: 22px;
   font-weight: 700;
-  color: #7cb9d1;
+  color: #003066;
 }
 
 .updateProfile h4 {
   font-size: 20px;
   font-weight: 700;
-  color: #7cb9d1;
+  color: #003066;
 }
 
 .updateProfile p, li {
   font-size: 18px;
   font-weight: 500;
-  color: #7cb9d1;
+  color: #003066;
 }
 
 .updateProfile a {
@@ -234,20 +271,24 @@ select {
 }
 
 .updateProfile input {
-  padding: 8px;
+  background: rgba(76, 0, 255, 0.5);
+  color: #003066;
+  width: 200px !important;
+  height: 30px !important;
+  font-weight: 600;
   font-size: 16px;
-  background-color: rgba(76, 0, 255, 0.5);
-  color: #7cb9d1;
+  letter-spacing: 2px;
+  line-height: 24px;
+  padding: 1px 2px;
+  border-radius: 9px;
+  padding: 8px;
   border-radius: 6px;
   box-shadow: 0px 0px 3px rgba(66, 66, 66, 0.7490196078);
   text-shadow: 0px 0px 0px rgba(66, 66, 66, 0.7490196078);
   margin-bottom: 5px;
-  width: 200px;
 }
-
 .updateProfile input:hover {
-  background: rgba(76, 0, 255, 0.1);
-  color: #7cb9d1;
+  background: #00ffa2;
 }
 
 .userName {
@@ -334,7 +375,7 @@ input, select {
 }
 
 #nameInput {
-  background-color: rgba(76, 0, 255, 0.1);
+  background-color: #00ffa2;
   width: 100%;
   padding: 10px 5px;
   float: left;
@@ -365,7 +406,7 @@ input, select {
 }
 
 .searchResults {
-  color: rgba(255, 255, 255, 0.8980392157);
+  color: #003066;
   font-weight: 800%;
   font-size: 19px;
   letter-spacing: 2px;
@@ -373,5 +414,5 @@ input, select {
 }
 
 .searchResults tr {
-  background: rgba(0, 0, 0, 0.7);
+  background: #00ffa2;
 }/*# sourceMappingURL=main.css.map */

@@ -52,7 +52,7 @@ input, select {
 }
 
 #nameInput {
-    background-color: $color13;
+    background-color: $back;
     width: 100%;
     padding: 10px 5px;
     float: left;
@@ -84,7 +84,7 @@ input, select {
 
 .searchResults
 {
-    color: $color10;
+    color: $main;
     font-weight: 800%; 
     font-size: 19px; 
     letter-spacing: 2.0px;
@@ -92,5 +92,5 @@ input, select {
 }
 .searchResults tr
 {
-    background: $color15;
+    background: $back;
 }

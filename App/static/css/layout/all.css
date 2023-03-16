@@ -1,11 +1,11 @@
 .navigation {
-  background-image: url("./../assets/background.jpg");
+  background-image: #00ffa2;
   overflow: hidden;
 }
 
 .navigation a {
   float: right;
-  color: #7cb9d1;
+  color: #003066;
   text-align: center;
   padding: 14px 16px;
   text-decoration: none;
@@ -16,18 +16,18 @@
 }
 
 .navigation a:hover {
-  background-color: #1C6EA4;
+  background-color: rgb(28, 110, 164);
   color: #CCCCCC;
 }
 
 .navigation a:active {
-  background-color: #7cb9d1;
+  background-color: #003066;
   color: #8D909B;
 }
 
 .header {
-  background-image: url("./../assets/background.jpg");
-  color: #7cb9d1;
+  background: #00ffa2;
+  color: #003066;
 }
 
 .header h1 {
@@ -42,4 +42,38 @@
 
 .header hr {
   background-color: #080808;
+}
+
+.col { /* Chrome, Safari, Opera */
+  -moz-column-count: 1; /* Firefox */
+  column-count: 1; /* Chrome, Safari, Opera */
+  -moz-column-width: 14em; /* Firefox */
+  column-width: 14em;
+}
+@media (min-width: 40em) {
+  .col { /* Chrome, Safari, Opera */
+    -moz-column-count: 2; /* Firefox */
+    column-count: 2; /* Chrome, Safari, Opera */
+    -moz-column-width: 14em; /* Firefox */
+    column-width: 14em;
+  }
+}
+@media (min-width: 60em) {
+  .col { /* Chrome, Safari, Opera */
+    -moz-column-count: 3; /* Firefox */
+    column-count: 3; /* Chrome, Safari, Opera */
+    -moz-column-width: 20em; /* Firefox */
+    column-width: 20em;
+  }
+}
+.col__item {
+  display: block; /* Chrome, Safari, Opera */
+  page-break-inside: avoid; /* Firefox */
+  -moz-column-break-inside: avoid;
+       break-inside: avoid; /* IE 10+ */
+}
+@media (min-width: 40em) {
+  .col__item {
+    display: inline-block;
+  }
 }/*# sourceMappingURL=all.css.map */

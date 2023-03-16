@@ -1,0 +1,18 @@
+@import "../abstracts/mixins";
+
+.col {
+    @include columns(1, calc($sm / 2));
+    @include responsive( $med ) {
+        @include columns(2, calc($sm / 2));
+    };
+    @include responsive( $lg ) {
+        @include columns(3, calc($med / 2));
+    }
+    &__item {
+        display: block;
+        @include page-break-inside(avoid);
+        @include responsive( $med ) {
+            display: inline-block;
+        }
+    }
+}
