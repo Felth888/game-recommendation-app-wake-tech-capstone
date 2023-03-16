@@ -8,11 +8,11 @@
             width: 100px;
         }
     </style>
-
-    <div class="updateProfile" id="library">
-        <h3>Game Library</h3>
+    <h3>Game Library</h3>
+    <div class="col" id="library">
+        
        {% for game in game_list %}
-        <div class="game" >
+        <div class="col__item" >
             {% if game.cover %}
                 <!-- Cover art for the game -->
                 <img class="box_art" src="{{ "https://images.igdb.com/igdb/image/upload/t_cover_small/" ~ game.cover ~ ".jpg" }}">
