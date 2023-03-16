@@ -95,10 +95,6 @@ select {
   color: #003066;
 }
 
-.centered {
-  margin: auto;
-}
-
 @media only screen and (max-width: 40rem), (min-device-width: 28rem) and (max-device-width: 60rem) {
   /* Force table to not be like tables anymore */
   .center_me table, .center_me tbody, .center_me td {

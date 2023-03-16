@@ -153,10 +153,6 @@ select {
   color: #003066;
 }
 
-.centered {
-  margin: auto;
-}
-
 @media only screen and (max-width: 40rem), (min-device-width: 28rem) and (max-device-width: 60rem) {
   /* Force table to not be like tables anymore */
   .center_me table, .center_me tbody, .center_me td {
@@ -476,9 +472,9 @@ input, select {
 
 #nameInput {
   background-color: rgba(241, 209, 159, 0.8078431373);
-  width: 100%;
+  width: 90%;
   padding: 0.7rem 0.2rem;
-  float: left;
+  float: center;
   color: #003066;
   border: 0;
   border-radius: 3px 0 0 3px;
