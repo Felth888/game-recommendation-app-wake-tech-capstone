@@ -1,0 +1,63 @@
+@import "../abstracts/mixins";
+
+.col {
+    @include columns(1, calc($sm / 2));
+    @include responsive( $med ) {
+        @include columns(2, calc($sm / 2));
+    };
+    @include responsive( $lg ) {
+        @include columns(5, calc($med / 3));
+    }
+    &__item {
+        display: block;
+        @include page-break-inside(avoid);
+        @include responsive( $med ) {
+            display: inline-block;
+        }
+        @include responsive( $lg ) {
+            display: inline-block;
+        }
+    }
+}
+
+.rslt {
+    @include columns(1, calc($sm / 2));
+    @include responsive( $med ) {
+        @include columns(1, calc($sm / 2));
+    };
+    @include responsive( $lg ) {
+        @include columns(1, calc($med / 2));
+    }
+    &__item {
+        display: block;
+        @include page-break-inside(avoid);
+        @include responsive( $med ) {
+            display: inline-block;
+        }
+        padding-bottom: 2%;
+
+    }
+}
+
+
+
+.srch {
+    position: relative;
+    @include columns(1, calc($sm / 2));
+    @include responsive( $med ) {
+        @include columns(2, calc($sm / 2));
+    };
+    @include responsive( $lg ) {
+        @include columns(5, calc($lg / 1));
+    }
+    &__item {
+        display: block;
+        @include page-break-inside(avoid);
+        @include responsive( $med ) {
+            display: inline-block;
+        }
+        float: left;
+        padding-left: 1rem;
+    }
+
+}

@@ -8,28 +8,46 @@
             width: 100px;
         }
     </style>
+    <h3>Game Library</h3>
+    <section class="col" id="library">
+        <table>
+            {% for game in game_list %}
+            <tr>
+                <div class="col__item">
+                    <td> <!-- Cover art for the game -->
+                        {% if game.cover %}
+                            <img class="box_art" src="{{ "https://images.igdb.com/igdb/image/upload/t_cover_small/" ~ game.cover ~ ".jpg" }}">
+                        {% else %}
+                            <img class="box_art" src="https://t4.ftcdn.net/jpg/00/89/55/15/360_F_89551596_LdHAZRwz3i4EM4J0NHNHy2hEUYDfXc0j.jpg">
+                        {% endif %}<br>
+                    </td>
+                    
+                    <td>
+                        <h4>{{ game.title }}</h4><br> 
+                    </td>
+                    
+                    <td>
+                        <p>Hours Played: </p><br>
+                    </td>
+                    
+                    <td>
+                        <p>Rating: </p><br>
+                    </td>
 
-    <div class="updateProfile" id="library">
-        <h3>Game Library</h3>
-       {% for game in game_list %}
-        <div class="game" >
-            {% if game.cover %}
-                <!-- Cover art for the game -->
-                <img class="box_art" src="{{ "https://images.igdb.com/igdb/image/upload/t_cover_small/" ~ game.cover ~ ".jpg" }}">
-            {% else %}
-                <img class="box_art" src="https://t4.ftcdn.net/jpg/00/89/55/15/360_F_89551596_LdHAZRwz3i4EM4J0NHNHy2hEUYDfXc0j.jpg">
-            {% endif %}<br>
-            <h4>{{ game.title }}</h4>
-            <br>
-            <p>Hours Played: </p><br>
-            <p>Rating: </p><br>
-        </div>
-        <form action="#" method="POST">
-        <input class="addRemoveButton" type="submit" name={{ game.id }} value="Remove from Library">
-        </form>
-        <br><br>
-        {% endfor %}
-    </div>
+                    <td>
+                        <form action="#" method="POST">
+                            <input class="addRemoveButton" type="submit" name={{ game.id }} value="Remove from Library">
+                        </form>
+                        
+                    </td>
+                    
+                </div>
+                <br><br>
+            </tr>
+            {% endfor %}
+        </table>
+       
+    </section>
 
 
 

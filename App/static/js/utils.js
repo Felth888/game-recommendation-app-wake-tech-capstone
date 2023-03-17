@@ -54,19 +54,19 @@ var ID = function(elementID) {
  */
 function createTableFromVal(arr, valString) {
 
-    var tableString = "<table>";
+    var tableString = "<div>";
     // Doesnt pull data from empty endpoints (such as no platform)
     if(typeof arr != "undefined") {
         // Loop through each value and add a table cell
         var counter = arr.length;
         for (j = 0; j < counter; j++) {
-            tableString += "<tr>";
-            tableString += "<td>" + arr[j][valString] + "</td></tr>";
+            tableString += "<p>";
+            tableString += "" + arr[j][valString] + "</p>";
         }
-        tableString += "</table>";
+        tableString += "</div>";
     } else {
         // Add a filler 'No value' so there is no empty cells
-        tableString += "<tr><td>No value</td></tr></table>";
+        tableString += "<p>No value</p></div>";
     }
     
     return tableString;

@@ -8,8 +8,8 @@
 	<!-- Game library utils -->
 	<script type="application/javascript" src="{{ url_for('static', filename='js/libraryUtils.js') }}"></script>
 
-    <div>
-		<table class="centered">
+    <section class="dropdowns">
+		<table class="center_me centered">
 			<!-- Text input for game title search -->
 			<tr><td colspan='2'><input type="text" id ='nameInput' placeholder="Game Title" name="nameInput" class="center"></td></tr>
 			
@@ -52,6 +52,8 @@
 				<td colspan="2"></td>
 			</tr>
 		</table>
+	</section>
+
 		<button onclick="postSearch()" id="searchButton" class="searchButton">Search</button>
 		<br>
 		
@@ -60,9 +62,9 @@
 		<div id='resultsPending' style='display: none;'>
 			<h2>Processing...</h2>
 		</div>
-	
+	<section class="col__items">
 		<!-- Results table - filled dynamically -->
-		<table class="searchResults centered">
+		<table class="searchResults centered center_me">
 			<tr id='resultsHeader' style='display: none;'>
 				<th>Cover Art</th>
 				<th>Game Title</th>
@@ -73,8 +75,7 @@
 			<tbody id='results'>
 			</tbody>
 		</table>
-        
-    </div>
+	</section>
 	
 	<script type="application/javascript">
 	
