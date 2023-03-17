@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 
 {% block content %}
-<div class="updateProfile">
+<section class="updateProfile">
     <h1>Log In</h1>
     <form action="" method="post" novalidate>
         {{ form.hidden_tag() }}
@@ -22,5 +22,5 @@
         <p>{{ form.submit() }}</p>
     </form>
     <p>New User? <a href="{{ url_for('newAccount.newAccountPage') }}">Click to Register!</a></p>
-</div>
+</section>
 {% endblock %}
