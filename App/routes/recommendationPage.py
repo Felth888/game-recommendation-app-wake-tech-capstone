@@ -132,6 +132,7 @@ def recommend():
 #        'play_mode':getGame.play_mode,
 #        'developer':getGame.developer
 #    }
+
     return returnArr
 
 def extract_data(x, feature):
