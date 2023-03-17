@@ -59,7 +59,7 @@
 
             // Returns a JSON response from the AJAX query
             // For right now its going to always return Skyrim. ID 472
-			var response = sendAjaxQuery('/recommendCall', 'id=472', false);
+			var response = sendAjaxQuery('/recommendCall', false);
 
 			// Hide the pending div and show the table header since fetch is done
 			ID('resultsPending').style.display = 'none';
