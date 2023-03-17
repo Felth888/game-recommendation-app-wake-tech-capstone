@@ -58,8 +58,8 @@
             ID('resultsPending').style.display = 'block';
 
             // Returns a JSON response from the AJAX query
-            // For right now its going to always return Skyrim. ID 472
-			var response = await sendAjaxQuery('/recommendCall', false);
+            // The dataIn is null as recommendCall has no required data from the client.
+			var response = await sendAjaxQuery('/recommendCall', null, false);
 
             var x = "";
 
