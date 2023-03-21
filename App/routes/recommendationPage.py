@@ -73,10 +73,9 @@ def recommend():
         # exludes games from library not included in selection from dataframe 
         unused_game_ids = user_games.id.tail(-5).values.tolist()
         games = games[~games.id.isin(unused_game_ids)]
-                
-        # remove unused games from user games dataframe
-        user_games = user_games.head().copy()
-   
+               
+    # remove unused games from user games dataframe
+    user_games = user_games.head().copy()
     # add create list of selected titles and then combine dataframes
     selected_titles = user_games.title.values.tolist()
     games = pd.concat([games, user_games])
@@ -97,6 +96,7 @@ def recommend():
     
     # create count_matrix to calculate similarity between words
     count = CountVectorizer(stop_words='english')
+    
     count_matrix = count.fit_transform(games['soup'])
     cosine_sim = cosine_similarity(count_matrix, count_matrix)
 
@@ -107,31 +107,18 @@ def recommend():
     # get game recommendations for each title selected from user library
     recommendations = []
     for title in selected_titles:
-        # required to filter out titles from results
-        filter_titles = selected_titles.remove(title)
-        game_indices = get_recommendations(title, filter_titles, cosine_sim, indices)
+        game_indices = get_recommendations(title, cosine_sim, indices)
         recommendations.append(games.iloc[game_indices].sample(n=5))
         
+
     game_recommendations = pd.concat(recommendations)
     game_recommendations.drop_duplicates(inplace=True)
+    game_recommendations = game_recommendations[~game_recommendations.title.isin(selected_titles)]
     game_recommendations.drop(columns=['soup', 'index'], inplace=True)
     game_recommendations['base_game'] = True
     
     recommend_json = game_recommendations.to_json(orient='records')
     returnArr = json.loads(recommend_json)
-    
-    #getGame = Game.query.filter_by(id=request.form['id']).first()
-#    returnArr = {
-#        'id':getGame.id, 
-#        'title':getGame.title,
-#        'cover':getGame.cover,
-#        'base_game':getGame.base_game,
-#        'release_date':getGame.release_date,
-#        'genre':getGame.genre,
-#        'theme':getGame.theme,
-#        'play_mode':getGame.play_mode,
-#        'developer':getGame.developer
-#    }
 
     return returnArr
 
@@ -178,16 +165,14 @@ def create_soup(x):
     return x['genre'] + ' ' + x['theme'] + ' ' + x['play_mode'] + ' '+ x['developer']
 
 
-def get_recommendations(title, filter_titles, cosine_sim, indices):
+def get_recommendations(title, cosine_sim, indices):
     """finds 5 recommendations for a game title
     
        calculates similarity score between all games and
        selects 5 random titles from top 20"""
     
     idx = indices[title]
-    
     sim_scores = list(enumerate(cosine_sim[idx]))
-    
     sim_scores = sorted(sim_scores, key=lambda x: x[1], reverse=True)
     
     sim_scores = sim_scores[1:21]
