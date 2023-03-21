@@ -3,7 +3,7 @@
   overflow: hidden;
 }
 
-.navigation a {
+.navigation a, .navigation p {
   float: right;
   color: #003066;
   text-align: center;
