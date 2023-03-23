@@ -9,12 +9,12 @@
         }
     </style>
 
-    <h3>Wishlist</h3>
-    <section class="col" id="library">
-        <table>
+    <h3 class="title">Wishlist</h3>
+    <section class="col__items" id="library">
+        <table class="center_me centered searchResults">
            {% for wish in w_list %}
            <tr>
-                <div class="col__item">
+                
                     <td> <!-- Cover art for the game -->
                         {% if wish.cover %}
                             <img class="box_art" src="{{ "https://images.igdb.com/igdb/image/upload/t_cover_small/" ~ wish.cover ~ ".jpg" }}">
@@ -37,8 +37,6 @@
                         <input class= "addRemoveButton" type="submit" name={{ wish.id }} value="Remove from Wishlist">
                         </form>
                     </td>
-                </div>
-                <br><br>
            </tr>
             {% endfor %} 
         </table>

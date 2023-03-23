@@ -3,17 +3,11 @@
 {% block content %}
 <!--this could be made into a tab in the user profile page in css-->
 
-    <style>
-        .box_art {
-            width: 100px;
-        }
-    </style>
-    <h3>Game Library</h3>
-    <section class="col" id="library">
-        <table>
+    <h3 class="title">Game Library</h3>
+    <section class="col__items" id="library">
+        <table class="center_me centered searchResults">
             {% for game in game_list %}
             <tr>
-                <div class="col__item">
                     <td> <!-- Cover art for the game -->
                         {% if game.cover %}
                             <img class="box_art" src="{{ "https://images.igdb.com/igdb/image/upload/t_cover_small/" ~ game.cover ~ ".jpg" }}">
@@ -40,9 +34,6 @@
                         </form>
                         
                     </td>
-                    
-                </div>
-                <br><br>
             </tr>
             {% endfor %}
         </table>
