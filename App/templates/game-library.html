@@ -2,10 +2,10 @@
 
 {% block content %}
 <!--this could be made into a tab in the user profile page in css-->
-
     <h3 class="title">Game Library</h3>
     <section class="col__items" id="library">
         <table class="center_me centered searchResults">
+            
             {% for game in game_list %}
             <tr>
                     <td> <!-- Cover art for the game -->
@@ -21,11 +21,11 @@
                     </td>
                     
                     <td>
-                        <p>Hours Played: </p><br>
+                        <p>Hours Played: {{ playtime_list[loop.index0] }}</p><br>
                     </td>
                     
                     <td>
-                        <p>Rating: </p><br>
+                        <p>Rating:</p><br>
                     </td>
 
                     <td>
@@ -35,6 +35,16 @@
                         
                     </td>
             </tr>
+            <tr>
+                <td>
+                    <form action="#" method="POST">
+                        <p>Modify Playtime (Hours):</p>
+                        <p><input type="number" name={{ game.id }} value = 1 min = 1 max = 999></p>
+                        <p><input type="submit" name={{ game.id }} value="Modify Game Time" ></p>
+                    </form>
+                </td>
+            </tr>
+            
             {% endfor %}
         </table>
        
