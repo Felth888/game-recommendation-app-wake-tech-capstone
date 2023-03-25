@@ -2,7 +2,7 @@ from flask import Blueprint
 
 
 def init_app(app):
-    from . import loginPage, newAccount, searchPage, userProfile, recommendationPage, gameLibrary, userWishlist
+    from . import loginPage, newAccount, searchPage, userProfile, recommendationPage, gameLibrary, userWishlist, updatePassword
 
     app.register_blueprint(loginPage.bp)
     app.register_blueprint(searchPage.bp)
@@ -11,3 +11,4 @@ def init_app(app):
     app.register_blueprint(recommendationPage.bp)
     app.register_blueprint(gameLibrary.bp)
     app.register_blueprint(userWishlist.bp)
+    app.register_blueprint(updatePassword.bp)
