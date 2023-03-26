@@ -169,7 +169,7 @@ def get_recommendations(title, cosine_sim, indices):
     """finds 5 recommendations for a game title
     
        calculates similarity score between all games and
-       selects 5 random titles from top 20"""
+       returns top 20"""
     
     idx = indices[title]
     sim_scores = list(enumerate(cosine_sim[idx]))
