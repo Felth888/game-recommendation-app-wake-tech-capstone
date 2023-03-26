@@ -181,7 +181,7 @@ select {
   overflow: hidden;
 }
 
-.navigation a {
+.navigation a, .navigation p {
   float: right;
   color: #003066;
   text-align: center;
@@ -516,4 +516,8 @@ input, select {
 
 .title {
   font-size: 2rem;
+}
+
+.title {
+  text-align: center;
 }/*# sourceMappingURL=main.css.map */

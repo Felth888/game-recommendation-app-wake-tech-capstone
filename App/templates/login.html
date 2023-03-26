@@ -21,6 +21,7 @@
         </p>
         <p>{{ form.submit() }}</p>
     </form>
+    <a href="{{ url_for('updatePassword.updatePasswordPage') }}">Forgot My Password</a>
     <p>New User? <a href="{{ url_for('newAccount.newAccountPage') }}">Click to Register!</a></p>
 </section>
 {% endblock %}

@@ -16,6 +16,7 @@ setup(
         'psycopg2-binary',
         'Flask-WTF',
         'pandas',
-        'requests'
+        'requests',
+        'flask-mail'
     ],
 )
