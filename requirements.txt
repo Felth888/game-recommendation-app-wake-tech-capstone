@@ -13,3 +13,4 @@ requests
 pandas
 sklearn
 scikit-learn
+flask-mail

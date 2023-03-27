@@ -12,7 +12,7 @@ from ..services.forms import LoginForm
 @bp.route('/login', methods=['GET', 'POST'])
 def login():
     if current_user.is_authenticated:
-        return redirect(url_for('Search'))
+        return redirect(url_for('searchPage.searchPage'))
     form = LoginForm()
     if form.validate_on_submit():
         user = User.query.filter_by(user_name=form.user_name.data).first()
