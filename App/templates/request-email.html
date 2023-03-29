@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block content %}
+<!-- General use utils -->
+	<script type="application/javascript" src="{{ url_for('static', filename='js/utils.js') }}"></script>
+
+<!-- Using updateProfile's CSS to keep consistent look -->
+<section class="updateProfile">
+    {% if submitted != true %}
+    <h1 id="subheader">Please Enter Your Email</h1>
+    <br>
+    <form action="" method="post" id="form">
+        {{ form.hidden_tag() }}
+        <p>
+            {{ form.email.label }}<br>
+            {{ form.email(size=64, class="email") }}<br>
+            {% for error in form.email.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+        <p>{{ form.submit() }}</p>
+    </form>
+    {% else %}
+    <h1 id="submitted">If the supplied email is associated with an account, a password reset will be sent.</h1>
+    {% endif %}
+</section>
+{% endblock %}
