@@ -2,7 +2,7 @@
 
 .navigation {
     background-image: $back;
-    overflow: hidden;
+    // overflow: hidden;
 }
 
 .navigation a, .navigation p {
@@ -26,3 +26,54 @@
     background-color: $main;
     color: $color1;
 }
+
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+  }
+  
+  .menu-dropdown,
+  .profile-dropdown {
+    position: relative;
+    display: inline-block;
+  }
+  
+  .menu,
+  .profile {
+    display: none;
+    position: absolute;
+    top: 2.5rem;
+    right: 0rem;
+    width: 15rem;
+    padding: 1rem;
+    background-color: $back;
+    box-shadow: 0rem 0.5rem 1rem 0rem $color15;
+    z-index: 1;
+  }
+  .menu {
+    left: 1rem;
+  }
+
+  .menu li,
+  .profile li {
+    margin-bottom: 1rem;
+  }
+  
+  
+  .menu-btn:focus,
+  .profile-btn:focus {
+    outline: none;
+  }
+  
+  .menu-dropdown:hover .menu,
+  .menu-dropdown:focus-within .menu {
+    display: block;
+  }
+  
+  .profile-dropdown:hover .profile,
+  .profile-dropdown:focus-within .profile {
+    display: block;
+  }
