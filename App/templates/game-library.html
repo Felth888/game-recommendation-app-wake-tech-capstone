@@ -25,7 +25,11 @@
                     </td>
                     
                     <td>
-                        <p>Rating:</p><br>
+                        <p>Rating: {{ gamerating_list[loop.index0] }}/5</p><br>
+                    </td>
+
+                    <td>
+                        <p>Completion: {{ gamecomp_list[loop.index0] }}</p>
                     </td>
 
                     <td>
@@ -43,8 +47,56 @@
                         <p><input type="submit" name={{ game.id }} value="Modify Game Time" ></p>
                     </form>
                 </td>
+                <td>
+                    <form action="#" method="POST">
+                        <p>Modify Game Progress</p>
+                        <p>
+                            <input type="radio" id="Not Started" name={{ game.id }} value="Backlogged">
+                            <label for="Not Started">Backlogged</label>
+                        </p>
+                        <p>
+                            <input type="radio" id="Partially Completed" name={{ game.id }} value="Incomplete">
+                            <label for="Partially Completed">Incomplete</label>
+                        </p>
+                        <p>
+                            <input type="radio" id="Completed" name={{ game.id }} value="Completed">
+                            <label for="Completed">Completed</label>
+                        </p>
+                        <p><input type="submit" name={{ game.id }}></p>
+
+                    </form>
+                </td>
+                <td>
+                    <form action="#" method="POST">
+                        <p>Modify Rating</p>
+                        <!--<p><input type="number" name={{ game.id + 10000000 }} value = 5 min = 1 max = 10></p>-->
+                        <!--<p><input type="submit" name={{ game.id + 10000000 }} value="Modify Rating" ></p>-->
+                        <div class="star-rating">
+                            <!--Getting the CSS on this working just right took at least three times as long as the actual backend work-->
+                            <span style="white-space:nowrap">
+                            <input type="radio" class="radio_item" name={{ game.id }} value="one" id={{ game.id + 10000000 }}>
+                            <label class="label_item" for={{ game.id + 10000000 }}><img src="/static/test.jpg" style="width:30px;height:auto;"> </label>
+                            <input type="radio" class="radio_item" name={{ game.id }} value="two" id={{ game.id + 20000000 }}>
+                            <label class="label_item" for={{ game.id + 20000000 }}><img src="/static/test.jpg" style="width:30px;height:auto;"> </label>
+                            <input type="radio" class="radio_item" name={{ game.id }} value="three" id={{ game.id + 30000000 }}>
+                            <label class="label_item" for={{ game.id + 30000000 }}><img src="/static/test.jpg" style="width:30px;height:auto;"> </label>
+                            <input type="radio" class="radio_item" name={{ game.id }} value="four" id={{ game.id + 40000000 }}>
+                            <label class="label_item" for={{ game.id + 40000000 }}><img src="/static/test.jpg" style="width:30px;height:auto;"> </label>
+                            <input type="radio" class="radio_item" name={{ game.id }} value="five" id={{ game.id + 50000000 }}>
+                            <label class="label_item" for={{ game.id + 50000000 }}><img src="/static/test.jpg" style="width:30px;height:auto;"> </label>
+                            </span>
+                            <p><input type="submit" name={{ game.id }}></p>
+                        </div>
+                    </form>
+                </td>
             </tr>
-            
+            <tr>
+                <td>
+                    <p>&nbsp</p>
+                    <p>&nbsp</p>
+                    <p>&nbsp</p>
+                </td>
+            </tr>
             {% endfor %}
         </table>
        

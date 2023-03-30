@@ -570,3 +570,19 @@ input, select {
 .title {
   text-align: center;
 }/*# sourceMappingURL=main.css.map */
+
+
+
+.radio_item{
+  display: none !important;
+}
+  
+.label_item{
+
+  opacity: 1;
+}
+  
+.radio_item:checked + label ~ label{
+
+  opacity: 0.4;
+}
