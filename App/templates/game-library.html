@@ -3,41 +3,46 @@
 {% block content %}
 <!--this could be made into a tab in the user profile page in css-->
     <h3 class="title">Game Library</h3>
-    <section class="col__items" id="library">
-        <table class="center_me centered searchResults">
+    <section class="col__items">
+        <table id="library" class="center_me centered searchResults">
+            <th>Cover</th>
+            <th onclick="sortTable(1)">Title</th>
+            <th onclick="sortTable(2)">Hours Played</th>
+            <th onclick="sortTable(3)">Rating</th>
+            <th onclick="sortTable(4)">Completion</th>
             
             {% for game in game_list %}
             <tr>
-                    <td> <!-- Cover art for the game -->
-                        {% if game.cover %}
-                            <img class="box_art" src="{{ "https://images.igdb.com/igdb/image/upload/t_cover_small/" ~ game.cover ~ ".jpg" }}">
-                        {% else %}
-                            <img class="box_art" src="https://t4.ftcdn.net/jpg/00/89/55/15/360_F_89551596_LdHAZRwz3i4EM4J0NHNHy2hEUYDfXc0j.jpg">
-                        {% endif %}<br>
-                    </td>
+                <td> <!-- Cover art for the game -->
+                    {% if game.cover %}
+                        <img class="box_art" src="{{ "https://images.igdb.com/igdb/image/upload/t_cover_small/" ~ game.cover ~ ".jpg" }}">
+                    {% else %}
+                        <img class="box_art" src="https://t4.ftcdn.net/jpg/00/89/55/15/360_F_89551596_LdHAZRwz3i4EM4J0NHNHy2hEUYDfXc0j.jpg">
+                    {% endif %}<br>
+                </td>
                     
-                    <td>
-                        <h4>{{ game.title }}</h4><br> 
-                    </td>
+                <td>
+                    <h4>{{ game.title }}</h4><br> 
+                </td>
                     
-                    <td>
-                        <p>Hours Played: {{ playtime_list[loop.index0] }}</p><br>
-                    </td>
-                    
-                    <td>
-                        <p>Rating: {{ gamerating_list[loop.index0] }}/5</p><br>
-                    </td>
+                <td>
+                    <p>Hours Played: {{ playtime_list[loop.index0] }}</p><br>
+                </td>
+                
+                <td>
+                    <p>Rating: {{ gamerating_list[loop.index0] }}/5</p><br>
+                </td>
 
-                    <td>
-                        <p>Completion: {{ gamecomp_list[loop.index0] }}</p>
-                    </td>
+                <td>
+                    <p>Completion: {{ gamecomp_list[loop.index0] }}</p>
+                </td>
 
-                    <td>
-                        <form action="#" method="POST">
-                            <input class="addRemoveButton" type="submit" name={{ game.id }} value="Remove from Library">
-                        </form>
+                <td>
+                    <form action="#" method="POST">
+                        <input class="addRemoveButton" type="submit" name={{ game.id }} value="Remove from Library">
+                    </form>
                         
-                    </td>
+                </td>
             </tr>
             <tr>
                 <td>
@@ -99,9 +104,50 @@
             </tr>
             {% endfor %}
         </table>
-       
     </section>
 
+    <script type="application/javascript">
+        function sortTable(n){
+            var table, rows, switched, i, x, y, isSwitching, direction, switchCount = 0;
+            
+            table = document.getElementById("library");
+            switched = true;
+            dir = "asc";
 
+            while(switched){
+                switched = false;
+                rows = table.rows;
+                for(i = 1; i > rows.length - 1; i++){   //checks the rows if they need swapping 
+                    isSwitching = false;                //and which direction
+                    x = rows[i].getElementsByTagName("td")[n];
+                    y = rows[i+1].getElementsByTagName("td")[n];
+                    if (dir == "asc"){                                              
+                        if(x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()){  
+                            isSwitching = true;
+                            break;
+                        }
+                    } else if (dir == "desc"){
+                        if(x.innerHTML.toLowerCase() < y.innerHTML.toLowerCase()){
+                            isSwitching = true;
+                            break;
+                        }
+                    }
+                }
+
+                if(isSwitching){
+                    rows[i].parentNode.insertBefore(rows[i+1], rows[i]);
+                    switched = true;
+                    switchCount++;
+                }else{
+                    if(switchCount == 0 && dir == "asc"){
+                        dir = "desc";
+                        switched = true;
+                    }
+                }
+            }
+        }
+
+
+    </script>
 
 {% endblock %}

@@ -41,6 +41,11 @@ table {
   border-spacing: 0;
 }
 
+th{
+  cursor: pointer;
+  font-weight: bold;
+}
+
 input {
   border-radius: 0;
 }
