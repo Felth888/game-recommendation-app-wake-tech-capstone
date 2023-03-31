@@ -106,8 +106,6 @@
     <script type="application/javascript">
         function sortTable(n){
             var table, rows, switched, i, x, y, isSwitching, direction, switchCount = 0;
-            
-            console.log("TEST " + n)
 
             table = document.getElementById("library");
             switched = true;
@@ -116,20 +114,22 @@
             while(switched){
                 switched = false;
                 rows = table.rows;
-                console.log(rows.length);
+                // Run through all rows in the list. i incremented by 3 to skip modify data and filler rows between games
                 for(i = 1; i < rows.length - 3; i += 3){   //checks the rows if they need swapping 
                     isSwitching = false;                //and which direction
+
+                    // Get the first item to check and the second item, which is 3 cells away
                     x = rows[i].getElementsByTagName("td")[n];
                     y = rows[i+3].getElementsByTagName("td")[n];
-                    console.log("CHECKING: " + x.firstElementChild.innerHTML);
-                    console.log("AGAINST: " + y.firstElementChild.innerHTML);
-                    console.log("")
-                    if (dir == "asc"){                                              
+
+                    // Sorting for ascending sort
+                    if (dir == "asc"){                
+                        // .firstElementChild is used as all td's contents are wrapped in a <h4> or <p> tag for styling, the tags need to be ignored                              
                         if(x.firstElementChild.innerHTML.toLowerCase() > y.firstElementChild.innerHTML.toLowerCase()){  
                             isSwitching = true;
-                            console.log("RETURNED TRUE")
                             break;
                         }
+                    // Sorting for descending sort
                     } else if (dir == "desc"){
                         if(x.firstElementChild.innerHTML.toLowerCase() < y.firstElementChild.innerHTML.toLowerCase()){
                             isSwitching = true;
@@ -138,12 +138,14 @@
                     }
                 }
 
+                // Run if the game is going to be swapped position
                 if(isSwitching){
                     rows[i].parentNode.insertBefore(rows[i+3], rows[i]); // Move the first cell
                     rows[i+1].parentNode.insertBefore(rows[i+4], rows[i+1]); // Move the second cell
                     rows[i+2].parentNode.insertBefore(rows[i+5], rows[i+2]); // Move the third cell
                     switched = true;
                     switchCount++;
+                // Flip to descending if nothing moved
                 }else{
                     if(switchCount == 0 && dir == "asc"){
                         dir = "desc";
@@ -151,8 +153,6 @@
                     }
                 }
             }
-
-            console.log("SWITCH: " + switchCount);
         }
 
 
