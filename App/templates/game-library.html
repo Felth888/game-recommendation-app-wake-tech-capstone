@@ -74,10 +74,7 @@
                 <td>
                     <form action="#" method="POST">
                         <p>Modify Rating</p>
-                        <!--<p><input type="number" name={{ game.id + 10000000 }} value = 5 min = 1 max = 10></p>-->
-                        <!--<p><input type="submit" name={{ game.id + 10000000 }} value="Modify Rating" ></p>-->
                         <div class="star-rating">
-                            <!--Getting the CSS on this working just right took at least three times as long as the actual backend work-->
                             <span style="white-space:nowrap">
                             <input type="radio" class="radio_item" name={{ game.id }} value="one" id={{ game.id + 10000000 }}>
                             <label class="label_item" for={{ game.id + 10000000 }}><img src="/static/test.jpg" style="width:30px;height:auto;"> </label>
@@ -110,6 +107,8 @@
         function sortTable(n){
             var table, rows, switched, i, x, y, isSwitching, direction, switchCount = 0;
             
+            console.log("TEST " + n)
+
             table = document.getElementById("library");
             switched = true;
             dir = "asc";
@@ -117,17 +116,22 @@
             while(switched){
                 switched = false;
                 rows = table.rows;
-                for(i = 1; i > rows.length - 1; i++){   //checks the rows if they need swapping 
+                console.log(rows.length);
+                for(i = 1; i < rows.length - 3; i += 3){   //checks the rows if they need swapping 
                     isSwitching = false;                //and which direction
                     x = rows[i].getElementsByTagName("td")[n];
-                    y = rows[i+1].getElementsByTagName("td")[n];
+                    y = rows[i+3].getElementsByTagName("td")[n];
+                    console.log("CHECKING: " + x.firstElementChild.innerHTML);
+                    console.log("AGAINST: " + y.firstElementChild.innerHTML);
+                    console.log("")
                     if (dir == "asc"){                                              
-                        if(x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()){  
+                        if(x.firstElementChild.innerHTML.toLowerCase() > y.firstElementChild.innerHTML.toLowerCase()){  
                             isSwitching = true;
+                            console.log("RETURNED TRUE")
                             break;
                         }
                     } else if (dir == "desc"){
-                        if(x.innerHTML.toLowerCase() < y.innerHTML.toLowerCase()){
+                        if(x.firstElementChild.innerHTML.toLowerCase() < y.firstElementChild.innerHTML.toLowerCase()){
                             isSwitching = true;
                             break;
                         }
@@ -135,7 +139,9 @@
                 }
 
                 if(isSwitching){
-                    rows[i].parentNode.insertBefore(rows[i+1], rows[i]);
+                    rows[i].parentNode.insertBefore(rows[i+3], rows[i]); // Move the first cell
+                    rows[i+1].parentNode.insertBefore(rows[i+4], rows[i+1]); // Move the second cell
+                    rows[i+2].parentNode.insertBefore(rows[i+5], rows[i+2]); // Move the third cell
                     switched = true;
                     switchCount++;
                 }else{
@@ -145,6 +151,8 @@
                     }
                 }
             }
+
+            console.log("SWITCH: " + switchCount);
         }
 
 
