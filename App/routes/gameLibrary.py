@@ -25,11 +25,13 @@ def game_library():
                 removedGame.archived = True
                 db.session.commit()
         elif request_type == "Backlogged" or request_type == "Incomplete" or request_type == "Completed":
+            print("CHANGE PLAY STATUS")
             modifyGame = UserGame.query.filter_by(user_id=current_user.id, game_id=lib_id).first()
             if modifyGame:
                 modifyGame.play_status = request_type
                 db.session.commit()
-        elif isinstance(request_type, str):
+        elif request_type == "one" or request_type == "two" or request_type == "three" or request_type == "four" or request_type == "five":
+            print("CHANGE RATING")
             modifyGame = UserGame.query.filter_by(user_id=current_user.id, game_id=lib_id).first()
             if modifyGame:
                 if request_type == "one":
@@ -47,6 +49,7 @@ def game_library():
             #This code will probably have to change if we impliment something in addition to playtime tracking.
             #Right now it relies on the fact that a post request that isn't for removing a game on the library page
             #must be for changing playtime.
+            print("CHANGE HOURS PLAYED")
             modifygame = UserGame.query.filter_by(user_id=current_user.id, game_id=lib_id).first()
             if modifygame:
                 modifygame.hours_played = request_type
