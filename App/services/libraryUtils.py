@@ -39,8 +39,8 @@ def getWishlistString(id):
 def formatString(list):
     format_string = ""
     for game in list:
-        format_string += str(game.game_id) + "|"
+        format_string += str(game.game_id) + ","
         #print(str(game.game_id) + " added") #Uncomment for debug output
-    # Removes the last not needed | from the string
+    # Removes the last not needed , from the string
     format_string = format_string[:-1]
     return format_string

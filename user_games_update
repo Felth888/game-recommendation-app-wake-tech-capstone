@@ -1,0 +1,16 @@
+ALTER TABLE user_games
+ALTER COLUMN hours_played SET DEFAULT 0,
+ALTER COLUMN play_status SET DEFAULT 'Backlogged',
+ALTER COLUMN wishlist SET DEFAULT false;
+
+UPDATE user_games
+SET hours_played = 0
+WHERE hours_played IS NULL;
+
+UPDATE user_games
+SET play_status = 'Backlogged'
+WHERE play_status IS NULL;
+
+UPDATE user_games
+SET wishlist = false
+WHERE wishlist IS NULL;

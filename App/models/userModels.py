@@ -1,6 +1,9 @@
 from . import db
+from flask import current_app
 from flask_login import UserMixin
 from werkzeug.security import generate_password_hash, check_password_hash
+import jwt
+from time import time
 
 from App import login
 
@@ -29,6 +32,9 @@ class User(UserMixin, db.Model):
 
     def check_password(self, password_to_hash):
         return check_password_hash(self.password, password_to_hash)
+    
+    def get_reset_token(self, expires=500):
+        return jwt.encode({'reset_password': self.user_name, 'exp': time() + expires}, current_app.config['JWT_SECRET'])
 
 
 

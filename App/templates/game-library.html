@@ -3,37 +3,46 @@
 {% block content %}
 <!--this could be made into a tab in the user profile page in css-->
     <h3 class="title">Game Library</h3>
-    <section class="col__items" id="library">
-        <table class="center_me centered searchResults">
+    <section class="col__items">
+        <table id="library" class="center_me centered searchResults">
+            <th>Cover</th>
+            <th onclick="sortTable(1)">Title</th>
+            <th onclick="sortTable(2)">Hours Played</th>
+            <th onclick="sortTable(3)">Rating</th>
+            <th onclick="sortTable(4)">Completion</th>
             
             {% for game in game_list %}
             <tr>
-                    <td> <!-- Cover art for the game -->
-                        {% if game.cover %}
-                            <img class="box_art" src="{{ "https://images.igdb.com/igdb/image/upload/t_cover_small/" ~ game.cover ~ ".jpg" }}">
-                        {% else %}
-                            <img class="box_art" src="https://t4.ftcdn.net/jpg/00/89/55/15/360_F_89551596_LdHAZRwz3i4EM4J0NHNHy2hEUYDfXc0j.jpg">
-                        {% endif %}<br>
-                    </td>
+                <td> <!-- Cover art for the game -->
+                    {% if game.cover %}
+                        <img class="box_art" src="{{ "https://images.igdb.com/igdb/image/upload/t_cover_small/" ~ game.cover ~ ".jpg" }}">
+                    {% else %}
+                        <img class="box_art" src="https://t4.ftcdn.net/jpg/00/89/55/15/360_F_89551596_LdHAZRwz3i4EM4J0NHNHy2hEUYDfXc0j.jpg">
+                    {% endif %}<br>
+                </td>
                     
-                    <td>
-                        <h4>{{ game.title }}</h4><br> 
-                    </td>
+                <td>
+                    <h4>{{ game.title }}</h4><br> 
+                </td>
                     
-                    <td>
-                        <p>Hours Played: {{ playtime_list[loop.index0] }}</p><br>
-                    </td>
-                    
-                    <td>
-                        <p>Rating:</p><br>
-                    </td>
+                <td>
+                    <p>Hours Played: {{ playtime_list[loop.index0] }}</p><br>
+                </td>
+                
+                <td>
+                    <p>Rating: {{ gamerating_list[loop.index0] }}/5</p><br>
+                </td>
 
-                    <td>
-                        <form action="#" method="POST">
-                            <input class="addRemoveButton" type="submit" name={{ game.id }} value="Remove from Library">
-                        </form>
+                <td>
+                    <p>Completion: {{ gamecomp_list[loop.index0] }}</p>
+                </td>
+
+                <td>
+                    <form action="#" method="POST">
+                        <input class="addRemoveButton" type="submit" name={{ game.id }} value="Remove from Library">
+                    </form>
                         
-                    </td>
+                </td>
             </tr>
             <tr>
                 <td>
@@ -43,13 +52,110 @@
                         <p><input type="submit" name={{ game.id }} value="Modify Game Time" ></p>
                     </form>
                 </td>
+                <td>
+                    <form action="#" method="POST">
+                        <p>Modify Game Progress</p>
+                        <p>
+                            <input type="radio" id="Not Started" name={{ game.id }} value="Backlogged">
+                            <label for="Not Started">Backlogged</label>
+                        </p>
+                        <p>
+                            <input type="radio" id="Partially Completed" name={{ game.id }} value="Incomplete">
+                            <label for="Partially Completed">Incomplete</label>
+                        </p>
+                        <p>
+                            <input type="radio" id="Completed" name={{ game.id }} value="Completed">
+                            <label for="Completed">Completed</label>
+                        </p>
+                        <p><input type="submit" name={{ game.id }}></p>
+
+                    </form>
+                </td>
+                <td>
+                    <form action="#" method="POST">
+                        <p>Modify Rating</p>
+                        <div class="star-rating">
+                            <span style="white-space:nowrap">
+                            <input type="radio" class="radio_item" name={{ game.id }} value="one" id={{ game.id + 10000000 }}>
+                            <label class="label_item" for={{ game.id + 10000000 }}><img src="/static/test.jpg" style="width:30px;height:auto;"> </label>
+                            <input type="radio" class="radio_item" name={{ game.id }} value="two" id={{ game.id + 20000000 }}>
+                            <label class="label_item" for={{ game.id + 20000000 }}><img src="/static/test.jpg" style="width:30px;height:auto;"> </label>
+                            <input type="radio" class="radio_item" name={{ game.id }} value="three" id={{ game.id + 30000000 }}>
+                            <label class="label_item" for={{ game.id + 30000000 }}><img src="/static/test.jpg" style="width:30px;height:auto;"> </label>
+                            <input type="radio" class="radio_item" name={{ game.id }} value="four" id={{ game.id + 40000000 }}>
+                            <label class="label_item" for={{ game.id + 40000000 }}><img src="/static/test.jpg" style="width:30px;height:auto;"> </label>
+                            <input type="radio" class="radio_item" name={{ game.id }} value="five" id={{ game.id + 50000000 }}>
+                            <label class="label_item" for={{ game.id + 50000000 }}><img src="/static/test.jpg" style="width:30px;height:auto;"> </label>
+                            </span>
+                            <p><input type="submit" name={{ game.id }}></p>
+                        </div>
+                    </form>
+                </td>
             </tr>
-            
+            <tr>
+                <td>
+                    <p>&nbsp</p>
+                    <p>&nbsp</p>
+                    <p>&nbsp</p>
+                </td>
+            </tr>
             {% endfor %}
         </table>
-       
     </section>
 
+    <script type="application/javascript">
+        function sortTable(n){
+            var table, rows, switched, i, x, y, isSwitching, direction, switchCount = 0;
 
+            table = document.getElementById("library");
+            switched = true;
+            dir = "asc";
+
+            while(switched){
+                switched = false;
+                rows = table.rows;
+                // Run through all rows in the list. i incremented by 3 to skip modify data and filler rows between games
+                for(i = 1; i < rows.length - 3; i += 3){   //checks the rows if they need swapping 
+                    isSwitching = false;                //and which direction
+
+                    // Get the first item to check and the second item, which is 3 cells away
+                    x = rows[i].getElementsByTagName("td")[n];
+                    y = rows[i+3].getElementsByTagName("td")[n];
+
+                    // Sorting for ascending sort
+                    if (dir == "asc"){                
+                        // .firstElementChild is used as all td's contents are wrapped in a <h4> or <p> tag for styling, the tags need to be ignored                              
+                        if(x.firstElementChild.innerHTML.toLowerCase() > y.firstElementChild.innerHTML.toLowerCase()){  
+                            isSwitching = true;
+                            break;
+                        }
+                    // Sorting for descending sort
+                    } else if (dir == "desc"){
+                        if(x.firstElementChild.innerHTML.toLowerCase() < y.firstElementChild.innerHTML.toLowerCase()){
+                            isSwitching = true;
+                            break;
+                        }
+                    }
+                }
+
+                // Run if the game is going to be swapped position
+                if(isSwitching){
+                    rows[i].parentNode.insertBefore(rows[i+3], rows[i]); // Move the first cell
+                    rows[i+1].parentNode.insertBefore(rows[i+4], rows[i+1]); // Move the second cell
+                    rows[i+2].parentNode.insertBefore(rows[i+5], rows[i+2]); // Move the third cell
+                    switched = true;
+                    switchCount++;
+                // Flip to descending if nothing moved
+                }else{
+                    if(switchCount == 0 && dir == "asc"){
+                        dir = "desc";
+                        switched = true;
+                    }
+                }
+            }
+        }
+
+
+    </script>
 
 {% endblock %}
