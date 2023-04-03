@@ -41,11 +41,6 @@ table {
   border-spacing: 0;
 }
 
-th{
-  cursor: pointer;
-  font-weight: bold;
-}
-
 input {
   border-radius: 0;
 }
@@ -391,6 +386,16 @@ nav {
   }
 }
 
+header h1, h2 {
+  text-align: center;
+  font-size: 2rem;
+}
+
+header h4 {
+  text-align: center;
+  font-size: 1.5rem;
+}
+
 .updateProfile {
   text-align: center;
   background-color: #070026;
@@ -579,19 +584,3 @@ input, select {
 .title {
   text-align: center;
 }/*# sourceMappingURL=main.css.map */
-
-
-
-.radio_item{
-  display: none !important;
-}
-  
-.label_item{
-
-  opacity: 1;
-}
-  
-.radio_item:checked + label ~ label{
-
-  opacity: 0.4;
-}

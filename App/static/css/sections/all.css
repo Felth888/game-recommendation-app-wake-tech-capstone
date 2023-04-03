@@ -1,1 +1,9 @@
-/*# sourceMappingURL=all.css.map */
+header h1, h2 {
+  text-align: center;
+  font-size: 2rem;
+}
+
+header h4 {
+  text-align: center;
+  font-size: 1.5rem;
+}/*# sourceMappingURL=all.css.map */

@@ -7,7 +7,18 @@
 	<script type="application/javascript" src="{{ url_for('static', filename='js/utils.js') }}"></script>
 	<!-- Game library utils -->
 	<script type="application/javascript" src="{{ url_for('static', filename='js/libraryUtils.js') }}"></script>
-
+	<header>
+		<h1>Search for any game you'd like!</h1>
+		<br>
+		{% if current_user.is_anonymous %}
+		<h2>We provide lots of games from a variety of platforms and genres!</h2>
+		<h2>To save games, be sure to login!</h2>
+		{% else %}
+		<h2>You can now add a game of your choosing to your library if you have played it</h2>
+		<h2>Or to your wishilist if you want to play it later!</h2>
+		{% endif %}
+		<br>
+	</header>
     <section class="dropdowns">
 		<table class="center_me centered">
 			<!-- Text input for game title search -->
