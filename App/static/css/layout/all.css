@@ -1,11 +1,6 @@
-.navigation {
-  background-image: #00ffcd;
-}
-
-.navigation a, .navigation p {
+.profile a, .menu a {
   float: right;
-  color: #003066;
-  text-align: center;
+  color: #00ffa2;
   padding: 0.8rem 1rem;
   text-decoration: none;
   font-size: 1.125rem;
@@ -14,14 +9,8 @@
   word-spacing: 0.15rem;
 }
 
-.navigation a:hover {
+.menu a:hover, .profile a:hover {
   background-color: rgb(224, 54, 97);
-  color: #003066;
-}
-
-.navigation a:active {
-  background-color: #003066;
-  color: #8D909B;
 }
 
 nav {
@@ -37,6 +26,11 @@ nav {
   display: inline-block;
 }
 
+.menu ul, .menu li {
+  margin: 0;
+  padding: 0;
+}
+
 .menu,
 .profile {
   display: none;
@@ -45,13 +39,23 @@ nav {
   right: 0rem;
   width: 15rem;
   padding: 1rem;
-  background-color: #00ffcd;
+  background-color: #070026;
   box-shadow: 0rem 0.5rem 1rem 0rem rgba(0, 0, 0, 0.7);
   z-index: 1;
 }
 
 .menu {
   left: 1rem;
+}
+
+.menu a {
+  width: 100%;
+  text-align: center;
+}
+
+.profile a {
+  width: 100%;
+  text-align: center;
 }
 
 .menu li,
@@ -75,8 +79,8 @@ nav {
 }
 
 .header {
-  background: #00ffcd;
-  color: #003066;
+  background: #070026;
+  color: #00ffa2;
 }
 
 .header h1 {

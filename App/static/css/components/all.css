@@ -1,25 +1,25 @@
 button {
-  background: #75d83c;
-  color: #003066;
+  background: #4024bd;
+  color: #00ffa2;
 }
 
 button:hover {
-  background: #00ffcd;
+  background: #070026;
 }
 
 select {
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
-  background: rgba(241, 209, 159, 0.8078431373) !important;
-  color: #003066 !important;
+  background: rgba(0, 0, 0, 0.7) !important;
+  color: #00ffa2 !important;
   width: 75% !important;
 }
 
 .searchButton {
   display: inline-block;
-  background: #75d83c;
-  color: #003066;
+  background: #4024bd;
+  color: #00ffa2;
   width: 7.5rem !important;
   height: 2.5rem !important;
   font-weight: 600;
@@ -30,12 +30,12 @@ select {
   border-radius: 9px;
 }
 .searchButton:hover {
-  background: #00ffcd;
+  background: #070026;
 }
 
 .addRemoveButton {
-  background: #75d83c;
-  color: #003066;
+  background: #4024bd;
+  color: #00ffa2;
   width: 15rem !important;
   height: 2.5rem !important;
   font-weight: 800;
@@ -46,12 +46,12 @@ select {
   border-radius: 9px;
 }
 .addRemoveButton:hover {
-  background: #00ffcd;
+  background: #070026;
 }
 
 .recommendationButton {
-  background: #75d83c;
-  color: #003066;
+  background: #4024bd;
+  color: #00ffa2;
   width: 9.375rem !important;
   height: 2.5rem !important;
   font-weight: 800;
@@ -63,12 +63,12 @@ select {
   float: center !important;
 }
 .recommendationButton:hover {
-  background: #00ffcd;
+  background: #070026;
 }
 
 .updateButton {
-  background: #75d83c;
-  color: #003066;
+  background: #4024bd;
+  color: #00ffa2;
   width: 6.25rem !important;
   height: 1.875rem !important;
   font-weight: 800;
@@ -82,7 +82,7 @@ select {
   vertical-align: middle !important;
 }
 .updateButton:hover {
-  background: #00ffcd;
+  background: #070026;
 }
 
 .recTable {
@@ -92,7 +92,7 @@ select {
 .recTable h1 {
   font-size: 24px;
   font-weight: 700;
-  color: #003066;
+  color: #00ffa2;
 }
 
 @media only screen and (max-width: 40rem), (min-device-width: 28rem) and (max-device-width: 60rem) {

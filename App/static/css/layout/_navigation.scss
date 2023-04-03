@@ -1,14 +1,9 @@
 @import "../abstracts/variables";
 
-.navigation {
-    background-image: $back;
-    // overflow: hidden;
-}
 
-.navigation a, .navigation p {
+.profile a, .menu a {
     float: right;
     color: $main;
-    text-align: center;
     padding: 0.8rem 1rem;
     text-decoration: none;
     font-size: 1.125rem;
@@ -17,14 +12,10 @@
     word-spacing: 0.15rem;
 }
 
-.navigation a:hover {
-    background-color: $notice;
-    color: $main;
-}
 
-.navigation a:active {
-    background-color: $main;
-    color: $color1;
+
+.menu a:hover, .profile a:hover {
+    background-color: $notice;
 }
 
 
@@ -41,6 +32,11 @@ nav {
     display: inline-block;
   }
   
+  .menu ul, .menu li{
+    margin:0;
+    padding:0;
+ }
+
   .menu,
   .profile {
     display: none;
@@ -55,6 +51,14 @@ nav {
   }
   .menu {
     left: 1rem;
+  }
+  .menu a {
+    width: 100%;
+    text-align: center;
+  }
+  .profile a {
+    width: 100%;
+    text-align: center;
   }
 
   .menu li,
