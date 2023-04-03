@@ -73,8 +73,13 @@ def game_library():
                                                    UserGame.game_id == i.id).first().hours_played)
         gamecomp_list.append(UserGame.query.filter(UserGame.user_id == current_user.id,
                                                    UserGame.game_id == i.id).first().play_status)
-        gamerating_list.append(UserGame.query.filter(UserGame.user_id == current_user.id,
-                                                   UserGame.game_id == i.id).first().rating)
+        
+        rating = UserGame.query.filter(UserGame.user_id == current_user.id, UserGame.game_id == i.id).first().rating
+        if rating is None:
+            rating = "Unrated"
+        else:
+            rating = str(rating) + "/5"
+        gamerating_list.append(rating)
 
     return render_template("game-library.html", library=library, game_list=game_list, playtime_list = playtime_list, 
                            gamecomp_list = gamecomp_list, gamerating_list = gamerating_list)
