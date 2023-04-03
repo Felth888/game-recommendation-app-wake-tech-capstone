@@ -65,8 +65,8 @@ function createTableFromVal(arr, valString) {
         }
         tableString += "</div>";
     } else {
-        // Add a filler 'No value' so there is no empty cells
-        tableString += "<p>No value</p></div>";
+        // Add a filler 'Not Available' so there is no empty cells
+        tableString += "<p>Not Available</p></div>";
     }
     
     return tableString;
