@@ -129,6 +129,12 @@
                     x = rows[i].getElementsByTagName("td")[n];
                     y = rows[i+3].getElementsByTagName("td")[n];
 
+                    // Speciality condition for replacing the value of the rating column so it says "0/5".
+                    // 0/5 is used to help sort it as the "lowest" value but due to JS way of comparing strings, "Not Rated" is
+                    // "higher" than a 5/5
+                    if(x.firstElementChild.innerHTML == "Not Rated") { x.firstElementChild.innerHTML = "0/5"; }
+                    if(y.firstElementChild.innerHTML == "Not Rated") { y.firstElementChild.innerHTML = "0/5"; }
+
                     // Sorting for ascending sort
                     if (dir == "asc"){                
                         // .firstElementChild is used as all td's contents are wrapped in a <h4> or <p> tag for styling, the tags need to be ignored                              
@@ -143,6 +149,12 @@
                             break;
                         }
                     }
+
+                    // Return the 0/5 back to "Not Rated.
+                    // This is a janky way to do this but it works.
+                    if(x.firstElementChild.innerHTML == "0/5") { x.firstElementChild.innerHTML = "Not Rated"; }
+                    if(y.firstElementChild.innerHTML == "0/5") { y.firstElementChild.innerHTML = "Not Rated"; }
+
                 }
 
                 // Run if the game is going to be swapped position
@@ -159,6 +171,8 @@
                         switched = true;
                     }
                 }
+
+
             }
         }
 

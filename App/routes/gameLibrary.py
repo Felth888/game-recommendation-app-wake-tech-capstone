@@ -69,14 +69,16 @@ def game_library():
     #apologies for the backwards method of grabbing game time played, had to utilize
     #the game_list to make sure the playtime list was properly aligned.
     for i in game_list:
-        playtime_list.append(UserGame.query.filter(UserGame.user_id == current_user.id,
-                                                   UserGame.game_id == i.id).first().hours_played)
+        hours = UserGame.query.filter(UserGame.user_id == current_user.id, UserGame.game_id == i.id).first().hours_played
+        if hours is None:
+            hours = 0.0
+        playtime_list.append(hours)
         gamecomp_list.append(UserGame.query.filter(UserGame.user_id == current_user.id,
                                                    UserGame.game_id == i.id).first().play_status)
         
         rating = UserGame.query.filter(UserGame.user_id == current_user.id, UserGame.game_id == i.id).first().rating
         if rating is None:
-            rating = "Unrated"
+            rating = "Not Rated"
         else:
             rating = str(rating) + "/5"
         gamerating_list.append(rating)
