@@ -6,12 +6,41 @@ from ..models import db
 
 bp = Blueprint('gameLibrary', __name__)
 
+@bp.route('/updategamevalue', methods=['GET', 'POST'])
+def update_game_value():
+    # Pull game based on passed through ID. 
+    game = UserGame.query.filter_by(user_id=current_user.id, game_id=request.form['id']).first()
+    newVal = request.form['value']
+    typeOfMod = request.form['typeOfMod']
+
+    if typeOfMod == "time":
+        game.hours_played = newVal
+    elif typeOfMod == "progress":
+        game.play_status = newVal
+    elif typeOfMod == "rating":
+        match newVal:
+            case "one":
+                game.rating = 1
+            case "two":
+                game.rating = 2
+            case "three":
+                game.rating = 3
+            case "four":
+                game.rating = 4
+            case "five":
+                game.rating = 5
+            case _:
+                print("Invalid game rating provided")
+
+    db.session.commit()
+
+    return {'id':game.id, 'typeOfMod':typeOfMod, 'val':newVal, 'success':True}
+
 @bp.route('/gamelibrary', methods=['GET', 'POST'])
 @login_required
 def game_library():
     #checks for post request, if there is one it must be for removal
     if request.method == "POST":
-        #print("Test")
         #The worst code ever written, but copypasted. see userWishlist.py
         output = request.form.to_dict()
         game_list = list(output)
@@ -24,37 +53,6 @@ def game_library():
             if removedGame:
                 removedGame.archived = True
                 db.session.commit()
-        elif request_type == "Backlogged" or request_type == "Incomplete" or request_type == "Completed":
-            print("CHANGE PLAY STATUS")
-            modifyGame = UserGame.query.filter_by(user_id=current_user.id, game_id=lib_id).first()
-            if modifyGame:
-                modifyGame.play_status = request_type
-                db.session.commit()
-        elif request_type == "one" or request_type == "two" or request_type == "three" or request_type == "four" or request_type == "five":
-            print("CHANGE RATING")
-            modifyGame = UserGame.query.filter_by(user_id=current_user.id, game_id=lib_id).first()
-            if modifyGame:
-                if request_type == "one":
-                    modifyGame.rating = 1
-                elif request_type == "two":
-                    modifyGame.rating = 2
-                elif request_type == "three":
-                    modifyGame.rating = 3
-                elif request_type == "four":
-                    modifyGame.rating = 4
-                elif request_type == "five":
-                    modifyGame.rating = 5
-                db.session.commit()
-        else:
-            #This code will probably have to change if we impliment something in addition to playtime tracking.
-            #Right now it relies on the fact that a post request that isn't for removing a game on the library page
-            #must be for changing playtime.
-            print("CHANGE HOURS PLAYED")
-            modifygame = UserGame.query.filter_by(user_id=current_user.id, game_id=lib_id).first()
-            if modifygame:
-                modifygame.hours_played = request_type
-                db.session.commit()
-
 
     library = UserGame.query.filter(
         UserGame.user_id == current_user.id,

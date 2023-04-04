@@ -1,7 +1,10 @@
 {% extends "base.html" %}
 
 {% block content %}
-<!--this could be made into a tab in the user profile page in css-->
+
+    <!-- General use utils -->
+	<script type="application/javascript" src="{{ url_for('static', filename='js/utils.js') }}"></script>
+
     <header>
         <h3 class="title">Game Library</h3>
         <br>
@@ -12,12 +15,13 @@
     </header>
     <section class="col__items">
         <table id="library" class="center_me centered searchResults">
-            <th>Cover</th>
+            <th>&nbsp</th>
             <th onclick="sortTable(1)">Title</th>
             <th onclick="sortTable(2)">Hours Played</th>
             <th onclick="sortTable(3)">Rating</th>
             <th onclick="sortTable(4)">Completion</th>
-            
+            <th>&nbsp</th>
+
             {% for game in game_list %}
             <tr>
                 <td> <!-- Cover art for the game -->
@@ -29,19 +33,19 @@
                 </td>
                     
                 <td>
-                    <h4>{{ game.title }}</h4><br> 
+                    <h4 id="{{game.id}}_title">{{ game.title }}</h4><br> 
                 </td>
                     
                 <td>
-                    <p>{{ playtime_list[loop.index0] }} hours</p><br>
+                    <p id="{{game.id}}_hours">{{ playtime_list[loop.index0] }} hours</p><br>
                 </td>
                 
                 <td>
-                    <p>{{ gamerating_list[loop.index0] }}</p><br>
+                    <p id="{{game.id}}_rating">{{ gamerating_list[loop.index0] }}</p><br>
                 </td>
 
                 <td>
-                    <p>{{ gamecomp_list[loop.index0] }}</p>
+                    <p id="{{game.id}}_prog">{{ gamecomp_list[loop.index0] }}</p>
                 </td>
 
                 <td>
@@ -53,57 +57,36 @@
             </tr>
             <tr>
                 <td>
-                    <form action="#" method="POST">
-                        <p>Modify Playtime (Hours):</p>
-                        <p><input type="number" name={{ game.id }} value = 1 min = 1 max = 999></p>
-                        <p><input type="submit" name={{ game.id }} value="Modify Game Time" ></p>
-                    </form>
+                    <p>Modify Playtime (Hours):</p>
+                    <p><input type="number" name={{ game.id }} id="{{ game.id }}_mod_hours" value = {{ playtime_list[loop.index0] }} min = 1 max = 9999></p>
+                    <p><input type="submit" value="Modify Game Time" onclick="modifyPressed({{ game.id }}, 'time', '{{ game.id }}_mod_hours')"></p>
                 </td>
                 <td>
-                    <form action="#" method="POST">
-                        <p>Modify Game Progress</p>
-                        <select name={{ game.id }} id ="prog_select">
-                            <option value = "Backlogged">Backlogged</option>
-                            <option value = "Incomplete">Incomplete</option>
-                            <option value = "Completed">Completed</option>
-                        </select>
-                        
-                        <!--DEPRECATED CODE
-                            <p>
-                            <input type="radio" id="Not Started" name={{ game.id }} value="Backlogged">
-                            <label for="Not Started">Backlogged</label>
-                        </p>
-                        <p>
-                            <input type="radio" id="Partially Completed" name={{ game.id }} value="Incomplete">
-                            <label for="Partially Completed">Incomplete</label>
-                        </p>
-                        <p>
-                            <input type="radio" id="Completed" name={{ game.id }} value="Completed">
-                            <label for="Completed">Completed</label>
-                        </p>-->
-                        <input type="submit" name={{ game.id }}>
-
-                    </form>
+                    <p>Modify Game Progress</p>
+                    <select name={{ game.id }} id ="{{game.id}}_prog_select">
+                        <option value = "Backlogged" {% if gamecomp_list[loop.index0] == "Backlogged" %} selected="selected" {% endif %}>Backlogged</option>
+                        <option value = "Incomplete" {% if gamecomp_list[loop.index0] == "Incomplete" %} selected="selected" {% endif %}>Incomplete</option>
+                        <option value = "Completed"  {% if gamecomp_list[loop.index0] == "Completed" %}  selected="selected" {% endif %}>Completed</option>
+                    </select>
+                    <input type="submit" onclick="modifyPressed({{ game.id }}, 'progress', '{{game.id}}_prog_select')">
                 </td>
                 <td>
-                    <form action="#" method="POST">
-                        <p>Modify Rating</p>
-                        <div class="star-rating">
-                            <span style="white-space:nowrap">
-                            <input type="radio" class="radio_item" name={{ game.id }} value="one" id={{ game.id + 10000000 }}>
-                            <label class="label_item" for={{ game.id + 10000000 }}><img src="/static/test.png" style="width:30px;height:auto;"> </label>
-                            <input type="radio" class="radio_item" name={{ game.id }} value="two" id={{ game.id + 20000000 }}>
-                            <label class="label_item" for={{ game.id + 20000000 }}><img src="/static/test.png" style="width:30px;height:auto;"> </label>
-                            <input type="radio" class="radio_item" name={{ game.id }} value="three" id={{ game.id + 30000000 }}>
-                            <label class="label_item" for={{ game.id + 30000000 }}><img src="/static/test.png" style="width:30px;height:auto;"> </label>
-                            <input type="radio" class="radio_item" name={{ game.id }} value="four" id={{ game.id + 40000000 }}>
-                            <label class="label_item" for={{ game.id + 40000000 }}><img src="/static/test.png" style="width:30px;height:auto;"> </label>
-                            <input type="radio" class="radio_item" name={{ game.id }} value="five" id={{ game.id + 50000000 }}>
-                            <label class="label_item" for={{ game.id + 50000000 }}><img src="/static/test.png" style="width:30px;height:auto;"> </label>
-                            </span>
-                            <p><input type="submit" name={{ game.id }}></p>
-                        </div>
-                    </form>
+                    <p>Modify Rating</p>
+                    <div class="star-rating">
+                        <span style="white-space:nowrap">
+                        <input type="radio" class="radio_item" name={{ game.id }} value="one" {% if gamerating_list[loop.index0] == "1/5" %} checked="checked" {% endif %} id={{ game.id + 10000000 }}>
+                        <label class="label_item" for={{ game.id + 10000000 }}><img src="/static/test.png" style="width:30px;height:auto;"> </label>
+                        <input type="radio" class="radio_item" name={{ game.id }} value="two" {% if gamerating_list[loop.index0] == "2/5" %} checked="checked" {% endif %} id={{ game.id + 20000000 }}>
+                        <label class="label_item" for={{ game.id + 20000000 }}><img src="/static/test.png" style="width:30px;height:auto;"> </label>
+                        <input type="radio" class="radio_item" name={{ game.id }} value="three" {% if gamerating_list[loop.index0] == "3/5" %} checked="checked" {% endif %} id={{ game.id + 30000000 }}>
+                        <label class="label_item" for={{ game.id + 30000000 }}><img src="/static/test.png" style="width:30px;height:auto;"> </label>
+                        <input type="radio" class="radio_item" name={{ game.id }} value="four" {% if gamerating_list[loop.index0] == "4/5" %} checked="checked" {% endif %} id={{ game.id + 40000000 }}>
+                        <label class="label_item" for={{ game.id + 40000000 }}><img src="/static/test.png" style="width:30px;height:auto;"> </label>
+                        <input type="radio" class="radio_item" name={{ game.id }} value="five" {% if gamerating_list[loop.index0] == "5/5" %} checked="checked" {% endif %} id={{ game.id + 50000000 }}>
+                        <label class="label_item" for={{ game.id + 50000000 }}><img src="/static/test.png" style="width:30px;height:auto;"> </label>
+                        </span>
+                        <p><input type="submit" onclick="modifyPressed({{ game.id }}, 'rating', 'star-rating')"></p>
+                    </div>
                 </td>
             </tr>
             <tr>
@@ -118,6 +101,28 @@
     </section>
 
     <script type="application/javascript">
+
+        // Set the values in the modify rows to reflec their current values
+		window.onload = function() {
+            
+            rows = ID("library").rows;
+            for(i = 1; i < rows.length - 3; i += 3) {
+
+                hoursRow = rows[i].getElementsByTagName("td")[2]
+                ratingRow = rows[i].getElementsByTagName("td")[3]
+                progRow = rows[i].getElementsByTagName("td")[4]
+
+                // Set the hours
+                //rows[i+1].getElementsByTagName("td")[0].children[1].firstElementChild.value = Number.parseInt(hoursRow.firstElementChild.innerHTML);
+
+            }
+
+        }
+
+        /**
+         * Sorts the table for the library. Based on clicking a header in the library table element
+         * @param {int} n - The column that will be used for sorting when grabbing the row. Use as index of column
+         */
         function sortTable(n){
             var table, rows, switched, i, x, y, isSwitching, direction, switchCount = 0;
 
@@ -178,11 +183,91 @@
                         switched = true;
                     }
                 }
-
-
             }
         }
 
+        /**
+         * Makes an AJAX call to the server to update the new rating value for a game
+         * @param {int} id - The ID of the game.
+         * @param {string} typeOfMod - The type of modification: time, progress, rating
+         * @param {string} element - The ID of the element with the value to update with.
+         */
+        async function modifyPressed(id, typeOfMod, element) {
+
+            // Setup a switch to check which type of modification is being used for the AJAX call
+            // Then modify the display of the value that was changed to reflect the change
+            switch (String(typeOfMod)) {
+                // Rating modification is based on an input that is 'checked' with the name of the ID of the game
+                case "rating":
+                    var newVal = document.querySelector('input[name="' + id + '"]:checked').value;
+                    break;
+                
+                // Progress set via dropdown who's value holds the change
+                case "progress":
+                    var newVal = ID(element).value;
+                    break;
+
+                // Time set via a text input who's value holds the change
+                case "time":
+                    var newVal = ID(element).value;
+                    break;
+
+                // Fallback incase the wrong type is given to the function
+                default:
+                    console.log("Wrong type given: " + String(typeOfMod));
+                    break;
+            }
+
+            var query = "id=" + id + "&typeOfMod=" + typeOfMod + "&value=" + newVal;
+            var response = await sendAjaxQuery('/updategamevalue', query, false);
+            console.log(response);
+
+            // Modify the display of the value that was changed to reflect the change
+            if(response['success'] == true) {
+                switch (String(response['typeOfMod'])) {
+                    // Rating modification is based on an input that is 'checked' with the name of the ID of the game
+                    case "rating":
+                        var displayVal;
+                        switch (String(response['val'])) {
+                            case "one":
+                                displayVal = 1
+                                break;
+                            case "two":
+                                displayVal = 2
+                                break;
+                            case "three":
+                                displayVal = 3
+                                break;
+                            case "four":
+                                displayVal = 4
+                                break;
+                            case "five":
+                                displayVal = 5
+                                break;
+                        }
+                        console.log(String(displayVal) + "/5");
+                        ID(id + "_rating").innerHTML = String(displayVal) + "/5";
+                        break;
+                    
+                    // Progress set via dropdown who's value holds the change
+                    case "progress":
+                        ID(id + "_prog").innerHTML = response['val'];
+                        break;
+
+                    // Time set via a text input who's value holds the change
+                    case "time":
+                        hours = Number.parseFloat(response['val']).toFixed(1);
+                        ID(id + "_hours").innerHTML = hours + " hours";
+                        break;
+
+                    // Fallback incase the wrong type is given to the function
+                    default:
+                        console.log("Wrong type given: " + String(response['typeOfMod']));
+                        break;
+                }
+            }
+
+        }
 
     </script>
 
