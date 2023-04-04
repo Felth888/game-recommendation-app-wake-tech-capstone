@@ -6,12 +6,16 @@
     display: none !important;
 }
     
-  .label_item{
+.label_item{
    
     opacity: 1;
 }
     
-  .radio_item:checked + label ~ label{
+.radio_item:checked + label ~ label{
    
     opacity: 0.4;
+}
+
+input {
+  color: #00ffa2;
 }

@@ -595,4 +595,8 @@ input, select {
 
 .radio_item:checked + label ~ label {
   opacity: 0.4;
+}
+
+input {
+  color: #00ffa2;
 }/*# sourceMappingURL=main.css.map */

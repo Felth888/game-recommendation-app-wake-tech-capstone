@@ -62,7 +62,14 @@
                 <td>
                     <form action="#" method="POST">
                         <p>Modify Game Progress</p>
-                        <p>
+                        <select name={{ game.id }} id ="prog_select">
+                            <option value = "Backlogged">Backlogged</option>
+                            <option value = "Incomplete">Incomplete</option>
+                            <option value = "Completed">Completed</option>
+                        </select>
+                        
+                        <!--DEPRECATED CODE
+                            <p>
                             <input type="radio" id="Not Started" name={{ game.id }} value="Backlogged">
                             <label for="Not Started">Backlogged</label>
                         </p>
@@ -73,8 +80,8 @@
                         <p>
                             <input type="radio" id="Completed" name={{ game.id }} value="Completed">
                             <label for="Completed">Completed</label>
-                        </p>
-                        <p><input type="submit" name={{ game.id }}></p>
+                        </p>-->
+                        <input type="submit" name={{ game.id }}>
 
                     </form>
                 </td>
