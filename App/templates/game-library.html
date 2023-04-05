@@ -9,7 +9,7 @@
         <h3 class="title">Game Library</h3>
         <br>
         <br>
-        <h4>In here, you can keep track of the games you've played, the completion time, and the ratings</h4>
+        <h4>In here you can keep track of the games you've played, the completion status,<br> time played, and your personal rating</h4>
         <br>
         <br>
     </header>
@@ -29,19 +29,19 @@
                         <img class="box_art" src="{{ "https://images.igdb.com/igdb/image/upload/t_cover_small/" ~ game.cover ~ ".jpg" }}">
                     {% else %}
                         <img class="box_art" src="https://t4.ftcdn.net/jpg/00/89/55/15/360_F_89551596_LdHAZRwz3i4EM4J0NHNHy2hEUYDfXc0j.jpg">
-                    {% endif %}<br>
+                    {% endif %}
                 </td>
                     
                 <td>
-                    <h4 id="{{game.id}}_title">{{ game.title }}</h4><br> 
+                    <h4 id="{{game.id}}_title">{{ game.title }}</h4> 
                 </td>
                     
                 <td>
-                    <p id="{{game.id}}_hours">{{ playtime_list[loop.index0] }} hours</p><br>
+                    <p id="{{game.id}}_hours">{{ playtime_list[loop.index0] }} hours</p>
                 </td>
                 
                 <td>
-                    <p id="{{game.id}}_rating">{{ gamerating_list[loop.index0] }}</p><br>
+                    <p id="{{game.id}}_rating">{{ gamerating_list[loop.index0] }}</p>
                 </td>
 
                 <td>
@@ -58,8 +58,8 @@
             <tr>
                 <td>
                     <p>Modify Playtime (Hours):</p>
-                    <p><input type="number" name={{ game.id }} id="{{ game.id }}_mod_hours" value = {{ playtime_list[loop.index0] }} min = 1 max = 9999></p>
-                    <p><input type="submit" value="Modify Game Time" onclick="modifyPressed({{ game.id }}, 'time', '{{ game.id }}_mod_hours')"></p>
+                    <p><input type="number" name={{ game.id }} id="{{ game.id }}_mod_hours" value = {{ playtime_list[loop.index0] }} min = 1 max = 9999>
+                    <input type="submit" value="Submit" onclick="modifyPressed({{ game.id }}, 'time', '{{ game.id }}_mod_hours')"></p>
                 </td>
                 <td>
                     <p>Modify Game Progress</p>
@@ -101,23 +101,6 @@
     </section>
 
     <script type="application/javascript">
-
-        // Set the values in the modify rows to reflec their current values
-		window.onload = function() {
-            
-            rows = ID("library").rows;
-            for(i = 1; i < rows.length - 3; i += 3) {
-
-                hoursRow = rows[i].getElementsByTagName("td")[2]
-                ratingRow = rows[i].getElementsByTagName("td")[3]
-                progRow = rows[i].getElementsByTagName("td")[4]
-
-                // Set the hours
-                //rows[i+1].getElementsByTagName("td")[0].children[1].firstElementChild.value = Number.parseInt(hoursRow.firstElementChild.innerHTML);
-
-            }
-
-        }
 
         /**
          * Sorts the table for the library. Based on clicking a header in the library table element
