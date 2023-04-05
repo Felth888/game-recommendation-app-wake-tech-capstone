@@ -43,6 +43,20 @@ var ID = function(elementID) {
 }
 
 
+
+/**
+ * Creates a promise and sets it on a timeout of the given millisecond value. 
+ * Used with an 'await' to pause asynchronous functions if needed.
+ * Ex: Pausing a function to allow a DOM's display change to appear
+ * @param {int} milliseconds The number of milliseconds to delay
+ * @return {Promise} A promise response set to trigger after provided milliseconds 
+ */
+function delay(milliseconds){
+    return new Promise(resolve => {
+        setTimeout(resolve, milliseconds);
+    });
+}
+
 /**
  * Creates a table of arr's data points, using valString to 
  * specify an index for data to fill the cell with. Used to create
