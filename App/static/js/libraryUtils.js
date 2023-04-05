@@ -90,6 +90,9 @@ function addToWishlist(id, name) {
  */
 function addToLibrary(id, name) {
     
+    // Replace '&' in game title as it is used in URL's to denotate arguments. %26 is the HTML encoded equivelant
+    name = name.replace("&", "%26");
+    
     // If game doesnt exist in database, add it
     sendAjaxQuery('/update_catalog', 'id=' + id + "&title=" + name, false);
 
