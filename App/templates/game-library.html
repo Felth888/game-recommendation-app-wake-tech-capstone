@@ -56,19 +56,12 @@
                 </td>
             </tr>
             <tr>
+                <td>&nbsp</td>
+                <td>&nbsp</td>
                 <td>
                     <p>Modify Playtime (Hours):</p>
                     <p><input type="number" name={{ game.id }} id="{{ game.id }}_mod_hours" value = {{ playtime_list[loop.index0] }} min = 1 max = 9999>
                     <input type="submit" value="Submit" onclick="modifyPressed({{ game.id }}, 'time', '{{ game.id }}_mod_hours')"></p>
-                </td>
-                <td>
-                    <p>Modify Game Progress</p>
-                    <select name={{ game.id }} id ="{{game.id}}_prog_select">
-                        <option value = "Backlogged" {% if gamecomp_list[loop.index0] == "Backlogged" %} selected="selected" {% endif %}>Backlogged</option>
-                        <option value = "Incomplete" {% if gamecomp_list[loop.index0] == "Incomplete" %} selected="selected" {% endif %}>Incomplete</option>
-                        <option value = "Completed"  {% if gamecomp_list[loop.index0] == "Completed" %}  selected="selected" {% endif %}>Completed</option>
-                    </select>
-                    <input type="submit" onclick="modifyPressed({{ game.id }}, 'progress', '{{game.id}}_prog_select')">
                 </td>
                 <td>
                     <p>Modify Rating</p>
@@ -88,6 +81,16 @@
                         <p><input type="submit" onclick="modifyPressed({{ game.id }}, 'rating', 'star-rating')"></p>
                     </div>
                 </td>
+                <td>
+                    <p>Modify Game Progress</p>
+                    <select name={{ game.id }} id ="{{game.id}}_prog_select">
+                        <option value = "Backlogged" {% if gamecomp_list[loop.index0] == "Backlogged" %} selected="selected" {% endif %}>Backlogged</option>
+                        <option value = "Incomplete" {% if gamecomp_list[loop.index0] == "Incomplete" %} selected="selected" {% endif %}>Incomplete</option>
+                        <option value = "Completed"  {% if gamecomp_list[loop.index0] == "Completed" %}  selected="selected" {% endif %}>Completed</option>
+                    </select>
+                    <input type="submit" onclick="modifyPressed({{ game.id }}, 'progress', '{{game.id}}_prog_select')">
+                </td>
+                <td>&nbsp</td>
             </tr>
             <tr>
                 <td>
