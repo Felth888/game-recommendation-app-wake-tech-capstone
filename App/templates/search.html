@@ -73,7 +73,7 @@
 		<div id='resultsPending' style='display: none;'>
 			<h2>Processing...</h2>
 		</div>
-	<section class="col__items">
+	<section class="col__items game-table">
 		<!-- Results table - filled dynamically -->
 		<table class="searchResults centered center_me">
 			<tr id='resultsHeader' style='display: none;'>
@@ -81,7 +81,7 @@
 				<th>Game Title</th>
 				<th>Genre</th>
 				<th>Release Platforms</th>
-				{% if current_user.is_authenticated  %}<th>User Action</th>{% endif %}
+				{% if current_user.is_authenticated  %}<th>Action</th>{% endif %}
 			</tr>
 			<tbody id='results'>
 			</tbody>

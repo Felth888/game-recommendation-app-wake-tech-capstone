@@ -80,3 +80,10 @@ function createTableFromVal(arr, valString) {
 function alertUser(input) {
     alert(input);
 }
+
+
+window.addEventListener("scroll", function(){
+    let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+    let parallaxForeground = document.querySelector(".parallax-foreground");
+    parallaxForeground.style.transform = `translate3d(0, ${scrollTop/2}px, 0)`;
+  });

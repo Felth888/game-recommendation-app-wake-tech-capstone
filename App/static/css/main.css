@@ -386,6 +386,11 @@ nav {
   }
 }
 
+.game-table {
+  margin: auto;
+  width: 90%;
+}
+
 header h1, h2 {
   text-align: center;
   font-size: 2rem;

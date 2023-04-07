@@ -206,4 +206,9 @@ nav {
   .srch__item {
     display: inline-block;
   }
+}
+
+.game-table {
+  margin: auto;
+  width: 90%;
 }/*# sourceMappingURL=all.css.map */
