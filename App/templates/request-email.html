@@ -21,7 +21,9 @@
         <p>{{ form.submit() }}</p>
     </form>
     {% else %}
-    <h1 id="submitted">If the supplied email is associated with an account, a password reset will be sent.</h1>
+    <h1 id="submitted">If the supplied email is associated with an account, a password reset will be sent.
+        <br> Remember to check your junk mail if it doesn't appear quickly.
+    </h1>
     {% endif %}
 </section>
 {% endblock %}

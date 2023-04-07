@@ -39,7 +39,7 @@ def add_to_library():
             foundGame.wishlist = None # Games added to library are removed from the wishlist
         # If the game doesnt exist in the user's library, add it
         else:
-            newGame = UserGame(user_id=current_user.id, game_id=request.form['id'], archived=False)
+            newGame = UserGame(user_id=current_user.id, game_id=request.form['id'], hours_played=0, play_status='Backlogged', wishlist=False, archived=False)
             db.session.add(newGame)
         adding = True
     else:

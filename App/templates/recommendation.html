@@ -10,7 +10,7 @@
     <header>
         <br>
         <br>
-        <h4>Here's where the magic happens! Based on your library, we can give you a selection of games we think you'd like! you can easily add them to your library or wishlist!</h4>
+        <h4>Here's where the magic happens! Based on your library, we can give you a selection of games we think you'd like! <br>You can easily add them to your library or wishlist!</h4>
         <br>
         <br>
     </header>
@@ -22,8 +22,9 @@
             <tr>
                 <th><h2>See our top picks for you!</h2></th>
             </tr>
+            <tr><td>&nbsp;</td></tr>
 			<tr>
-				<td colspan="2"><button class="recommendationButton" onclick="postRecommendations()" id="submitButton">Play This!</button></td>
+                <td colspan="2"><button class="recommendationButton" onclick="postRecommendations()" id="submitButton">Play This!</button></td>
 			</tr>
 		</table>
 		
@@ -39,9 +40,9 @@
         <section class="game-table">
 		<table class="searchResults centered">
 			<tr id='resultsHeader' style='display: none;'>
-				<th>Cover Art</th>
+				<th>&nbsp;</th>
 				<th>Game Title</th>
-				<th>User Action</th>
+				<th>&nbsp;</th>
 			</tr>
 			<tbody id='results'>
 			</tbody>
@@ -62,7 +63,8 @@
         async function postRecommendations() {
 
             // Shows the "processing" text to show the page isnt just unresponsive.
-            ID('resultsPending').style.display = 'block';
+            document.getElementById('resultsPending').style.display = "block";
+            await delay(100); // Pause for 100ms, allows for the DOM change to actually show up
 
             // Returns a JSON response from the AJAX query
             // The dataIn is null as recommendCall has no required data from the client.
