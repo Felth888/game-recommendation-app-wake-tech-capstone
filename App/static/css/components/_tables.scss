@@ -3,9 +3,44 @@
     text-align: center;
 }
 
-
-.centered 
+.recTable h1
 {
-    margin: auto;
+    font-size: 24px;
+    font-weight: 700;
+    color: $main;
 }
-  
+
+
+
+@media 
+only screen and (max-width: $med),
+(min-device-width: $sm) and (max-device-width: $lg)  {
+
+	/* Force table to not be like tables anymore */
+    .center_me {
+	table, tbody, td { 
+		display: block; 
+	}
+	
+	th { 
+        display: none;
+	}
+	
+	td { 
+		/* Behave  like a "row" */
+		position: relative;
+	}
+	
+	td:before { 
+		/* Now like a table header */
+		position: absolute;
+		/* Top/left values mimic padding */
+		top: 6px;
+		left: 6px;
+		width: 45%; 
+		padding-right: 10px; 
+		white-space: nowrap;
+	}
+
+}
+}

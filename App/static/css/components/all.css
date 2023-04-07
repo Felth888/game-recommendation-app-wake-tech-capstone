@@ -1,85 +1,120 @@
-.searchButton {
-  display: inline-block;
-  color: #7cb9d1;
-  font-weight: 800%;
-  font-size: 19px;
-  letter-spacing: 2px;
-  line-height: 24px;
-  padding: 1px 2px;
-  border-radius: 9px;
-  background: rgba(76, 0, 255, 0.5);
-  width: 100px !important;
-  height: 40px !important;
-}
-
 button {
-  background: rgba(76, 0, 255, 0.5);
-  color: #7cb9d1;
+  background: #4024bd;
+  color: #00ffa2;
 }
 
 button:hover {
-  background: rgba(76, 0, 255, 0.1);
-  color: #7cb9d1;
-}
-
-button:active {
-  background: #7cb9d1;
+  background: #070026;
 }
 
 select {
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
-  background: rgba(76, 0, 255, 0.1) !important;
-  color: #1C6EA4 !important;
+  background: rgba(0, 0, 0, 0.7) !important;
+  color: #00ffa2 !important;
   width: 75% !important;
 }
 
-.addRemoveButton {
-  width: 200px !important;
-  height: 40px !important;
-  font-weight: 800%;
-  font-size: 19px;
-  letter-spacing: 2px;
+.searchButton {
+  display: inline-block;
+  background: #4024bd;
+  color: #00ffa2;
+  width: 7.5rem !important;
+  height: 2.5rem !important;
+  font-weight: 600;
+  font-size: 1.1875rem;
+  letter-spacing: 0.125rem;
   line-height: 24px;
   padding: 1px 2px;
   border-radius: 9px;
+}
+.searchButton:hover {
+  background: #070026;
+}
+
+.addRemoveButton {
+  background: #4024bd;
+  color: #00ffa2;
+  width: 15rem !important;
+  height: 2.5rem !important;
+  font-weight: 800;
+  font-size: 1rem;
+  letter-spacing: 0.125rem;
+  line-height: 24px;
+  padding: 1px 2px;
+  border-radius: 9px;
+}
+.addRemoveButton:hover {
+  background: #070026;
 }
 
 .recommendationButton {
-  float: center !important;
-  width: 150px !important;
-  height: 40px !important;
-  font-weight: 800%;
-  font-size: 19px;
-  letter-spacing: 2px;
+  background: #4024bd;
+  color: #00ffa2;
+  width: 9.375rem !important;
+  height: 2.5rem !important;
+  font-weight: 800;
+  font-size: 1.1875rem;
+  letter-spacing: 0.125rem;
   line-height: 24px;
   padding: 1px 2px;
   border-radius: 9px;
+  float: center !important;
+}
+.recommendationButton:hover {
+  background: #070026;
 }
 
 .updateButton {
-  background: rgba(76, 0, 255, 0.5);
-  color: #7cb9d1;
-  width: 100px !important;
-  height: 30px !important;
-  font-weight: 800%;
-  font-size: 19px;
-  letter-spacing: 2px;
+  background: #4024bd;
+  color: #00ffa2;
+  width: 6.25rem !important;
+  height: 1.875rem !important;
+  font-weight: 800;
+  font-size: 1.1875rem;
+  letter-spacing: 0.125rem;
   line-height: 24px;
   padding: 1px 2px;
   border-radius: 9px;
+  float: center !important;
+  text-align: center !important;
+  vertical-align: middle !important;
 }
-
 .updateButton:hover {
-  background: rgba(76, 0, 255, 0.1);
-  color: #7cb9d1;
+  background: #070026;
 }
 
 .recTable {
   text-align: center;
 }
 
-.centered {
-  margin: auto;
+.recTable h1 {
+  font-size: 24px;
+  font-weight: 700;
+  color: #00ffa2;
+}
+
+@media only screen and (max-width: 40rem), (min-device-width: 28rem) and (max-device-width: 60rem) {
+  /* Force table to not be like tables anymore */
+  .center_me table, .center_me tbody, .center_me td {
+    display: block;
+  }
+  .center_me th {
+    display: none;
+  }
+  .center_me td {
+    /* Behave  like a "row" */
+    position: relative;
+  }
+  .center_me td:before {
+    /* Now like a table header */
+    position: absolute;
+    /* Top/left values mimic padding */
+    top: 6px;
+    left: 6px;
+    width: 45%;
+    padding-right: 10px;
+    white-space: nowrap;
+  }
 }/*# sourceMappingURL=all.css.map */

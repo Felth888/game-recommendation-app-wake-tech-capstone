@@ -7,9 +7,20 @@
 	<script type="application/javascript" src="{{ url_for('static', filename='js/utils.js') }}"></script>
 	<!-- Game library utils -->
 	<script type="application/javascript" src="{{ url_for('static', filename='js/libraryUtils.js') }}"></script>
-
-    <div>
-		<table class="centered">
+	<header>
+		<h1>Search for any game you'd like!</h1>
+		<br>
+		{% if current_user.is_anonymous %}
+		<h2>We provide lots of games from a variety of platforms and genres!</h2>
+		<h2>To save games, be sure to login!</h2>
+		{% else %}
+		<h2>You can now add a game of your choosing to your library if you have played it</h2>
+		<h2>Or to your wishilist if you want to play it later!</h2>
+		{% endif %}
+		<br>
+	</header>
+    <section class="dropdowns">
+		<table class="center_me centered">
 			<!-- Text input for game title search -->
 			<tr><td colspan='2'><input type="text" id ='nameInput' placeholder="Game Title" name="nameInput" class="center"></td></tr>
 			
@@ -52,6 +63,8 @@
 				<td colspan="2"></td>
 			</tr>
 		</table>
+	</section>
+
 		<button onclick="postSearch()" id="searchButton" class="searchButton">Search</button>
 		<br>
 		
@@ -60,21 +73,20 @@
 		<div id='resultsPending' style='display: none;'>
 			<h2>Processing...</h2>
 		</div>
-	
+	<section class="col__items">
 		<!-- Results table - filled dynamically -->
-		<table class="searchResults centered">
+		<table class="searchResults centered center_me">
 			<tr id='resultsHeader' style='display: none;'>
-				<th>Cover Art</th>
+				<th>&nbsp</th>
 				<th>Game Title</th>
 				<th>Genre</th>
 				<th>Release Platforms</th>
-				{% if current_user.is_authenticated  %}<th>User Action</th>{% endif %}
+				{% if current_user.is_authenticated  %}<th>&nbsp</th>{% endif %}
 			</tr>
 			<tbody id='results'>
 			</tbody>
 		</table>
-        
-    </div>
+	</section>
 	
 	<script type="application/javascript">
 	

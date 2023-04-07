@@ -1,4 +1,8 @@
+@import "../abstracts/variables";
+
 html {
     font-family: "Courier New", Courier, monospace;
-    color: $color3;
+    color: $main;
+    font-size: 1.1rem;
+    font-weight: 600;
 }

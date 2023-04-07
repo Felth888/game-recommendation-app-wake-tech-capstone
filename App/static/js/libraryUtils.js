@@ -16,18 +16,18 @@ var WISHLIST_IDS_ARR = [];
  * LIBRARY_IDS_ARR is always available to be called, but will remain empty until 
  * this function is utilized with a string. Due to a Flask limitation, this must be called 
  * with the parameter present if in an external file.
- * @param {string} library_id_string String of game ID's for the library. Formatted <id>|<id>|<id>...
- * @param {string} wishlist_id_string String of game ID's for the wishlist. Formatted <id>|<id>|<id>...
+ * @param {string} library_id_string String of game ID's for the library. Formatted <id>,<id>,<id>...
+ * @param {string} wishlist_id_string String of game ID's for the wishlist. Formatted <id>,<id>,<id>...
  */
 function setIDArrays(library_id_string, wishlist_id_string) {
     // Split the user's game library ID's string into an array
     if(library_id_string && library_id_string !== "") {
-        LIBRARY_IDS_ARR = library_id_string.split("|")
+        LIBRARY_IDS_ARR = library_id_string.split(",")
     }
 
     // Split the user's game wishlist ID's string into an array
     if(wishlist_id_string && wishlist_id_string !== "") {
-        WISHLIST_IDS_ARR = wishlist_id_string.split("|")
+        WISHLIST_IDS_ARR = wishlist_id_string.split(",")
     }
 
     // Convert all the string ID's to int's if there is games in the user's library
@@ -89,6 +89,9 @@ function addToWishlist(id, name) {
  * @return {bool} Returns whether something was added or not. True for added, false for removed. 
  */
 function addToLibrary(id, name) {
+    
+    // Replace '&' in game title as it is used in URL's to denotate arguments. %26 is the HTML encoded equivelant
+    name = name.replace("&", "%26");
     
     // If game doesnt exist in database, add it
     sendAjaxQuery('/update_catalog', 'id=' + id + "&title=" + name, false);

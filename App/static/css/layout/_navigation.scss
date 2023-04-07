@@ -1,28 +1,83 @@
 @import "../abstracts/variables";
 
-.navigation {
-    background-image: url($backgroundImage);
-    overflow: hidden;
-}
 
-.navigation a {
+.profile a, .menu a {
     float: right;
-    color: $color6;
-    text-align: center;
-    padding: 14px 16px;
+    color: $main;
+    padding: 0.8rem 1rem;
     text-decoration: none;
-    font-size: 18px;
+    font-size: 1.125rem;
     font-weight: 550;
-    letter-spacing: 2.0px;
-    word-spacing: 2.4px;
+    letter-spacing: 0.125rem;
+    word-spacing: 0.15rem;
 }
 
-.navigation a:hover {
-    background-color: $color7;
-    color: $color9;
+
+
+.menu a:hover, .profile a:hover {
+    background-color: $notice;
 }
 
-.navigation a:active {
-    background-color: $color6;
-    color: $color1;
-}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+  }
+  
+  .menu-dropdown,
+  .profile-dropdown {
+    position: relative;
+    display: inline-block;
+  }
+  
+  .menu ul, .menu li{
+    margin:0;
+    padding:0;
+ }
+
+  .menu,
+  .profile {
+    display: none;
+    position: absolute;
+    top: 2.5rem;
+    right: 0rem;
+    width: 15rem;
+    padding: 1rem;
+    background-color: $back;
+    box-shadow: 0rem 0.5rem 1rem 0rem $color15;
+    z-index: 1;
+  }
+  .menu {
+    left: 1rem;
+  }
+  .menu a {
+    width: 100%;
+    text-align: center;
+  }
+  .profile a {
+    width: 100%;
+    text-align: center;
+  }
+
+  .menu li,
+  .profile li {
+    margin-bottom: 1rem;
+  }
+  
+  
+  .menu-btn:focus,
+  .profile-btn:focus {
+    outline: none;
+  }
+  
+  .menu-dropdown:hover .menu,
+  .menu-dropdown:focus-within .menu {
+    display: block;
+  }
+  
+  .profile-dropdown:hover .profile,
+  .profile-dropdown:focus-within .profile {
+    display: block;
+  }

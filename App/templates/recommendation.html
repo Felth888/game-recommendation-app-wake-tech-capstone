@@ -7,17 +7,24 @@
 	<script type="application/javascript" src="{{ url_for('static', filename='js/utils.js') }}"></script>
 	<!-- Game library utils -->
 	<script type="application/javascript" src="{{ url_for('static', filename='js/libraryUtils.js') }}"></script>
-
-    <div>
+    <header>
+        <br>
+        <br>
+        <h4>Here's where the magic happens! Based on your library, we can give you a selection of games we think you'd like! <br>You can easily add them to your library or wishlist!</h4>
+        <br>
+        <br>
+    </header>
+    <section class="recPage">
 		<table class="centered recTable">
             <tr>
                 <th><h1>Recommendation Page!</h1></th>
             </tr>
             <tr>
-                <th><h2>See our top picks for you!</h12></th>
+                <th><h2>See our top picks for you!</h2></th>
             </tr>
+            <tr><td>&nbsp;</td></tr>
 			<tr>
-				<td colspan="2"><button class="recommendationButton" onclick="postRecommendations()" id="submitButton">Play This!</button></td>
+                <td colspan="2"><button class="recommendationButton" onclick="postRecommendations()" id="submitButton">Play This!</button></td>
 			</tr>
 		</table>
 		
@@ -30,17 +37,17 @@
 		</div>
 	
 		<!-- Results table - filled dynamically -->
-		<table class="searchResults centered">
+        <table class="searchResults centered">
 			<tr id='resultsHeader' style='display: none;'>
-				<th>Cover Art</th>
+				<th>&nbsp;</th>
 				<th>Game Title</th>
-				<th>User Action</th>
+				<th>&nbsp;</th>
 			</tr>
 			<tbody id='results'>
 			</tbody>
 		</table>
         
-    </div>
+    </section>
 
     <script type="application/javascript">
     
@@ -54,69 +61,77 @@
          */
         async function postRecommendations() {
 
-            // Show the processing text
-            ID('resultsPending').style.display = 'block';
+            // Shows the "processing" text to show the page isnt just unresponsive.
+            document.getElementById('resultsPending').style.display = "block";
+            await delay(100); // Pause for 100ms, allows for the DOM change to actually show up
 
             // Returns a JSON response from the AJAX query
-            // For right now its going to always return Skyrim. ID 472
-			var response = sendAjaxQuery('/recommendCall', 'id=472', false);
+            // The dataIn is null as recommendCall has no required data from the client.
+			var response = await sendAjaxQuery('/recommendCall', null, false);
 
-			// Hide the pending div and show the table header since fetch is done
-			ID('resultsPending').style.display = 'none';
-			ID('resultsHeader').style.display = 'table-row';
+            var x = "";
 
-			// x is the string used to create the table
-			var x = "<tr>";
-            
-            // Cover art image
-            cover_url = "";
-            if(typeof response['cover'] != "undefined" && response['cover'] != null) {
-                cover_url = "https://images.igdb.com/igdb/image/upload/t_cover_big/" + response['cover'] + ".jpg";
-            } else {
-                // 'Missing Image' filler incase there is no cover art
-                cover_url = "https://t4.ftcdn.net/jpg/00/89/55/15/360_F_89551596_LdHAZRwz3i4EM4J0NHNHy2hEUYDfXc0j.jpg";
-            }
-            
-            // Create the URL for cover art. Width is being hardcoded for now
-            x += "<td><img src='" + cover_url + "' alt ='Cover Art' </td>";
-            
-            x += "<td>" + response['title'] + "</td>";
+            for(var i = 0; i < response.length; i++) {
 
-            // Starts the buttons column
-            x += "<td>";
+                // The current item in the return array
+                var game = response[i];
 
-            // Library Button
-            // Sets the ID's of the button to be lib_/wish_ + igdb-id to make each unique
-            // Starts the button
-            var name = response['title'].replace(/'/g, "\\'");
-            x += "<button class=\"addRemoveButton\" id=\"lib_" + response['id'] + "\" onclick=\"libButtonPress(" + response['id'] + ",'" + name + "')\">";
-            
-                // Check if the user has a library and if the game is in it, if so, put respective text
-            if (LIBRARY_IDS_ARR.includes(response['id'])) {
-                x += "Remove from Library";
-            } else {
-                x += "Add to Library";
-            }
-            // Close the button
-            x += "</button><br>";
+                // x is the string used to create the table
+                x += "<tr>";
                 
-            // Wishhlist button
-            x += "<button class=\"addRemoveButton\" id=\"wish_" + response['id'] + "\" onclick=\"wishButtonPress(" + response['id'] + ",'" + name + "')\">";
-            // Check if the user has this game in their wishlist and put in the respective text
-            if (WISHLIST_IDS_ARR.includes(response['id'])) {
-                x += "Remove from Wishlist";
-            } else {
-                x += "Add to Wishlist";
-            }
-            // Close the button
-            x += "</button><br>";
-            x += "</td>";
+                // Cover art image
+                cover_url = "";
+                if(typeof game['cover'] != "undefined" && game['cover'] != null) {
+                    cover_url = "https://images.igdb.com/igdb/image/upload/t_cover_big/" + game['cover'] + ".jpg";
+                } else {
+                    // 'Missing Image' filler incase there is no cover art
+                    cover_url = "https://t4.ftcdn.net/jpg/00/89/55/15/360_F_89551596_LdHAZRwz3i4EM4J0NHNHy2hEUYDfXc0j.jpg";
+                }
+                
+                // Create the URL for cover art. Width is being hardcoded for now
+                x += "<td><img src='" + cover_url + "' alt ='Cover Art' </td>";
+                
+                x += "<td>" + game['title'] + "</td>";
 
-            // Close the row
-            x += "</tr>";
-			
+                // Starts the buttons column
+                x += "<td>";
+
+                // Library Button
+                // Sets the ID's of the button to be lib_/wish_ + igdb-id to make each unique
+                // Starts the button
+                var name = game['title'].replace(/'/g, "\\'");
+                x += "<button class=\"addRemoveButton\" id=\"lib_" + game['id'] + "\" onclick=\"libButtonPress(" + game['id'] + ",'" + name + "')\">";
+                
+                    // Check if the user has a library and if the game is in it, if so, put respective text
+                if (LIBRARY_IDS_ARR.includes(game['id'])) {
+                    x += "Remove from Library";
+                } else {
+                    x += "Add to Library";
+                }
+                // Close the button
+                x += "</button><br>";
+                    
+                // Wishhlist button
+                x += "<button class=\"addRemoveButton\" id=\"wish_" + game['id'] + "\" onclick=\"wishButtonPress(" + game['id'] + ",'" + name + "')\">";
+                // Check if the user has this game in their wishlist and put in the respective text
+                if (WISHLIST_IDS_ARR.includes(game['id'])) {
+                    x += "Remove from Wishlist";
+                } else {
+                    x += "Add to Wishlist";
+                }
+                // Close the button
+                x += "</button><br>";
+                x += "</td>";
+
+                // Close the row
+                x += "</tr>";
+            }
 			// 'results' is a tbody tag. Only rows are needed to be added to it
 			document.getElementById("results").innerHTML = x;
+
+            // Hide the pending div and show the table header since fetch is done
+            ID('resultsPending').style.display = 'none';
+            ID('resultsHeader').style.display = 'table-row';
 
         }
 

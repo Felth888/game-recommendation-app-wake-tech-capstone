@@ -10,3 +10,8 @@ email_validator
 pytest
 pytest-flask
 requests
+pandas
+sklearn
+scikit-learn
+flask-mail
+pyjwt

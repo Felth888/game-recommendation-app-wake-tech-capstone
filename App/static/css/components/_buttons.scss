@@ -1,32 +1,14 @@
 @import "../abstracts/variables";
+@import "../abstracts/mixins";
 
-.searchButton
-{
-    display: inline-block;
-    color: $color6;
-    font-weight: 800%; 
-    font-size: 19px; 
-    letter-spacing: 2.0px;
-    line-height: 24px; 
-    padding: 1px 2px; 
-    border-radius: 9px; 
-    background: $color14; 
-    width: 100px !important;
-    height: 40px !important;
-}
 button
 {
-    background: $color14; 
-    color: $color6;    
+    background: $button; 
+    color: $main;    
 }
 button:hover 
 {
-    background: $color13; 
-    color: $color6;
-}
-button:active 
-{
-    background: $color6; 
+    background: $back; 
 }
 
 select
@@ -34,52 +16,49 @@ select
     -webkit-appearance: none;
    -moz-appearance: none;
    appearance: none;
-    background: $color13 !important;
-    color: $color7 !important;
+    background: $field !important;
+    color: $main !important;
     width: 75% !important;
+}
+
+.searchButton
+{
+    display: inline-block;
+    @include button($width: 7.5rem,
+                    $height: 2.5rem,
+                    $font_weight: 600,
+                    $font_size: 1.1875rem,
+                    $letter_space: 0.125rem);
 }
 
 .addRemoveButton
 {
-    width: 200px !important;
-    height: 40px !important;
-    font-weight: 800%; 
-    font-size: 19px; 
-    letter-spacing: 2.0px;
-    line-height: 24px; 
-    padding: 1px 2px; 
-    border-radius: 9px; 
+    @include button($width: 15rem,
+                    $height: 2.5rem,
+                    $font_weight: 800,
+                    $font_size: 1rem,
+                    $letter_space: 0.125rem);
 }
 
 .recommendationButton
 {   
+    @include button($width: 9.375rem,
+                    $height: 2.5rem,
+                    $font_weight: 800,
+                    $font_size: 1.1875rem,
+                    $letter_space: 0.125rem);
     float: center !important;
-    width: 150px !important;
-    height: 40px !important;
-    font-weight: 800%; 
-    font-size: 19px; 
-    letter-spacing: 2.0px;
-    line-height: 24px; 
-    padding: 1px 2px; 
-    border-radius: 9px; 
 }
 
 .updateButton
 {
-    background: $color14; 
-    color: $color6;  
-    width: 100px !important;
-    height: 30px !important;
-    font-weight: 800%; 
-    font-size: 19px; 
-    letter-spacing: 2.0px;
-    line-height: 24px; 
-    padding: 1px 2px; 
-    border-radius: 9px; 
-}
+    @include button($width: 6.25rem,
+                    $height: 1.875rem,
+                    $font_weight: 800,
+                    $font_size: 1.1875rem,
+                    $letter_space: 0.125rem);
 
-.updateButton:hover
-{
-    background: $color13; 
-    color: $color6;
+    float: center !important;
+    text-align: center !important;
+    vertical-align: middle !important;
 }

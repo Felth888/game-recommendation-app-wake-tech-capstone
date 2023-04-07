@@ -4,24 +4,38 @@
         <title>Play This</title>
         <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
         <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
 
     <body>
-        <div class="navigation">
-            <a href="{{ url_for('searchPage.searchPage') }}">Search</a>
+        <nav>
+            <div class="menu-dropdown">
+                <button class="menu-btn searchButton">Menu</button>
+                <ul class="menu">
+                    <li><a href="{{ url_for('searchPage.searchPage') }}">Search</a></li>
+                    {% if not current_user.is_anonymous %} 
+                    <li><a href="{{ url_for('recommendationPage.recommendationPage') }}">Recommendations</a></li>
+                    <li><a href="{{ url_for('gameLibrary.game_library') }}">Game Library</a></li>
+                    <li><a href="{{ url_for('userWishlist.wishlist') }}">Wishlist</a></li>
+                    {% endif %}
+                </ul>
+            </div>
+            <div class="profile-dropdown">
             {% if current_user.is_anonymous %}
-            <a href="{{ url_for('loginPage.login') }}">Login</a>
+            <button class="profile-btn searchButton"><a href="{{ url_for('loginPage.login') }}">Login</a></button>
             {% else %}
-            <a href="{{ url_for('recommendationPage.recommendationPage') }}">Recommendations</a>
-            <a href="{{ url_for('gameLibrary.game_library') }}">Game Library</a>
-            <a href="{{ url_for('userWishlist.wishlist') }}">Wishlist</a>
-            <a href="{{ url_for('userProfile.profile', user_name=current_user.user_name) }}">{{current_user.user_name}}</a>
-            <a href="{{ url_for('loginPage.logout') }}">Logout</a>
+            <button class="profile-btn searchButton">Profile</button>
+            <ul class="profile">
+            <li><a href="{{ url_for('userProfile.profile', user_name=current_user.user_name) }}">{{current_user.user_name}}</a></li>
+            <li><a href="{{ url_for('updatePassword.updatePasswordPage')}}">Change Password</a></li>
+            <li><a href="{{ url_for('loginPage.logout') }}">Logout</a></li>
+            </ul>
             {% endif %}
-        </div>
-        <div class="header">
+            </div>
+        </nav>
+        <header class="header">
             <h1 class="title">Play This</h1>
-        </div>
+        </header>
         {% with messages = get_flashed_messages() %}
         {% if messages %}
         

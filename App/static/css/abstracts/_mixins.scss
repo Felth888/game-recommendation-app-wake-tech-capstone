@@ -1,0 +1,57 @@
+@mixin button($width, 
+            $height, 
+            $font_weight, 
+            $font_size,
+            $letter_space)
+{
+    background: $button; 
+    color: $main;
+    
+    width: $width !important;
+    height: $height !important;
+
+    font-weight: $font_weight;
+    font-size: $font_size;
+    letter-spacing: $letter_space;
+
+    line-height: 24px; 
+    padding: 1px 2px; 
+    border-radius: 9px; 
+
+    &:hover
+    {
+        background: $back; 
+    }
+}
+
+
+@mixin transform-y($value) {
+    -webkit-transform: translateY($value);
+        -ms-transform: translateY($value);
+       -moz-transform: translateY($value);
+         -o-transform: translateY($value);
+            transform: translateY($value);
+}
+
+
+@mixin responsive($query) {
+    @media ( min-width: + $query ) {
+        @content;
+    }
+}
+
+@mixin columns($count, $width) {
+    -webkit-column-count: $count; /* Chrome, Safari, Opera */
+       -moz-column-count: $count; /* Firefox */
+            column-count: $count;
+    
+    -webkit-column-width: $width; /* Chrome, Safari, Opera */
+       -moz-column-width: $width; /* Firefox */
+            column-width: $width;
+}
+
+@mixin page-break-inside($rule) {
+    -webkit-column-break-inside: $rule; /* Chrome, Safari, Opera */
+       page-break-inside: $rule; /* Firefox */
+            break-inside: $rule; /* IE 10+ */
+}

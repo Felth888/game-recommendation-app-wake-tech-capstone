@@ -1,14 +1,17 @@
+@import "../abstracts/variables";
+@import "../abstracts/mixins";
+
 .updateProfile
 {
     text-align: center;
-    background-color: $color15;
+    background-color: $back;
 }
 
 .updateProfile h1,h2
 {
     font-size: 24px;
     font-weight: 700;
-    color: $color6;
+    color: $main;
 }
 
 .updateProfile h3
@@ -16,7 +19,7 @@
     
     font-size: 22px;
     font-weight: 700;
-    color: $color6;
+    color: $main;
 }
 
 
@@ -25,7 +28,7 @@
     
     font-size: 20px;
     font-weight: 700;
-    color: $color6;
+    color: $main;
 }
 
 
@@ -33,35 +36,30 @@
 {
     font-size: 18px;
     font-weight: 500;
-    color: $color6;
+    color: $main;
 }
 
 .updateProfile a
 {
     font-size: 18px;
     font-weight: 500;
-    color: $color16;
+    color: $notice;
 }
 
 .updateProfile input
 {
+    @include button($width: 200px,
+    $height: 30px,
+    $font_weight: 600,
+    $font_size: 16px,
+    $letter_space: 2.0px);
+    
     padding: 8px;
-    font-size: 16px;
-
-    background-color: $color14;
-    color: $color6;
-
     border-radius: 6px;
     box-shadow: 0px 0px 3px $color12;
     text-shadow: 0px 0px 0px $color12;
     margin-bottom: 5px;
-    width: 200px;
-}
 
-.updateProfile input:hover
-{
-    background: $color13; 
-    color: $color6;
 }
 
 
@@ -70,7 +68,7 @@
     padding: 8px;
     font-size: 16px;
     border-width: 1px;
-    border-color: $color9;
+    border-color: $main;
     background-color: $color10;
     color: $color11;
     border-style: solid;
@@ -86,7 +84,7 @@
     padding: 8px;
     font-size: 16px;
     border-width: 1px;
-    border-color: $color9;
+    border-color: $main;
     background-color: $color10;
     color: $color11;
     border-style: solid;
@@ -101,7 +99,7 @@
     padding: 8px;
     font-size: 16px;
     border-width: 1px;
-    border-color: $color9;
+    border-color: $main;
     background-color: $color10;
     color: $color11;
     border-style: solid;
