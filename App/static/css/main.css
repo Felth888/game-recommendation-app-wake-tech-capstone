@@ -192,6 +192,10 @@ select {
     white-space: nowrap;
   }
 }
+.hideMe {
+  background-color: rgba(0, 0, 0, 0) !important;
+}
+
 .profile a, .menu a {
   float: right;
   color: #00ffa2;
