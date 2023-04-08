@@ -426,6 +426,15 @@ header h4 {
   font-size: 1.5rem;
 }
 
+.cta {
+  font-weight: 800;
+  font-size: 1.9rem;
+  letter-spacing: 0.15rem;
+}
+.cta h1, .cta h2, .cta h3, .cta h4 {
+  margin-bottom: 0.5rem;
+}
+
 .updateProfile {
   text-align: center;
   background-color: #070026;
