@@ -52,8 +52,23 @@ html {
   font-weight: 600;
 }
 
-body {
-  background-image: url("./../assets/background.jpg");
+.bg-image {
+  background: url("./../assets/background.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: fixed;
+  height: 100vh;
+  width: 100vw;
+  z-index: -1;
+}
+
+.content {
+  position: absolute;
+  left: 50%;
+  margin-top: 0rem;
+  transform: translateX(-50%);
+  width: 100%;
 }
 
 button {
