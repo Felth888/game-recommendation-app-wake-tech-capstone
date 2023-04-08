@@ -1,7 +1,7 @@
 
 from flask_wtf import FlaskForm
 from wtforms import StringField, PasswordField, BooleanField, SubmitField, DateField
-from wtforms.validators import DataRequired, ValidationError, Email, EqualTo
+from wtforms.validators import DataRequired, ValidationError, Email, EqualTo, Optional
 from ..models.userModels import User
 
 
@@ -33,9 +33,9 @@ class NewAccountForm(FlaskForm):
 
 
 class UpdateProfileForm(FlaskForm):
-    user_name = StringField('Username', validators=[DataRequired()])
-    birthday  = DateField('Your Birthday', format='%Y-%m-%d')
-    email = StringField('Email', validators=[Email()])
+    user_name = StringField('Username', validators=[Optional(), DataRequired()])
+    birthday  = DateField('Your Birthday', format='%Y-%m-%d', validators=[Optional()])
+    email = StringField('Email', validators=[Optional(), Email()])
     submit = SubmitField('Update')
 
     def validate_email(self, email):
