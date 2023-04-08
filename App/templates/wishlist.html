@@ -19,10 +19,12 @@
     </header>
     <section class="col__items game-table" >
         <table id="wishlist" class="center_me centered searchResults">
+            <tr class="resultsHeader">
             <th>&nbsp</th>
             <th onclick="sortTable(1)">Title</th>
             <th>&nbsp</th>
             <th>&nbsp</th>
+            </tr>
 
             {% for wish in w_list %}
            <tr>

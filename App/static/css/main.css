@@ -275,6 +275,10 @@ nav {
   background-color: #080808;
 }
 
+.resultsHeader {
+  font-size: 2rem;
+}
+
 .col { /* Chrome, Safari, Opera */
   -moz-column-count: 1; /* Firefox */
   column-count: 1; /* Chrome, Safari, Opera */
@@ -439,19 +443,20 @@ header h4 {
 .updateProfile input {
   background: #4024bd;
   color: #00ffa2;
-  width: 200px !important;
-  height: 30px !important;
+  width: 12.5rem !important;
+  height: 1.8rem !important;
   font-weight: 600;
-  font-size: 16px;
-  letter-spacing: 2px;
+  font-size: 1rem;
+  letter-spacing: 0.125rem;
   line-height: 24px;
   padding: 1px 2px;
   border-radius: 9px;
-  padding: 8px;
-  border-radius: 6px;
+  text-align: center;
+  padding: 0rem 0rem;
+  border-radius: 0.4rem;
   box-shadow: 0px 0px 3px rgba(66, 66, 66, 0.7490196078);
   text-shadow: 0px 0px 0px rgba(66, 66, 66, 0.7490196078);
-  margin-bottom: 5px;
+  margin-bottom: 0.4rem;
 }
 .updateProfile input:hover {
   background: #070026;
@@ -526,7 +531,8 @@ header h4 {
 }
 
 input, select {
-  padding: 0.5rem;
+  padding: 1rem 1rem;
+  font-size: 1.5rem;
   border-width: 0.1rem;
   border-color: #273E47;
   background-color: rgba(0, 0, 0, 0.7);
