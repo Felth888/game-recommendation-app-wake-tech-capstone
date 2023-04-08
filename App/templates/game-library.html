@@ -137,18 +137,43 @@
                     if(x.firstElementChild.innerHTML == "Not Rated") { x.firstElementChild.innerHTML = "0/5"; }
                     if(y.firstElementChild.innerHTML == "Not Rated") { y.firstElementChild.innerHTML = "0/5"; }
 
+                    // Speciality condition for trimming the word "hours" off the value so it can be parsed as a float.
+                    // Only applies when n == 2, sorting the 'hours played' row, and is parsed as a float into a new var
+                    if (n == 2) {
+                        xF = parseFloat(x.firstElementChild.innerHTML.slice(0, -6));
+                        yF = parseFloat(y.firstElementChild.innerHTML.slice(0, -6));
+                    }
+
                     // Sorting for ascending sort
-                    if (dir == "asc"){                
-                        // .firstElementChild is used as all td's contents are wrapped in a <h4> or <p> tag for styling, the tags need to be ignored                              
-                        if(x.firstElementChild.innerHTML.toLowerCase() > y.firstElementChild.innerHTML.toLowerCase()){  
-                            isSwitching = true;
-                            break;
+                    if (dir == "asc"){  
+                        // If sorting hours, we need to compare the parsed float not the table cell.    
+                        if(n == 2) {
+                            if(xF > yF) {
+                                isSwitching = true;
+                                break;
+                            }
+                        // Sorting everything else
+                        } else {
+                            // .firstElementChild is used as all td's contents are wrapped in a <h4> or <p> tag for styling, the tags need to be ignored                              
+                            if(x.firstElementChild.innerHTML.toLowerCase() > y.firstElementChild.innerHTML.toLowerCase()){  
+                                isSwitching = true;
+                                break;
+                            }
                         }
                     // Sorting for descending sort
                     } else if (dir == "desc"){
-                        if(x.firstElementChild.innerHTML.toLowerCase() < y.firstElementChild.innerHTML.toLowerCase()){
-                            isSwitching = true;
-                            break;
+                        // Sorting hours played
+                        if(n == 2) {
+                            if(xF < yF) {
+                                isSwitching = true;
+                                break;
+                            }
+                        // Sorting everything else
+                        } else {
+                            if(x.firstElementChild.innerHTML.toLowerCase() < y.firstElementChild.innerHTML.toLowerCase()){
+                                isSwitching = true;
+                                break;
+                            }
                         }
                     }
 
