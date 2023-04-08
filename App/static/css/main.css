@@ -247,6 +247,11 @@ nav {
   outline: none;
 }
 
+.profile-btn a {
+  text-decoration: none;
+  color: #00ffa2;
+}
+
 .menu-dropdown:hover .menu,
 .menu-dropdown:focus-within .menu {
   display: block;
