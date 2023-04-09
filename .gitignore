@@ -26,3 +26,9 @@ htmlcov/
 *,cover
 
 config.py
+
+#scss
+.sass-cache/
+*.css.map
+*.sass.map
+*.scss.map

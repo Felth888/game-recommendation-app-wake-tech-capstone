@@ -5,22 +5,26 @@
     <!-- General use utils -->
 	<script type="application/javascript" src="{{ url_for('static', filename='js/utils.js') }}"></script>
 
-    <header>
+    <header class="cta">
         <h3 class="title">Game Library</h3>
         <br>
         <br>
-        <h4>In here you can keep track of the games you've played, the completion status,<br> time played, and your personal rating</h4>
+        <h4>In here you can keep track of the games you've played,</h4> 
+            <h4>the completion status, time played,</h4> 
+            <h4>and your personal rating</h4>
         <br>
         <br>
     </header>
-    <section class="col__items">
+    <section class="col__items game-table">
         <table id="library" class="center_me centered searchResults">
+            <tr class="resultsHeader">
             <th>&nbsp</th>
             <th onclick="sortTable(1)">Title</th>
             <th onclick="sortTable(2)">Hours Played</th>
             <th onclick="sortTable(3)">Rating</th>
             <th onclick="sortTable(4)">Completion</th>
             <th>&nbsp</th>
+            </tr>
 
             {% for game in game_list %}
             <tr>
@@ -92,7 +96,7 @@
                 </td>
                 <td>&nbsp</td>
             </tr>
-            <tr>
+            <tr class="hideMe">
                 <td>
                     <p>&nbsp</p>
                     <p>&nbsp</p>
@@ -133,18 +137,43 @@
                     if(x.firstElementChild.innerHTML == "Not Rated") { x.firstElementChild.innerHTML = "0/5"; }
                     if(y.firstElementChild.innerHTML == "Not Rated") { y.firstElementChild.innerHTML = "0/5"; }
 
+                    // Speciality condition for trimming the word "hours" off the value so it can be parsed as a float.
+                    // Only applies when n == 2, sorting the 'hours played' row, and is parsed as a float into a new var
+                    if (n == 2) {
+                        xF = parseFloat(x.firstElementChild.innerHTML.slice(0, -6));
+                        yF = parseFloat(y.firstElementChild.innerHTML.slice(0, -6));
+                    }
+
                     // Sorting for ascending sort
-                    if (dir == "asc"){                
-                        // .firstElementChild is used as all td's contents are wrapped in a <h4> or <p> tag for styling, the tags need to be ignored                              
-                        if(x.firstElementChild.innerHTML.toLowerCase() > y.firstElementChild.innerHTML.toLowerCase()){  
-                            isSwitching = true;
-                            break;
+                    if (dir == "asc"){  
+                        // If sorting hours, we need to compare the parsed float not the table cell.    
+                        if(n == 2) {
+                            if(xF > yF) {
+                                isSwitching = true;
+                                break;
+                            }
+                        // Sorting everything else
+                        } else {
+                            // .firstElementChild is used as all td's contents are wrapped in a <h4> or <p> tag for styling, the tags need to be ignored                              
+                            if(x.firstElementChild.innerHTML.toLowerCase() > y.firstElementChild.innerHTML.toLowerCase()){  
+                                isSwitching = true;
+                                break;
+                            }
                         }
                     // Sorting for descending sort
                     } else if (dir == "desc"){
-                        if(x.firstElementChild.innerHTML.toLowerCase() < y.firstElementChild.innerHTML.toLowerCase()){
-                            isSwitching = true;
-                            break;
+                        // Sorting hours played
+                        if(n == 2) {
+                            if(xF < yF) {
+                                isSwitching = true;
+                                break;
+                            }
+                        // Sorting everything else
+                        } else {
+                            if(x.firstElementChild.innerHTML.toLowerCase() < y.firstElementChild.innerHTML.toLowerCase()){
+                                isSwitching = true;
+                                break;
+                            }
                         }
                     }
 

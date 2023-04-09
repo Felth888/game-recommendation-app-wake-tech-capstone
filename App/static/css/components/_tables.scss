@@ -44,3 +44,7 @@ only screen and (max-width: $med),
 
 }
 }
+
+@at-root .hideMe {
+	background-color: $clear !important;
+}

@@ -52,8 +52,23 @@ html {
   font-weight: 600;
 }
 
-body {
-  background-image: url("./../assets/background.jpg");
+.bg-image {
+  background: url("./../assets/background.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: fixed;
+  height: 100vh;
+  width: 100vw;
+  z-index: -1;
+}
+
+.content {
+  position: absolute;
+  left: 50%;
+  margin-top: 0rem;
+  transform: translateX(-50%);
+  width: 100%;
 }
 
 button {
@@ -102,6 +117,7 @@ select {
   line-height: 24px;
   padding: 1px 2px;
   border-radius: 9px;
+  margin-right: 0.3rem;
 }
 .addRemoveButton:hover {
   background: #070026;
@@ -176,6 +192,10 @@ select {
     white-space: nowrap;
   }
 }
+.hideMe {
+  background-color: rgba(0, 0, 0, 0) !important;
+}
+
 .profile a, .menu a {
   float: right;
   color: #00ffa2;
@@ -246,6 +266,11 @@ nav {
   outline: none;
 }
 
+.profile-btn a {
+  text-decoration: none;
+  color: #00ffa2;
+}
+
 .menu-dropdown:hover .menu,
 .menu-dropdown:focus-within .menu {
   display: block;
@@ -273,6 +298,10 @@ nav {
 
 .header hr {
   background-color: #080808;
+}
+
+.resultsHeader {
+  font-size: 2rem;
 }
 
 .col { /* Chrome, Safari, Opera */
@@ -386,6 +415,11 @@ nav {
   }
 }
 
+.game-table {
+  margin: auto;
+  width: 90%;
+}
+
 header h1, h2 {
   text-align: center;
   font-size: 2rem;
@@ -394,6 +428,15 @@ header h1, h2 {
 header h4 {
   text-align: center;
   font-size: 1.5rem;
+}
+
+.cta {
+  font-weight: 800;
+  font-size: 1.9rem;
+  letter-spacing: 0.15rem;
+}
+.cta h1, .cta h2, .cta h3, .cta h4 {
+  margin-bottom: 0.5rem;
 }
 
 .updateProfile {
@@ -434,19 +477,20 @@ header h4 {
 .updateProfile input {
   background: #4024bd;
   color: #00ffa2;
-  width: 200px !important;
-  height: 30px !important;
+  width: 12.5rem !important;
+  height: 1.8rem !important;
   font-weight: 600;
-  font-size: 16px;
-  letter-spacing: 2px;
+  font-size: 1rem;
+  letter-spacing: 0.125rem;
   line-height: 24px;
   padding: 1px 2px;
   border-radius: 9px;
-  padding: 8px;
-  border-radius: 6px;
+  text-align: center;
+  padding: 0rem 0rem;
+  border-radius: 0.4rem;
   box-shadow: 0px 0px 3px rgba(66, 66, 66, 0.7490196078);
   text-shadow: 0px 0px 0px rgba(66, 66, 66, 0.7490196078);
-  margin-bottom: 5px;
+  margin-bottom: 0.4rem;
 }
 .updateProfile input:hover {
   background: #070026;
@@ -521,7 +565,8 @@ header h4 {
 }
 
 input, select {
-  padding: 0.5rem;
+  padding: 1rem 1rem;
+  font-size: 1.5rem;
   border-width: 0.1rem;
   border-color: #273E47;
   background-color: rgba(0, 0, 0, 0.7);

@@ -94,3 +94,5 @@ function createTableFromVal(arr, valString) {
 function alertUser(input) {
     alert(input);
 }
+
+

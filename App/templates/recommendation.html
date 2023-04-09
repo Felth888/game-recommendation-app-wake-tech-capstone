@@ -7,22 +7,19 @@
 	<script type="application/javascript" src="{{ url_for('static', filename='js/utils.js') }}"></script>
 	<!-- Game library utils -->
 	<script type="application/javascript" src="{{ url_for('static', filename='js/libraryUtils.js') }}"></script>
-    <header>
+    <header class="cta">
         <br>
         <br>
-        <h4>Here's where the magic happens! Based on your library, we can give you a selection of games we think you'd like! <br>You can easily add them to your library or wishlist!</h4>
+        <h4>Here's where the magic happens!</h4>
+        <h4>Based on your library, we can give you a selection of games we think you'd like!</h4>
+         <h4>can easily add them to your library or wishlist!</h4>
         <br>
+        <br>
+        <h4>See our top picks for you!</h4>
         <br>
     </header>
     <section class="recPage">
 		<table class="centered recTable">
-            <tr>
-                <th><h1>Recommendation Page!</h1></th>
-            </tr>
-            <tr>
-                <th><h2>See our top picks for you!</h2></th>
-            </tr>
-            <tr><td>&nbsp;</td></tr>
 			<tr>
                 <td colspan="2"><button class="recommendationButton" onclick="postRecommendations()" id="submitButton">Play This!</button></td>
 			</tr>
@@ -37,7 +34,8 @@
 		</div>
 	
 		<!-- Results table - filled dynamically -->
-        <table class="searchResults centered">
+        <section class="game-table">
+		<table class="searchResults centered">
 			<tr id='resultsHeader' style='display: none;'>
 				<th>&nbsp;</th>
 				<th>Game Title</th>
@@ -46,7 +44,7 @@
 			<tbody id='results'>
 			</tbody>
 		</table>
-        
+    </section>
     </section>
 
     <script type="application/javascript">

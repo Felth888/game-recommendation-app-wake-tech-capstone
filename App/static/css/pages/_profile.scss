@@ -48,17 +48,18 @@
 
 .updateProfile input
 {
-    @include button($width: 200px,
-    $height: 30px,
+    @include button($width: 12.5rem,
+    $height: 1.8rem,
     $font_weight: 600,
-    $font_size: 16px,
-    $letter_space: 2.0px);
+    $font_size: 1rem,
+    $letter_space: 0.125rem);
     
-    padding: 8px;
-    border-radius: 6px;
+    text-align: center;
+    padding: 0rem 0rem;
+    border-radius: 0.4rem;
     box-shadow: 0px 0px 3px $color12;
     text-shadow: 0px 0px 0px $color12;
-    margin-bottom: 5px;
+    margin-bottom: 0.4rem;
 
 }
 
