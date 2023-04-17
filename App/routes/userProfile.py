@@ -27,6 +27,6 @@ def update_profile():
     elif request.method == 'GET':
         form.user_name.data = current_user.user_name
         form.birthday.data = current_user.birthdate
-        form.email.data = current_user.email
+        # form.email.data = current_user.email
     return render_template('update-profile.html', title='Update Profile',
                            form=form)
