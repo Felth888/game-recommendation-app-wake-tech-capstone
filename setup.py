@@ -17,6 +17,9 @@ setup(
         'Flask-WTF',
         'pandas',
         'requests',
-        'flask-mail'
+        'flask-mail',
+        'scikit-learn',
+        'flask-mail',
+        'pyjwt'
     ],
 )

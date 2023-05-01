@@ -20,13 +20,14 @@ def update_profile():
     if form.validate_on_submit():
         current_user.user_name = form.user_name.data
         current_user.birthdate = form.birthday.data
-        current_user.email = form.email.data
+        if form.email.data != "":
+            current_user.email = form.email.data
         db.session.commit()
         flash('Your changes have been saved.')
         return redirect(url_for('loginPage.login'))
     elif request.method == 'GET':
         form.user_name.data = current_user.user_name
         form.birthday.data = current_user.birthdate
-        form.email.data = current_user.email
+        # form.email.data = current_user.email
     return render_template('update-profile.html', title='Update Profile',
                            form=form)
